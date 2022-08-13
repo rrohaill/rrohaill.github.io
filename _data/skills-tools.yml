@@ -5,31 +5,28 @@
 # - name: Git
 #   weight: 5
 
+- name: Android studio
+  weight: 5
+
 - name: Git
   weight: 5
 
-- name: Bash
+- name: AIDE
   weight: 3
 
-- name: Scrum
+- name: JIRA
   weight: 3
 
-- name: Travis CI
-  weight: 1
-
-- name: Jenkins
-  weight: 1
-
-- name: Chrome DevTools
+- name: ADB (Android Debug Bridge)
   weight: 2
 
-- name: npm
-  weight: 2
-
-- name: gulp
+- name: Android Asset Studio
   weight: 4
 
-- name: VS Code
+- name: Gradle
+  weight: 4
+
+- name: Firebase
   weight: 3
 
 - name: Postman
