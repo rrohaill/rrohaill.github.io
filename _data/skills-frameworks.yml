@@ -8,6 +8,12 @@
 - name: Android
   weight: 5
 
+- name: Jetpack
+  weight: 3
+
+- name: Material design
+  weight: 3
+
 - name: iOS
   weight: 1
 
