@@ -13,21 +13,38 @@
 #     - tag: AngularJS
 #     - tag: Node
 
-- name: project X
-  descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-  demo: https://example.com/
+- name: Moj GEN-I Solar
+  descr: "Follow your energy. On the go. Solar control in the palm of your hand. Always and everywhere."
+  demo: https://play.google.com/store/apps/details?id=si.geni.mojgenisolar
   tags:
-    - tag: MongoDB
-    - tag: Express
-    - tag: AngularJS
-    - tag: Node
+    - tag: Android
+    - tag: Kotlin
+    - tag: Firebase
 
-- name: project Y
-  descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-  demo: https://example.com/
+- name: My JE
+  descr: "The My JE app puts you in more control of your electricity usage than ever before, helping you to save energy - and money. See and compare how much electricity you’re using and when day-by-day, week-by-week or year-on-year in both kWhs (units) and cash, helping you to budget."
+  demo: https://play.google.com/store/apps/details?id=io.eliq.myje
   tags:
-    - tag: Python
-    - tag: Django
+    - tag: Android
+    - tag: Kotlin
+    - tag: Firebase
 
-- name: project Z
-  descr: "You can also set a project without demo link and no tags"
+- name: Meezan Mobile Banking
+  descr: "Manage your finances on the move and around the clock with Meezan Bank’s secure Mobile Banking App."
+  demo: https://play.google.com/store/apps/details?id=invo8.meezan.mb
+  tags:
+    - tag: Fintech
+    - tag: Android
+    - tag: Java
+    - tag: Firebase
+    - tag: Cryptograpghy
+
+- name: FonePay Merchant
+  descr: "FonePay Merchant app is all in one toolkit for merchants launched to empower the utilization of digital payments."
+  demo: https://play.google.com/store/apps/details?id=com.inov8.fonepaymerchant
+  tags:
+    - tag: Fintech
+    - tag: Android
+    - tag: Java
+    - tag: Firebase
+    - tag: Cryptograpghy
