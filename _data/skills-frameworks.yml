@@ -8,6 +8,12 @@
 - name: Android
   weight: 5
 
+- name: MVVM
+  weight: 5
+
+- name: Clean Architecture
+  weight: 5
+
 - name: Jetpack
   weight: 3
 
