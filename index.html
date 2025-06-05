@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohail Ahmad - Senior Android Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+            color: #1f2937; /* Tailwind gray-800 */
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors;
+        }
+        .section-heading-container {
+            @apply text-center mb-16;
+        }
+        h2.section-title {
+            @apply text-4xl font-extrabold text-gray-800 inline-flex items-center relative pb-4;
+        }
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #38bdf8;
+            border-radius: 2px;
+        }
+        .section-title-icon {
+            @apply text-3xl text-sky-500 mr-3;
+        }
+        .section-subtitle {
+            @apply text-center text-lg text-gray-600 mb-12 -mt-8;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col;
+        }
+        .card-content {
+            @apply flex-grow;
+        }
+        .tag {
+            @apply bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-medium mr-2 mb-2 inline-block;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        /* --- Standard Button (can be used elsewhere if needed) --- */
+        .btn {
+            @apply inline-flex items-center justify-center px-8 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2;
+        }
+        /* --- Enhanced Hero Button Styles --- */
+        .btn-hero-primary {
+            @apply bg-white text-purple-600 shadow-lg hover:bg-gray-100 hover:shadow-xl transform hover:scale-105 focus:ring-purple-500;
+            /* Text color changed to a color from the hero gradient for better harmony */
+        }
+        .btn-hero-secondary {
+            @apply bg-transparent text-white border-2 border-white shadow-lg hover:bg-white hover:bg-opacity-20 hover:shadow-xl transform hover:scale-105 focus:ring-white;
+        }
+        /* Fallback for general .btn-primary and .btn-secondary if used elsewhere */
+        .btn-primary {
+            @apply bg-sky-600 text-white hover:bg-sky-700 shadow-md hover:shadow-lg focus:ring-sky-500;
+        }
+        .btn-secondary {
+            @apply bg-gray-200 text-gray-800 hover:bg-gray-300 shadow-md hover:shadow-lg focus:ring-gray-400;
+        }
+        /* --- End of Enhanced Hero Button Styles --- */
+
+        .icon-link {
+            @apply text-gray-500 hover:text-sky-600 transition-colors text-2xl;
+        }
+        .profile-img-hero {
+            @apply w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover;
+        }
+        .profile-img-about {
+            @apply w-40 h-40 rounded-full mx-auto shadow-xl object-cover;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-sky-600">Rohail Ahmad</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block nav-link text-base">Home</a>
+                <a href="#about" class="block nav-link text-base">About</a>
+                <a href="#skills" class="block nav-link text-base">Skills</a>
+                <a href="#experience" class="block nav-link text-base">Experience</a>
+                <a href="#projects" class="block nav-link text-base">Projects</a>
+                <a href="#contact" class="block nav-link text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg text-white py-20 md:py-32">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="IMG-20240504-WA0095.jpg" alt="Rohail Ahmad"
+                 class="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover"
+                 onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFFFFF/667EEA?text=RA';">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm Rohail Ahmad</h1>
+            <p class="text-xl md:text-2xl mb-4">Senior Android Engineer passionate about building intuitive, high-value products.</p>
+            <p class="text-lg md:text-xl mb-8">Kotlin | Jetpack Compose | Scalable Solutions | 7+ Years Experience</p>
+            <!-- Updated Hero Buttons -->
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#projects" class="btn btn-hero-primary">
+                    <i class="fas fa-briefcase mr-2"></i>View My Work
+                </a>
+                <a href="https://www.rrohaill.dev/Rohail_CV_Latex.pdf" target="_blank" class="btn btn-hero-secondary">
+                    <i class="fas fa-download mr-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-heading-container">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie section-title-icon"></i> About Me
+                </h2>
+                <br>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-1 text-center">
+                     <img src="IMG-20240504-WA0095.jpg" alt="Rohail Ahmad - Professional" class="profile-img-about" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0E7FF/4F46E5?text=Profile';">
+                     <div class="mt-6 text-left">
+                        <h4 class="font-semibold text-gray-700 text-lg mb-2">Hobbies:</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Helping businesses kickstart ideas</li>
+                            <li>Golf, Badminton, Gym</li>
+                            <li>Home fixes</li>
+                            <li>Brainstorming innovative solutions</li>
+                        </ul>
+                     </div>
+                </div>
+                <div class="md:col-span-2 text-lg text-gray-700 space-y-6">
+                    <p>
+                        With over 7 years of experience in Android engineering, I specialize in Kotlin, Jetpack Compose, and developing scalable solutions. Driven by curiosity and a growth mindset, I am passionate about building intuitive, high-value products.
+                    </p>
+                    <p>
+                        My approach to software development is deeply rooted in strong communication, collaboration, and a sense of personal responsibility, values appreciated by teammates, management, and stakeholders alike.
+                    </p>
+                     <div class="p-6 bg-sky-50 rounded-lg border border-sky-200">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-2"><i class="fas fa-lightbulb mr-2"></i>My Philosophy & Vision</h3>
+                        <p class="text-gray-600">
+                           "In the world of computers and programs, a software engineer's philosophy goes beyond just technical stuff... It's about using creativity to turn challenges into cool solutions and ideas into real things."
+                        </p>
+                    </div>
+                    <p>
+                        Beyond my professional work, I'm committed to giving back by volunteering to help small businesses understand and build their digital systems. I believe in fostering positivity and bringing good vibes to every project and interaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-heading-container">
+                <h2 class="section-title">
+                     <i class="fas fa-cogs section-title-icon"></i> My Expertise
+                </h2>
+                <br>
+            </div>
+            <p class="section-subtitle">Successfully delivered over 20 applications, leveraging a comprehensive skill set.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-code text-3xl text-sky-600 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">Languages</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fab fa-kotlin mr-2 text-sky-500"></i>Kotlin (Expert)</li>
+                            <li><i class="fab fa-java mr-2 text-orange-500"></i>Java (Advanced)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-sitemap text-3xl text-sky-600 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">Architecture & Frameworks</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fas fa-mobile-alt mr-2 text-green-500"></i>Jetpack Compose</li>
+                            <li><i class="fas fa-project-diagram mr-2 text-purple-500"></i>Android SDK</li>
+                            <li><i class="fas fa-layer-group mr-2 text-indigo-500"></i>MVVM, MVP, Clean Architecture</li>
+                            <li><i class="fas fa-network-wired mr-2 text-blue-500"></i>Retrofit, OkHttp</li>
+                            <li><i class="fas fa-database mr-2 text-teal-500"></i>Room, SQLite</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                     <div class="card-content">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-tools text-3xl text-sky-600 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">Tools</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fas fa-fire mr-2 text-yellow-500"></i>Firebase</li>
+                            <li><i class="fab fa-git-alt mr-2 text-red-600"></i>Git, GitHub, GitLab</li>
+                            <li><i class="fas fa-terminal mr-2 text-gray-500"></i>Android Studio</li>
+                            <li><i class="fas fa-tasks mr-2 text-blue-400"></i>Jira, Confluence</li>
+                            <li><i class="fas fa-chart-line mr-2 text-green-400"></i>Amplitude, Braze</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="card-content">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-check-circle text-3xl text-sky-600 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">Testing & Familiar</h3>
+                        </div>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><i class="fas fa-vial mr-2 text-purple-400"></i>Unit (JUnit, Mockito)</li>
+                            <li><i class="fas fa-flask mr-2 text-indigo-400"></i>Integration, Functional</li>
+                            <li><i class="fas fa-desktop mr-2 text-pink-400"></i>UI (Espresso)</li>
+                            <li class="pt-2 font-semibold">Familiar with:</li>
+                            <li><i class="fab fa-apple mr-2 text-gray-500"></i>KMP, iOS</li>
+                            <li><i class="fab fa-flutter mr-2 text-blue-300"></i>Flutter, AS3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-heading-container">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase section-title-icon"></i> Career Journey
+                </h2>
+                <br>
+            </div>
+            <div class="space-y-12">
+                <div class="card flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
+                        <p class="text-gray-600 font-medium">Kivra</p>
+                        <p class="text-sm text-gray-500">June 2023 - Present | Stockholm, Sweden</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-700 mb-3">
+                            Playing a key role in enhancing Sweden's leading digital mailbox service.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Spearheaded the development of invoice payments using Kotlin and Jetpack Compose, resulting in a <strong>25% increase in successful payment completions</strong> within the first quarter.</li>
+                            <li>Collaborated effectively with cross-functional teams (product, backend, design) to integrate <strong>2 new payment gateways</strong>, enhancing user options and platform capabilities.</li>
+                            <li>Contributed to key architectural decisions, focusing on robust performance, enhanced security protocols, and maintainability.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-6">
+                     <div class="md:w-1/3">
+                        <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
+                        <p class="text-gray-600 font-medium">Eliq</p>
+                        <p class="text-sm text-gray-500">Sep 2018 - May 2023 | Gothenburg, Sweden</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-700 mb-3">
+                            Led the development of tailored energy management solutions for diverse international clients.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Led the development of <strong>20+ white-label Android applications</strong> using Kotlin.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-6">
+                     <div class="md:w-1/3">
+                        <h3 class="text-xl font-semibold text-sky-700">Android Engineer (Erasmus+ Trainee)</h3>
+                        <p class="text-gray-600 font-medium">UIZ GmbH</p>
+                        <p class="text-sm text-gray-500">Jul 2017 - Aug 2018 | Berlin, Germany</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-700 mb-3">
+                           Gained valuable international experience and contributed to mobile application development.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Successfully re-architected and implemented robust <strong>offline capabilities</strong> for a white-label restaurant app, significantly increasing app utility in low-connectivity environments.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-6">
+                     <div class="md:w-1/3">
+                        <h3 class="text-xl font-semibold text-sky-700">Android Engineer</h3>
+                        <p class="text-gray-600 font-medium">Inov8 Limited</p>
+                        <p class="text-sm text-gray-500">May 2015 - April 2017 | Lahore, Pakistan</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-700 mb-3">
+                            Developed and maintained applications for mobile and branchless banking.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Developed and maintained <strong>6+ Android applications</strong> for mobile and branchless banking, serving over <strong>5 million users</strong> and processing significant transaction volumes.</li>
+                            <li>Collaborated directly with the MasterCard team to successfully integrate <strong>MasterPass QR payment</strong> functionality.</li>
+                            <li>Ensured application security and compliance with <strong>PCI DSS standards</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="section-heading-container">
+                <h2 class="section-title">
+                    <i class="fas fa-project-diagram section-title-icon"></i> Featured Projects
+                </h2>
+                <br>
+            </div>
+            <p class="section-subtitle">Showcasing a few highlights from my work and personal explorations.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <img src="https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra+App" alt="Kivra App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra';">
+                    <div class="card-content">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Kivra - Digital Mail & Payments</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Contributed significantly to Sweden's leading digital mail service. Spearheaded invoice payment features using Kotlin & Jetpack Compose, boosting successful payments by 25%, and integrated new payment gateways.
+                        </p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="mb-4">
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Jetpack Compose</span>
+                            <span class="tag">Fintech</span>
+                            <span class="tag">Android SDK</span>
+                        </div>
+                        <div>
+                            <a href="https://play.google.com/store/apps/details?id=com.kivra.Kivra" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium mr-4" title="View on Google Play">
+                                <i class="fab fa-google-play mr-1"></i> View on Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/C4B5FD/4C1D95?text=Design+System" alt="Android Design System" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/C4B5FD/4C1D95?text=DesignSys';">
+                    <div class="card-content">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Android Design System</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A modern and flexible design system library example built with Jetpack Compose. It provides reusable UI components, consistent theming, design tokens, and accessibility support for Android applications.
+                        </p>
+                    </div>
+                     <div class="mt-auto">
+                        <div class="mb-4">
+                            <span class="tag">Jetpack Compose</span>
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Design System</span>
+                            <span class="tag">Android</span>
+                        </div>
+                        <div>
+                            <a href="https://github.com/rrohaill/Design-System" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium">
+                                <i class="fab fa-github mr-1"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/600x400/DDD6FE/5B21B6?text=Meezan+Bank" alt="Meezan Bank App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDD6FE/5B21B6?text=Banking';">
+                    <div class="card-content">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Meezan Bank - Mobile Banking (via Inov8)</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Contributed to the development and maintenance of mobile banking applications at Inov8 Ltd., serving over 5 million users. Key work included MasterPass QR payment integration and ensuring PCI DSS compliance.
+                        </p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="mb-4">
+                            <span class="tag">Java</span>
+                            <span class="tag">Android SDK</span>
+                            <span class="tag">Fintech</span>
+                            <span class="tag">Security</span>
+                            <span class="tag">PCI DSS</span>
+                        </div>
+                        <div>
+                            <a href="https://play.google.com/store/apps/details?id=invo8.meezan.mb" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium" title="View on Google Play">
+                                <i class="fab fa-google-play mr-1"></i> View on Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+             <div class="section-heading-container">
+                <h2 class="section-title">
+                    <i class="fas fa-envelope-open-text section-title-icon"></i> Get In Touch
+                </h2>
+            </div>
+            <p class="section-subtitle">
+                I'm always open to discussing new projects, collaborations, or opportunities to build something impactful. Located in Gothenburg, Sweden.
+            </p>
+            <a href="mailto:rohailonline1@gmail.com" class="btn btn-primary text-lg mb-8 inline-block"> <!-- Uses general .btn-primary -->
+                <i class="fas fa-envelope mr-2"></i> Send Me An Email
+            </a>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="https://www.linkedin.com/in/rrohaill/" target="_blank" class="icon-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/rrohaill" target="_blank" class="icon-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                 <a href="https://medium.com/@rrohaill" target="_blank" class="icon-link" aria-label="Medium">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/10998096/rrohaill" target="_blank" class="icon-link" aria-label="Stack Overflow">
+                    <i class="fab fa-stack-overflow"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. All rights reserved.</p>
+            <p class="text-sm mt-2">Based in Gothenburg, Sweden.</p>
+            <p class="text-sm mt-1">Crafted with <i class="fas fa-heart text-red-500"></i> and Tailwind CSS.</p>
+            <p class="text-xs mt-4">
+                "Sometimes it is the people no one can imagine anything of who do the things no one can imagine."
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                if (targetElement && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.hasAttribute('onerror')) {
+                const placeholderType = img.alt.toLowerCase().includes('project') || img.alt.toLowerCase().includes('app') || img.alt.toLowerCase().includes('icon') || img.alt.toLowerCase().includes('system') ? 'App/Project' : 'Image';
+                img.onerror = function() {
+                    this.onerror=null;
+                    this.src=`https://placehold.co/${this.naturalWidth || 200}x${this.naturalHeight || 200}/CCCCCC/757575?text=${placeholderType}`;
+                };
+            }
+        });
+    </script>
+
+</body>
+</html>
