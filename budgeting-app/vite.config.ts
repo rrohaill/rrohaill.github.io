@@ -13,11 +13,18 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: 'dist',
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true,
+    },
     rollupOptions: {
       output: {
         manualChunks: undefined,
       },
     },
+  },
+  optimizeDeps: {
+    include: ['@radix-ui/react-slot'],
   },
   server: {
     port: 3000,
