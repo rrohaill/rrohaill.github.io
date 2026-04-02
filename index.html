@@ -17,36 +17,35 @@
             @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors;
         }
         .section-heading-container {
-            @apply text-center mb-16;
+            @apply text-center mb-10;
+            padding-bottom: 1rem;
         }
-        h2.section-title {
-            @apply text-4xl font-extrabold text-gray-800 inline-flex items-center relative pb-4;
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #4f46e5;
+            background: white;
+            border: 1.5px solid rgba(79,70,229,0.15);
+            box-shadow: 0 2px 12px rgba(79,70,229,0.08);
         }
-        h2.section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 0;
-            width: 80px;
-            height: 4px;
-            background-color: #38bdf8;
-            border-radius: 2px;
-        }
-        .section-title-icon {
-            @apply text-3xl text-sky-500 mr-3;
+        .section-tag i {
+            font-size: 1.1rem;
+            opacity: 0.7;
         }
         .section-subtitle {
-            @apply text-center text-lg text-gray-600 mb-12 -mt-8;
-        }
-        .card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col;
+            @apply text-center text-lg text-gray-500 mb-12 mt-5;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .card-content {
             @apply flex-grow;
-        }
-        .tag {
-            @apply bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-medium mr-2 mb-2 inline-block;
         }
         ::-webkit-scrollbar {
             width: 8px;
@@ -61,9 +60,6 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
-        }
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         /* --- Standard Button (can be used elsewhere if needed) --- */
         .btn {
@@ -86,20 +82,235 @@
         }
         /* --- End of Enhanced Hero Button Styles --- */
 
-        .icon-link {
-            @apply text-gray-500 hover:text-sky-600 transition-colors text-2xl;
-        }
+        /* icon-link moved to micro-interactions section */
         .profile-img-hero {
             @apply w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover;
         }
         .profile-img-about {
             @apply w-40 h-40 rounded-full mx-auto shadow-xl object-cover;
         }
+
+        /* ===== ANIMATION FOUNDATION ===== */
+
+        /* Keyframes */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4), 0 20px 25px -5px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 0 0 12px rgba(255,255,255,0), 0 20px 25px -5px rgba(0,0,0,0.1); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes growWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        /* Scroll animation base classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-slide-left.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-slide-right.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .animate-scale.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger delay classes */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        /* ===== HERO ENHANCEMENTS ===== */
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        .hero-profile-img {
+            animation: float 4s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
+        }
+        .hero-enter {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.7s ease-out forwards;
+        }
+        .hero-enter-1 { animation-delay: 0.1s; }
+        .hero-enter-2 { animation-delay: 0.3s; }
+        .hero-enter-3 { animation-delay: 0.5s; }
+        .hero-enter-4 { animation-delay: 0.7s; }
+        .hero-enter-5 { animation-delay: 0.9s; }
+
+        /* ===== NAVIGATION ENHANCEMENTS ===== */
+        nav {
+            animation: slideDown 0.5s ease-out;
+        }
+        .nav-link.active {
+            @apply bg-sky-100 text-sky-700;
+        }
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        #mobile-menu.menu-open {
+            max-height: 400px;
+        }
+
+        /* ===== MICRO-INTERACTIONS ===== */
+        .tag {
+            @apply bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-medium mr-2 mb-2 inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+        }
+        .icon-link {
+            @apply text-gray-500 hover:text-sky-600 transition-all text-2xl;
+            display: inline-block;
+        }
+        .icon-link:hover {
+            transform: translateY(-3px) scale(1.15);
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg h-full flex flex-col;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(56, 189, 248, 0.1);
+        }
+
+        /* ===== EXPERIENCE TIMELINE ===== */
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, #38bdf8, #667eea);
+            border-radius: 1px;
+        }
+        .timeline-container > .card {
+            position: relative;
+        }
+        .timeline-container > .card::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #38bdf8;
+            z-index: 1;
+        }
+
+        /* Section tag entrance animation */
+        .section-heading-container .section-tag {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease-out 0.1s, transform 0.5s ease-out 0.1s;
+        }
+        .section-heading-container.is-visible .section-tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale, .hero-enter {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -124,7 +335,7 @@
                 </div>
             </div>
         </div>
-        <div class="md:hidden hidden" id="mobile-menu">
+        <div class="md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block nav-link text-base">Home</a>
                 <a href="#about" class="block nav-link text-base">About</a>
@@ -139,14 +350,14 @@
 
     <section id="home" class="hero-bg text-white py-20 md:py-32">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="IMG-20240504-WA0095.jpg" alt="Rohail Ahmad"
-                 class="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover"
+            <img src="profile.jpg" alt="Rohail Ahmad"
+                 class="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover hero-profile-img hero-enter hero-enter-1"
                  onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFFFFF/667EEA?text=RA';">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm Rohail Ahmad</h1>
-            <p class="text-xl md:text-2xl mb-4">Senior Android Engineer passionate about building intuitive, high-value products.</p>
-            <p class="text-lg md:text-xl mb-8">Kotlin | Jetpack Compose | Scalable Solutions | 7+ Years Experience</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 hero-enter hero-enter-2">Hi, I'm Rohail Ahmad</h1>
+            <p class="text-xl md:text-2xl mb-4 hero-enter hero-enter-3">Senior Android Engineer passionate about building intuitive, high-value products.</p>
+            <p class="text-lg md:text-xl mb-8 hero-enter hero-enter-4">Kotlin | Jetpack Compose | Scalable Solutions | 7+ Years Experience</p>
             <!-- Updated Hero Buttons -->
-            <div class="space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4 hero-enter hero-enter-5">
                 <a href="#projects" class="btn btn-hero-primary">
                     <i class="fas fa-briefcase mr-2"></i>View My Work
                 </a>
@@ -159,15 +370,13 @@
 
     <section id="about" class="py-16 md:py-24 bg-gray-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container">
-                <h2 class="section-title">
-                    <i class="fas fa-user-tie section-title-icon"></i> About Me
-                </h2>
-                <br>
+            <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-user-tie"></i> About Me</span>
+
             </div>
             <div class="grid md:grid-cols-3 gap-8 items-start">
-                <div class="md:col-span-1 text-center">
-                     <img src="IMG-20240504-WA0095.jpg" alt="Rohail Ahmad - Professional" class="profile-img-about" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0E7FF/4F46E5?text=Profile';">
+                <div class="md:col-span-1 text-center animate-slide-left">
+                     <img src="profile.jpg" alt="Rohail Ahmad - Professional" class="profile-img-about" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0E7FF/4F46E5?text=Profile';">
                      <div class="mt-6 text-left">
                         <h4 class="font-semibold text-gray-700 text-lg mb-2">Hobbies:</h4>
                         <ul class="list-disc list-inside text-gray-600 space-y-1">
@@ -178,7 +387,7 @@
                         </ul>
                      </div>
                 </div>
-                <div class="md:col-span-2 text-lg text-gray-700 space-y-6">
+                <div class="md:col-span-2 text-lg text-gray-700 space-y-6 animate-slide-right">
                     <p>
                         With over 7 years of experience in Android engineering, I specialize in Kotlin, Jetpack Compose, and developing scalable solutions. Driven by curiosity and a growth mindset, I am passionate about building intuitive, high-value products.
                     </p>
@@ -201,16 +410,14 @@
 
     <section id="skills" class="py-16 md:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container">
-                <h2 class="section-title">
-                     <i class="fas fa-cogs section-title-icon"></i> My Expertise
-                </h2>
-                <br>
+            <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-cogs"></i> My Expertise</span>
+
             </div>
-            <p class="section-subtitle">Successfully delivered over 20 applications, leveraging a comprehensive skill set.</p>
+            <p class="section-subtitle animate-on-scroll">Successfully delivered over 20 applications, leveraging a comprehensive skill set.</p>
             <br>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card">
+                <div class="card animate-on-scroll delay-1">
                     <div class="card-content">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-code text-3xl text-sky-600 mr-4"></i>
@@ -222,7 +429,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card animate-on-scroll delay-2">
                     <div class="card-content">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-sitemap text-3xl text-sky-600 mr-4"></i>
@@ -237,7 +444,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card animate-on-scroll delay-3">
                      <div class="card-content">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-tools text-3xl text-sky-600 mr-4"></i>
@@ -252,7 +459,7 @@
                         </ul>
                     </div>
                 </div>
-                 <div class="card">
+                 <div class="card animate-on-scroll delay-4">
                     <div class="card-content">
                         <div class="flex items-center mb-4">
                             <i class="fas fa-check-circle text-3xl text-sky-600 mr-4"></i>
@@ -274,14 +481,12 @@
 
     <section id="experience" class="py-16 md:py-24 bg-gray-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container">
-                <h2 class="section-title">
-                    <i class="fas fa-briefcase section-title-icon"></i> Career Journey
-                </h2>
-                <br>
+            <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-briefcase"></i> Career Journey</span>
+
             </div>
-            <div class="space-y-12">
-                <div class="card flex flex-col md:flex-row gap-6">
+            <div class="space-y-12 timeline-container">
+                <div class="card animate-on-scroll delay-1 flex flex-col md:flex-row gap-6">
                     <div class="md:w-1/3">
                         <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
                         <p class="text-gray-600 font-medium">Kivra</p>
@@ -298,7 +503,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card flex flex-col md:flex-row gap-6">
+                <div class="card animate-on-scroll delay-2 flex flex-col md:flex-row gap-6">
                      <div class="md:w-1/3">
                         <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
                         <p class="text-gray-600 font-medium">Eliq</p>
@@ -313,7 +518,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card flex flex-col md:flex-row gap-6">
+                <div class="card animate-on-scroll delay-3 flex flex-col md:flex-row gap-6">
                      <div class="md:w-1/3">
                         <h3 class="text-xl font-semibold text-sky-700">Android Engineer (Erasmus+ Trainee)</h3>
                         <p class="text-gray-600 font-medium">UIZ GmbH</p>
@@ -328,7 +533,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card flex flex-col md:flex-row gap-6">
+                <div class="card animate-on-scroll delay-4 flex flex-col md:flex-row gap-6">
                      <div class="md:w-1/3">
                         <h3 class="text-xl font-semibold text-sky-700">Android Engineer</h3>
                         <p class="text-gray-600 font-medium">Inov8 Limited</p>
@@ -351,15 +556,13 @@
 
     <section id="projects" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="section-heading-container">
-                <h2 class="section-title">
-                    <i class="fas fa-project-diagram section-title-icon"></i> Featured Projects
-                </h2>
-                <br>
+             <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-project-diagram"></i> Featured Projects</span>
+
             </div>
-            <p class="section-subtitle">Showcasing a few highlights from my work and personal explorations.</p>
+            <p class="section-subtitle animate-on-scroll">Showcasing a few highlights from my work and personal explorations.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
+                <div class="card animate-on-scroll delay-1">
                     <img src="https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra+App" alt="Kivra App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra';">
                     <div class="card-content">
                         <h3 class="text-xl font-semibold text-sky-700 mb-2">Kivra - Digital Mail & Payments</h3>
@@ -381,7 +584,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card animate-on-scroll delay-2">
                     <img src="https://placehold.co/600x400/C4B5FD/4C1D95?text=Design+System" alt="Android Design System" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/C4B5FD/4C1D95?text=DesignSys';">
                     <div class="card-content">
                         <h3 class="text-xl font-semibold text-sky-700 mb-2">Android Design System</h3>
@@ -404,7 +607,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card animate-on-scroll delay-3">
                     <img src="https://placehold.co/600x400/DDD6FE/5B21B6?text=Meezan+Bank" alt="Meezan Bank App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDD6FE/5B21B6?text=Banking';">
                     <div class="card-content">
                         <h3 class="text-xl font-semibold text-sky-700 mb-2">Meezan Bank - Mobile Banking (via Inov8)</h3>
@@ -433,15 +636,13 @@
 
     <section id="hobby-projects" class="py-16 md:py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container">
-                <h2 class="section-title">
-                    <i class="fas fa-lightbulb section-title-icon"></i> Hobby Projects
-                </h2>
-                <br>
+            <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-lightbulb"></i> Hobby Projects</span>
+
             </div>
-            <p class="section-subtitle">Personal projects and experiments built for fun and learning.</p>
+            <p class="section-subtitle animate-on-scroll">Personal projects and experiments built for fun and learning.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
+                <div class="card animate-on-scroll delay-1">
                     <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Budgeting+App" alt="Budgeting App" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/10B981/FFFFFF?text=Budget';">
                     <div class="card-content">
                         <h3 class="text-xl font-semibold text-sky-700 mb-2">Budgeting App</h3>
@@ -470,15 +671,14 @@
 
     <section id="contact" class="py-16 md:py-24 bg-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-             <div class="section-heading-container">
-                <h2 class="section-title">
-                    <i class="fas fa-envelope-open-text section-title-icon"></i> Get In Touch
-                </h2>
+             <div class="section-heading-container animate-scale">
+                <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Get In Touch</span>
+
             </div>
-            <p class="section-subtitle">
+            <p class="section-subtitle animate-on-scroll">
                 I'm always open to discussing new projects, collaborations, or opportunities to build something impactful. Located in Gothenburg, Sweden.
             </p>
-            <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" class="btn btn-primary text-lg mb-8 inline-block"> <!-- Uses general .btn-primary -->
+            <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" class="btn btn-primary text-lg mb-8 inline-block animate-on-scroll delay-1"> <!-- Uses general .btn-primary -->
                 <i class="fas fa-envelope mr-2"></i> Send Me An Email
             </a>
             <div class="flex justify-center space-x-6 mt-8">
@@ -510,18 +710,18 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle (smooth transition)
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('menu-open');
             const icon = mobileMenuButton.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
+            if (mobileMenu.classList.contains('menu-open')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
 
@@ -532,12 +732,10 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
-                if (targetElement && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+                if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
+                    mobileMenu.classList.remove('menu-open');
                     const icon = mobileMenuButton.querySelector('i');
                     if (icon) {
                         icon.classList.remove('fa-times');
@@ -546,6 +744,47 @@
                 }
             });
         });
+
+        // Scroll-triggered entrance animations (Intersection Observer)
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '-80px 0px', threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale, .section-heading-container').forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // Active section highlighting in nav
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }, { passive: true });
+
+        // Hero parallax effect
+        const heroBg = document.querySelector('.hero-bg');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < heroBg.offsetHeight) {
+                heroBg.style.backgroundPositionY = (window.scrollY * 0.4) + 'px';
+            }
+        }, { passive: true });
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
