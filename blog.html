@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Rohail Ahmad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors;
+        }
+        .nav-link.active {
+            @apply bg-sky-100 text-sky-700;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        nav {
+            animation: slideDown 0.5s ease-out;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* Hero */
+        .blog-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        .hero-enter {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.7s ease-out forwards;
+        }
+        .hero-enter-1 { animation-delay: 0.1s; }
+        .hero-enter-2 { animation-delay: 0.3s; }
+
+        /* Blog cards */
+        .blog-card {
+            @apply bg-white rounded-xl overflow-hidden h-full flex flex-col;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(56, 189, 248, 0.1);
+        }
+        .blog-tag {
+            @apply px-3 py-1 rounded-full text-xs font-medium;
+            color: #667eea;
+            background: rgba(102,126,234,0.08);
+            border: 1px solid rgba(102,126,234,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .blog-tag:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(102,126,234,0.2);
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        #mobile-menu.menu-open {
+            max-height: 400px;
+        }
+
+        /* Article prose styles */
+        .prose h1 { @apply text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight; }
+        .prose h2 { @apply text-2xl font-bold text-gray-800 mt-10 mb-4 pb-2 border-b border-gray-200; }
+        .prose h3 { @apply text-xl font-semibold text-gray-800 mt-8 mb-3; }
+        .prose p { @apply text-gray-600 leading-relaxed mb-5; }
+        .prose ul, .prose ol { @apply text-gray-600 mb-5 pl-6 space-y-2; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { @apply leading-relaxed; }
+        .prose a { @apply text-sky-600 hover:text-sky-800 underline; }
+        .prose blockquote {
+            @apply border-l-4 border-sky-400 pl-5 py-3 my-6 bg-sky-50 rounded-r-lg italic text-gray-600;
+        }
+        .prose code {
+            @apply bg-gray-100 text-pink-600 px-1.5 py-0.5 rounded text-sm font-mono;
+        }
+        .prose pre {
+            @apply bg-gray-900 text-gray-100 p-5 rounded-xl my-6 overflow-x-auto text-sm leading-relaxed;
+        }
+        .prose pre code {
+            @apply bg-transparent text-gray-100 p-0;
+        }
+        .prose strong { @apply text-gray-800 font-semibold; }
+        .prose img { @apply rounded-xl my-6 shadow-md; }
+        .prose hr { @apply my-8 border-gray-200; }
+
+        /* Back button */
+        .back-link {
+            @apply inline-flex items-center gap-2 text-gray-500 hover:text-sky-600 font-medium transition-all;
+        }
+        .back-link:hover {
+            transform: translateX(-3px);
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .animate-on-scroll, .hero-enter {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-sky-600">Rohail Ahmad</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#about" class="nav-link">About</a>
+                        <a href="index.html#skills" class="nav-link">Skills</a>
+                        <a href="index.html#experience" class="nav-link">Experience</a>
+                        <a href="index.html#projects" class="nav-link">Projects</a>
+                        <a href="blog.html" class="nav-link active">Blog</a>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block nav-link text-base">Home</a>
+                <a href="index.html#about" class="block nav-link text-base">About</a>
+                <a href="index.html#skills" class="block nav-link text-base">Skills</a>
+                <a href="index.html#experience" class="block nav-link text-base">Experience</a>
+                <a href="index.html#projects" class="block nav-link text-base">Projects</a>
+                <a href="blog.html" class="block nav-link text-base active">Blog</a>
+                <a href="index.html#contact" class="block nav-link text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero text-white py-14 md:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-3 hero-enter hero-enter-1">Blog</h1>
+            <p class="text-lg md:text-xl text-white/80 hero-enter hero-enter-2">Thoughts on Android development, architecture, and building great products.</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <main class="py-12 md:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Post List View -->
+            <div id="post-list">
+                <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Posts rendered by JS -->
+                </div>
+                <div id="empty-state" class="hidden text-center py-20">
+                    <i class="fas fa-pen-nib text-5xl text-gray-300 mb-4"></i>
+                    <p class="text-xl text-gray-400 font-medium">No posts yet. Stay tuned!</p>
+                </div>
+            </div>
+
+            <!-- Single Post View -->
+            <div id="post-view" class="hidden">
+                <a href="blog.html" class="back-link mb-8 block">
+                    <i class="fas fa-arrow-left"></i> Back to all posts
+                </a>
+                <article class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <div id="post-meta" class="mb-8"></div>
+                    <div id="post-content" class="prose"></div>
+                    <div id="post-tags" class="mt-10 pt-6 border-t border-gray-100"></div>
+                </article>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. All rights reserved.</p>
+            <p class="text-sm mt-2">Based in Gothenburg, Sweden.</p>
+            <p class="text-sm mt-1">Crafted with <i class="fas fa-heart text-red-500"></i> and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('menu-open');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('menu-open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Scroll animations
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '-40px 0px', threshold: 0.1 });
+
+        // Lightweight Markdown parser
+        function parseMarkdown(md) {
+            let html = md;
+            // Code blocks (``` ... ```)
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+                return `<pre><code class="language-${lang}">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()}</code></pre>`;
+            });
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            // Headings
+            html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            // Blockquotes
+            html = html.replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>');
+            // Bold and italic
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // Images
+            html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+            // Links
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+            // Horizontal rules
+            html = html.replace(/^---$/gm, '<hr>');
+            // Unordered lists
+            html = html.replace(/^(\n?)(- .+(\n- .+)*)/gm, (match) => {
+                const items = match.trim().split('\n').map(item =>
+                    `<li>${item.replace(/^- /, '')}</li>`
+                ).join('');
+                return `<ul>${items}</ul>`;
+            });
+            // Ordered lists
+            html = html.replace(/^(\n?)(\d+\. .+(\n\d+\. .+)*)/gm, (match) => {
+                const items = match.trim().split('\n').map(item =>
+                    `<li>${item.replace(/^\d+\. /, '')}</li>`
+                ).join('');
+                return `<ol>${items}</ol>`;
+            });
+            // Paragraphs (lines not already wrapped)
+            html = html.split('\n\n').map(block => {
+                block = block.trim();
+                if (!block) return '';
+                if (block.startsWith('<')) return block;
+                return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+            }).join('\n');
+            return html;
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // Render post card
+        function renderPostCard(post, index) {
+            return `
+                <a href="blog.html#${post.slug}" class="blog-card animate-on-scroll delay-${index + 1}" onclick="loadPost('${post.slug}')">
+                    <div class="p-7 flex flex-col h-full">
+                        <div class="flex items-center gap-3 text-sm text-gray-400 mb-4">
+                            <span><i class="far fa-calendar-alt mr-1"></i> ${formatDate(post.date)}</span>
+                            <span><i class="far fa-clock mr-1"></i> ${post.readTime}</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-sky-600">${post.title}</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5 flex-grow">${post.excerpt}</p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Load and render all posts
+        let postsData = [];
+
+        async function loadPosts() {
+            try {
+                const res = await fetch('blog/posts.json');
+                postsData = await res.json();
+                const grid = document.getElementById('posts-grid');
+                const emptyState = document.getElementById('empty-state');
+
+                if (postsData.length === 0) {
+                    grid.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+
+                // Sort by date descending
+                postsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                grid.innerHTML = postsData.map((post, i) => renderPostCard(post, i)).join('');
+
+                // Observe new cards for scroll animation
+                grid.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+            } catch (e) {
+                console.error('Failed to load posts:', e);
+            }
+        }
+
+        // Load single post
+        async function loadPost(slug) {
+            try {
+                const res = await fetch(`blog/${slug}.md`);
+                if (!res.ok) throw new Error('Post not found');
+                const md = await res.text();
+                const post = postsData.find(p => p.slug === slug);
+
+                document.getElementById('post-list').classList.add('hidden');
+                document.getElementById('post-view').classList.remove('hidden');
+
+                document.getElementById('post-meta').innerHTML = `
+                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                        <span><i class="far fa-calendar-alt mr-1"></i> ${formatDate(post.date)}</span>
+                        <span><i class="far fa-clock mr-1"></i> ${post.readTime}</span>
+                    </div>
+                `;
+
+                // Skip the first H1 line from markdown (we show it in meta)
+                const contentMd = md.replace(/^# .+\n+/, '');
+                document.getElementById('post-content').innerHTML = parseMarkdown(contentMd);
+
+                document.getElementById('post-tags').innerHTML = `
+                    <div class="flex flex-wrap gap-2">
+                        ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+
+                document.title = `${post.title} - Rohail Ahmad`;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (e) {
+                console.error('Failed to load post:', e);
+                document.getElementById('post-content').innerHTML = '<p class="text-gray-500">Post not found.</p>';
+            }
+        }
+
+        // Route based on hash
+        async function route() {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                await loadPosts();
+                loadPost(hash);
+            } else {
+                document.getElementById('post-list').classList.remove('hidden');
+                document.getElementById('post-view').classList.add('hidden');
+                document.title = 'Blog - Rohail Ahmad';
+                loadPosts();
+            }
+        }
+
+        window.addEventListener('hashchange', route);
+        route();
+    </script>
+
+</body>
+</html>
