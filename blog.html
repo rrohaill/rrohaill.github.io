@@ -327,13 +327,13 @@
         // Render post card
         function renderPostCard(post, index) {
             return `
-                <a href="blog.html#${post.slug}" class="blog-card animate-on-scroll delay-${index + 1}" onclick="loadPost('${post.slug}')">
+                <a href="#${post.slug}" class="blog-card animate-on-scroll delay-${index + 1}" style="cursor:pointer; text-decoration:none; color:inherit;">
                     <div class="p-7 flex flex-col h-full">
                         <div class="flex items-center gap-3 text-sm text-gray-400 mb-4">
                             <span><i class="far fa-calendar-alt mr-1"></i> ${formatDate(post.date)}</span>
                             <span><i class="far fa-clock mr-1"></i> ${post.readTime}</span>
                         </div>
-                        <h2 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-sky-600">${post.title}</h2>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3">${post.title}</h2>
                         <p class="text-gray-500 text-sm leading-relaxed mb-5 flex-grow">${post.excerpt}</p>
                         <div class="flex flex-wrap gap-2 mt-auto">
                             ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
