@@ -5,7 +5,7 @@
     "date": "2026-04-02",
     "excerpt": "How I built Pulse AI — a macOS desktop app that aggregates news from RSS, Reddit, and Twitter, scores them with a local Llama 3.1 model, and surfaces only what matters. No API keys, no subscriptions.",
     "tags": ["AI", "Next.js", "Electron", "Ollama", "TypeScript"],
-    "readTime": "8 min"
+    "readTime": "10 min"
   },
   {
     "slug": "building-scalable-android-apps",
