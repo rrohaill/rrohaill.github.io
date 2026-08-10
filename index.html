@@ -3,296 +3,855 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohail Ahmad - Senior Android Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Rohail Ahmad — Senior Android Engineer</title>
+    <meta name="description" content="Senior Android engineer with 8+ years shipping Kotlin and Jetpack Compose products for millions of users across fintech, digital mail and energy.">
+    <meta name="author" content="Rohail Ahmad">
+    <meta property="og:title" content="Rohail Ahmad — Senior Android Engineer">
+    <meta property="og:description" content="Senior Android engineer with 8+ years shipping Kotlin and Jetpack Compose products for millions of users across fintech, digital mail and energy.">
+    <meta property="og:type" content="profile">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ===== DESIGN SYSTEM: Midnight Indigo ===== */
+        :root {
+            --radius: 1rem;
+            --radius-sm: calc(var(--radius) - 4px);
+            --radius-md: calc(var(--radius) - 2px);
+            --radius-lg: var(--radius);
+            --radius-xl: calc(var(--radius) + 6px);
+            --radius-2xl: calc(var(--radius) + 12px);
+            --radius-3xl: calc(var(--radius) + 20px);
+
+            --background: oklch(0.14 0.045 280);
+            --foreground: oklch(0.96 0.01 270);
+
+            --surface: oklch(0.19 0.055 279);
+            --surface-raised: oklch(0.24 0.065 278);
+
+            --card: oklch(0.19 0.055 279);
+            --card-foreground: oklch(0.96 0.01 270);
+
+            --primary: oklch(0.58 0.22 285);
+            --primary-foreground: oklch(0.99 0 0);
+            --primary-soft: oklch(0.72 0.15 285);
+
+            --secondary: oklch(0.28 0.07 278);
+            --secondary-foreground: oklch(0.96 0.01 270);
+
+            --muted: oklch(0.24 0.055 278);
+            --muted-foreground: oklch(0.72 0.03 275);
+
+            --accent: oklch(0.3 0.09 280);
+            --accent-foreground: oklch(0.97 0.01 270);
+
+            --destructive: oklch(0.6 0.22 20);
+            --border: oklch(0.98 0.01 280 / 10%);
+            --input: oklch(0.98 0.01 280 / 14%);
+            --ring: oklch(0.58 0.22 285);
+
+            --gradient-hero: radial-gradient(
+                120% 80% at 15% 0%,
+                color-mix(in oklab, var(--primary) 38%, transparent) 0%,
+                transparent 60%
+            ),
+            radial-gradient(90% 70% at 90% 10%, oklch(0.4 0.13 260 / 0.5) 0%, transparent 55%);
+
+            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
+
+            --gradient-surface: linear-gradient(
+                160deg,
+                color-mix(in oklab, var(--surface-raised) 90%, transparent),
+                color-mix(in oklab, var(--surface) 92%, transparent)
+            );
+
+            --shadow-elevated: 0 24px 60px -24px oklch(0.05 0.05 280 / 0.9);
+            --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+                0 18px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+            --transition-smooth: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ===== BASE RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: var(--border);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Tailwind gray-50 */
-            color: #1f2937; /* Tailwind gray-800 */
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
-        .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors;
+
+        h1, h2, h3, h4 {
+            font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
         }
-        .section-heading-container {
-            @apply text-center mb-10;
-            padding-bottom: 1rem;
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        .section-tag {
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ul, ol { list-style: none; }
+
+        ::selection {
+            background: color-mix(in oklab, var(--primary) 45%, transparent);
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .bento {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border);
+            background: var(--gradient-surface);
+            box-shadow: var(--shadow-elevated);
+            overflow: hidden;
+            transition: transform var(--transition-smooth),
+                        border-color var(--transition-smooth),
+                        box-shadow var(--transition-smooth);
+        }
+
+        .bento:hover {
+            transform: translateY(-4px);
+            border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .chip {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 32px;
+            gap: 0.4rem;
             border-radius: 9999px;
-            font-size: 1.25rem;
+            border: 1px solid var(--border);
+            background: color-mix(in oklab, var(--surface-raised) 70%, transparent);
+            padding: 0.3rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            letter-spacing: 0.01em;
+        }
+
+        .grid-lines {
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
+        }
+
+        /* Accent dot for list items */
+        .accent-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            flex-shrink: 0;
+            margin-top: 0.45rem;
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .section { padding: 6rem 0; }
+        }
+
+        /* ===== NAVIGATION ===== */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 300ms ease;
+        }
+
+        .site-nav.scrolled {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: color-mix(in oklab, var(--background) 80%, transparent);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+        }
+
+        .nav-brand {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.875rem;
             font-weight: 700;
-            letter-spacing: 0.02em;
-            color: #4f46e5;
-            background: white;
-            border: 1.5px solid rgba(79,70,229,0.15);
-            box-shadow: 0 2px 12px rgba(79,70,229,0.08);
+            letter-spacing: -0.02em;
         }
-        .section-tag i {
-            font-size: 1.1rem;
-            opacity: 0.7;
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
         }
-        .section-subtitle {
-            @apply text-center text-lg text-gray-500 mb-12 mt-5;
-            max-width: 560px;
+
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+        }
+
+        .nav-links a {
+            border-radius: 9999px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            transition: color var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            background: var(--secondary);
+            color: var(--foreground);
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            padding: 0.5rem;
+            color: var(--foreground);
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-toggle { display: none; }
+        }
+
+        .nav-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .mobile-menu {
+            display: none;
+            border-top: 1px solid var(--border);
+            background: color-mix(in oklab, var(--background) 95%, transparent);
+            backdrop-filter: blur(20px);
+            padding: 0 1.25rem 1.25rem;
+        }
+
+        .mobile-menu.open { display: block; }
+
+        @media (min-width: 768px) {
+            .mobile-menu { display: none !important; }
+        }
+
+        .mobile-menu a {
+            display: block;
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding-top: 7rem;
+            padding-bottom: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero { padding-top: 9rem; }
+        }
+
+        .hero-bg {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-hero);
+        }
+
+        .hero-grid-overlay {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .hero-bento-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, auto);
+            }
+        }
+
+        .hero-main-tile {
+            padding: 1.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-main-tile {
+                grid-column: span 2;
+                grid-row: span 2;
+                padding: 2.5rem;
+            }
+        }
+
+        .hero-main-tile h1 {
+            margin-top: 1.5rem;
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.05;
+        }
+
+        @media (min-width: 768px) {
+            .hero-main-tile h1 { font-size: 3.75rem; }
+        }
+
+        .hero-main-tile .hero-subtitle {
+            margin-top: 1.25rem;
+            max-width: 36rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--muted-foreground);
+        }
+
+        @media (min-width: 768px) {
+            .hero-main-tile .hero-subtitle { font-size: 1.125rem; }
+        }
+
+        .hero-actions {
+            margin-top: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--gradient-accent);
+            box-shadow: var(--shadow-glow);
+            transition: transform 300ms ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: color-mix(in oklab, var(--secondary) 40%, transparent);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+            transition: background var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover { background: var(--secondary); }
+
+        .hero-chips {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* Visual tile */
+        .hero-visual-tile {
+            position: relative;
+            min-height: 14rem;
+        }
+
+        .hero-visual-tile img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .hero-visual-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, var(--background), transparent);
+            padding: 1.25rem;
+        }
+
+        .hero-visual-overlay p:first-child {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .hero-visual-overlay p:last-child {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Stats tile */
+        .hero-stats-tile {
+            padding: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .stat-value {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-soft);
+        }
+
+        @media (min-width: 768px) {
+            .stat-value { font-size: 1.875rem; }
+        }
+
+        .stat-label {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            color: var(--muted-foreground);
+        }
+
+        .stats-location {
+            margin-top: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        .stats-location svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-head {
+            scroll-margin-top: 6rem;
+        }
+
+        .section-head h2 {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .section-head h2 { font-size: 2.25rem; }
+        }
+
+        .section-head .section-subtitle {
+            margin-top: 0.75rem;
+            max-width: 42rem;
+            color: var(--muted-foreground);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid { grid-template-columns: 2fr 1fr; }
+        }
+
+        .about-grid .bento { padding: 1.75rem; }
+
+        .about-grid h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .about-grid p {
+            margin-top: 0.75rem;
+            line-height: 1.7;
+            color: var(--muted-foreground);
+        }
+
+        .hobbies-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .hobbies-list li {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (min-width: 1024px) {
+            .skills-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .skills-grid .bento { padding: 1.5rem; }
+
+        .skills-grid h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-soft);
+        }
+
+        .skills-grid ul {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .experience-list {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .experience-card { padding: 1.5rem; }
+
+        @media (min-width: 768px) {
+            .experience-card { padding: 2rem; }
+        }
+
+        .experience-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .experience-header h3 { font-size: 1.25rem; }
+        }
+
+        .experience-header .company {
+            color: var(--primary-soft);
+        }
+
+        .experience-header .meta {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+        }
+
+        .experience-card .summary {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .experience-card .points {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--muted-foreground);
+        }
+
+        .experience-card .points li {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* ===== PROJECTS (Work + Labs) ===== */
+        .work-grid {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .work-grid { grid-template-columns: repeat(3, 1fr); }
+            .work-grid .span-2 { grid-column: span 2; }
+            .work-grid .span-3 { grid-column: span 3; }
+        }
+
+        .labs-grid {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .labs-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.75rem;
+        }
+
+        .project-card h3 {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .project-card h3.featured {
+            font-size: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .project-card h3.featured { font-size: 1.875rem; }
+        }
+
+        .project-card .blurb {
+            margin-top: 0.75rem;
+            flex-grow: 1;
+            line-height: 1.7;
+            color: var(--muted-foreground);
+        }
+
+        .project-tags {
+            margin-top: 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-card .cta-link {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-soft);
+            transition: color var(--transition-smooth);
+        }
+
+        .project-card .cta-link:hover { color: var(--foreground); }
+
+        .project-card .cta-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-card {
+            scroll-margin-top: 6rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .contact-card { padding: 3.5rem; }
+        }
+
+        .contact-card h2 {
+            margin-top: 1.25rem;
+            max-width: 42rem;
             margin-left: auto;
             margin-right: auto;
-        }
-        .card-content {
-            @apply flex-grow;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        /* --- Standard Button (can be used elsewhere if needed) --- */
-        .btn {
-            @apply inline-flex items-center justify-center px-8 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2;
-        }
-        /* --- Enhanced Hero Button Styles --- */
-        .btn-hero-primary {
-            @apply bg-white text-purple-600 shadow-lg hover:bg-gray-100 hover:shadow-xl transform hover:scale-105 focus:ring-purple-500;
-            /* Text color changed to a color from the hero gradient for better harmony */
-        }
-        .btn-hero-secondary {
-            @apply bg-transparent text-white border-2 border-white shadow-lg hover:bg-white hover:bg-opacity-20 hover:shadow-xl transform hover:scale-105 focus:ring-white;
-        }
-        /* Fallback for general .btn-primary and .btn-secondary if used elsewhere */
-        .btn-primary {
-            @apply bg-sky-600 text-white hover:bg-sky-700 shadow-md hover:shadow-lg focus:ring-sky-500;
-        }
-        .btn-secondary {
-            @apply bg-gray-200 text-gray-800 hover:bg-gray-300 shadow-md hover:shadow-lg focus:ring-gray-400;
-        }
-        /* --- End of Enhanced Hero Button Styles --- */
-
-        /* icon-link moved to micro-interactions section */
-        .profile-img-hero {
-            @apply w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover;
-        }
-        .profile-img-about {
-            @apply w-40 h-40 rounded-full mx-auto shadow-xl object-cover;
+            font-size: 1.875rem;
+            font-weight: 800;
         }
 
-        /* ===== ANIMATION FOUNDATION ===== */
+        @media (min-width: 768px) {
+            .contact-card h2 { font-size: 3rem; }
+        }
 
-        /* Keyframes */
+        .contact-card .contact-desc {
+            margin-top: 1rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--muted-foreground);
+        }
+
+        .contact-card .btn-primary {
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            transition: color var(--transition-smooth);
+        }
+
+        .social-links a:hover { color: var(--foreground); }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 2rem 1.25rem;
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        @media (min-width: 768px) {
+            .footer-inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-inner .quote { font-style: italic; }
+
+        /* ===== SCROLL ANIMATIONS ===== */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4), 0 20px 25px -5px rgba(0,0,0,0.1); }
-            50% { box-shadow: 0 0 0 12px rgba(255,255,255,0), 0 20px 25px -5px rgba(0,0,0,0.1); }
-        }
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes growWidth {
-            from { width: 0; }
-            to { width: 80px; }
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scroll animation base classes */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(24px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .animate-slide-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-slide-left.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .animate-slide-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-slide-right.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .animate-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-        .animate-scale.is-visible {
-            opacity: 1;
-            transform: scale(1);
-        }
 
-        /* Stagger delay classes */
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
         .delay-5 { transition-delay: 0.5s; }
-        .delay-6 { transition-delay: 0.6s; }
 
-        /* ===== HERO ENHANCEMENTS ===== */
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
-            background-size: 30px 30px;
-            pointer-events: none;
-        }
-        .hero-profile-img {
-            animation: float 4s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
-        }
+        /* Hero entrance (immediate, not scroll-dependent) */
         .hero-enter {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.7s ease-out forwards;
         }
-        .hero-enter-1 { animation-delay: 0.1s; }
-        .hero-enter-2 { animation-delay: 0.3s; }
-        .hero-enter-3 { animation-delay: 0.5s; }
-        .hero-enter-4 { animation-delay: 0.7s; }
-        .hero-enter-5 { animation-delay: 0.9s; }
+        .hero-d1 { animation-delay: 0.1s; }
+        .hero-d2 { animation-delay: 0.25s; }
+        .hero-d3 { animation-delay: 0.4s; }
+        .hero-d4 { animation-delay: 0.55s; }
+        .hero-d5 { animation-delay: 0.7s; }
 
-        /* ===== NAVIGATION ENHANCEMENTS ===== */
-        nav {
-            animation: slideDown 0.5s ease-out;
-        }
-        .nav-link.active {
-            @apply bg-sky-100 text-sky-700;
-        }
-        #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        #mobile-menu.menu-open {
-            max-height: 400px;
-        }
-
-        /* ===== MICRO-INTERACTIONS ===== */
-        .tag {
-            @apply bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-medium mr-2 mb-2 inline-block;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
-        }
-        .icon-link {
-            @apply text-gray-500 hover:text-sky-600 transition-all text-2xl;
+        /* ===== SVG ICON HELPER ===== */
+        .icon {
             display: inline-block;
-        }
-        .icon-link:hover {
-            transform: translateY(-3px) scale(1.15);
-        }
-        .card {
-            @apply bg-white p-6 rounded-xl shadow-lg h-full flex flex-col;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(56, 189, 248, 0.1);
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            flex-shrink: 0;
         }
 
-        /* ===== EXPERIENCE TIMELINE ===== */
-        .timeline-container {
-            position: relative;
-            padding-left: 30px;
-        }
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 20px;
-            bottom: 20px;
-            width: 2px;
-            background: linear-gradient(to bottom, #38bdf8, #667eea);
-            border-radius: 1px;
-        }
-        .timeline-container > .card {
-            position: relative;
-        }
-        .timeline-container > .card::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 28px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid #38bdf8;
-            z-index: 1;
-        }
-
-        /* Section tag entrance animation */
-        .section-heading-container .section-tag {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease-out 0.1s, transform 0.5s ease-out 0.1s;
-        }
-        .section-heading-container.is-visible .section-tag {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .icon-sm { width: 14px; height: 14px; }
 
         /* ===== ACCESSIBILITY ===== */
         @media (prefers-reduced-motion: reduce) {
@@ -301,494 +860,463 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-            .animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale, .hero-enter {
+            .animate-on-scroll, .hero-enter {
                 opacity: 1 !important;
                 transform: none !important;
             }
         }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--background); }
+        ::-webkit-scrollbar-thumb { background: var(--surface-raised); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#home" class="text-2xl font-bold text-sky-600">Rohail Ahmad</a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link">Home</a>
-                        <a href="#about" class="nav-link">About</a>
-                        <a href="#skills" class="nav-link">Skills</a>
-                        <a href="#experience" class="nav-link">Experience</a>
-                        <a href="#projects" class="nav-link">Projects</a>
-                        <a href="#hobby-projects" class="nav-link">Hobby Projects</a>
-                        <a href="blog.html" class="nav-link">Blog</a>
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="md:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block nav-link text-base">Home</a>
-                <a href="#about" class="block nav-link text-base">About</a>
-                <a href="#skills" class="block nav-link text-base">Skills</a>
-                <a href="#experience" class="block nav-link text-base">Experience</a>
-                <a href="#projects" class="block nav-link text-base">Projects</a>
-                <a href="#hobby-projects" class="block nav-link text-base">Hobby Projects</a>
-                <a href="blog.html" class="block nav-link text-base">Blog</a>
-                <a href="#contact" class="block nav-link text-base">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <section id="home" class="hero-bg text-white py-20 md:py-32">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="profile.jpg" alt="Rohail Ahmad"
-                 class="w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-8 shadow-xl border-4 border-white object-cover hero-profile-img hero-enter hero-enter-1"
-                 onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFFFFF/667EEA?text=RA';">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 hero-enter hero-enter-2">Hi, I'm Rohail Ahmad</h1>
-            <p class="text-xl md:text-2xl mb-4 hero-enter hero-enter-3">Senior Software Engineer building products that millions of people actually use.</p>
-            <p class="text-lg md:text-xl mb-8 hero-enter hero-enter-4">Android &middot; Kotlin &middot; Jetpack Compose &middot; AI &middot; Craft &amp; Ownership</p>
-            <!-- Updated Hero Buttons -->
-            <div class="space-y-4 sm:space-y-0 sm:space-x-4 hero-enter hero-enter-5">
-                <a href="#projects" class="btn btn-hero-primary">
-                    <i class="fas fa-briefcase mr-2"></i>View My Work
-                </a>
-                <a href="https://drive.google.com/file/d/1iiadAauX50YslK-ahlYKm_r3vJvHtXZ3/view?usp=sharing" target="_blank" class="btn btn-hero-secondary">
-                    <i class="fas fa-download mr-2"></i>Download CV
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-user-tie"></i> About Me</span>
-
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 items-start">
-                <div class="md:col-span-1 text-center animate-slide-left">
-                     <img src="profile.jpg" alt="Rohail Ahmad - Professional" class="profile-img-about" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0E7FF/4F46E5?text=Profile';">
-                     <div class="mt-6 text-left">
-                        <h4 class="font-semibold text-gray-700 text-lg mb-2">Hobbies:</h4>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Helping businesses kickstart ideas</li>
-                            <li>Golf, Badminton, Gym</li>
-                            <li>Home fixes</li>
-                            <li>Brainstorming innovative solutions</li>
-                        </ul>
-                     </div>
-                </div>
-                <div class="md:col-span-2 text-lg text-gray-700 space-y-6 animate-slide-right">
-                    <p>
-                        I'm a <strong>Senior Software Engineer</strong> with <strong>8+ years</strong> of experience shipping products that reach <strong>millions of users</strong>. From fintech and digital mail at Kivra to energy platforms at Eliq and mobile banking at Meezan Bank, I've delivered <strong>20+ production apps</strong> across Sweden, Germany, and Pakistan — turning complex problems into clean, scalable solutions.
-                    </p>
-                    <p>
-                        My core expertise is <strong>Kotlin and Jetpack Compose on Android</strong>, but I think beyond platforms. Lately I've been exploring AI-powered tools and building side projects like <a href="blog.html#building-pulse-ai" class="text-sky-600 hover:text-sky-800 font-semibold">Pulse AI</a>, a privacy-first desktop news dashboard. I'm driven by curiosity, not just tech stacks.
-                    </p>
-                    <div class="grid grid-cols-3 gap-4 py-2">
-                        <div class="text-center bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                            <div class="text-2xl md:text-3xl font-extrabold text-sky-600">8+</div>
-                            <div class="text-xs md:text-sm text-gray-500 mt-1">Years of Craft</div>
-                        </div>
-                        <div class="text-center bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                            <div class="text-2xl md:text-3xl font-extrabold text-sky-600">20+</div>
-                            <div class="text-xs md:text-sm text-gray-500 mt-1">Apps Shipped</div>
-                        </div>
-                        <div class="text-center bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                            <div class="text-2xl md:text-3xl font-extrabold text-sky-600">5M+</div>
-                            <div class="text-xs md:text-sm text-gray-500 mt-1">Users Reached</div>
-                        </div>
-                    </div>
-                    <p>
-                        What sets me apart isn't just code — it's <strong>ownership</strong>. I care deeply about the business outcome behind every feature, collaborate openly across product, design, and backend teams, and take responsibility from idea to production. At Kivra, that meant spearheading invoice payments and <strong>boosting successful transactions by 25%</strong> in one quarter.
-                    </p>
-                     <div class="p-6 bg-sky-50 rounded-lg border border-sky-200">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2"><i class="fas fa-lightbulb mr-2"></i>What I Bring to a Team</h3>
-                        <p class="text-gray-600">
-                           A pragmatic engineer who writes maintainable code, mentors teammates, ships iteratively, and treats product quality as a shared responsibility — not someone else's problem. I value clear communication, honest feedback, and building things I'd actually want to use.
-                        </p>
-                    </div>
-                    <p>
-                        Outside of my day job, I mentor developers, volunteer to help small businesses go digital, and explore emerging tech — from AI agents to design systems. If you're building something ambitious and need a senior engineer who ships, I'd love to hear about it.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-cogs"></i> My Expertise</span>
-
-            </div>
-            <p class="section-subtitle animate-on-scroll">Successfully delivered over 20 applications, leveraging a comprehensive skill set.</p>
-            <br>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card animate-on-scroll delay-1">
-                    <div class="card-content">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-code text-3xl text-sky-600 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-800">Languages</h3>
-                        </div>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fab fa-kotlin mr-2 text-sky-500"></i>Kotlin (Expert)</li>
-                            <li><i class="fab fa-java mr-2 text-orange-500"></i>Java (Advanced)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-2">
-                    <div class="card-content">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-sitemap text-3xl text-sky-600 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-800">Architecture & Frameworks</h3>
-                        </div>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-mobile-alt mr-2 text-green-500"></i>Jetpack Compose</li>
-                            <li><i class="fas fa-project-diagram mr-2 text-purple-500"></i>Android SDK</li>
-                            <li><i class="fas fa-layer-group mr-2 text-indigo-500"></i>MVVM, MVP, Clean Architecture</li>
-                            <li><i class="fas fa-network-wired mr-2 text-blue-500"></i>Retrofit, OkHttp</li>
-                            <li><i class="fas fa-database mr-2 text-teal-500"></i>Room, SQLite</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-3">
-                     <div class="card-content">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-tools text-3xl text-sky-600 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-800">Tools</h3>
-                        </div>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-fire mr-2 text-yellow-500"></i>Firebase</li>
-                            <li><i class="fab fa-git-alt mr-2 text-red-600"></i>Git, GitHub, GitLab</li>
-                            <li><i class="fas fa-terminal mr-2 text-gray-500"></i>Android Studio</li>
-                            <li><i class="fas fa-tasks mr-2 text-blue-400"></i>Jira, Confluence</li>
-                            <li><i class="fas fa-chart-line mr-2 text-green-400"></i>Amplitude, Braze</li>
-                        </ul>
-                    </div>
-                </div>
-                 <div class="card animate-on-scroll delay-4">
-                    <div class="card-content">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-check-circle text-3xl text-sky-600 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-800">Testing & Familiar</h3>
-                        </div>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-vial mr-2 text-purple-400"></i>Unit (JUnit, Mockito)</li>
-                            <li><i class="fas fa-flask mr-2 text-indigo-400"></i>Integration, Functional</li>
-                            <li><i class="fas fa-desktop mr-2 text-pink-400"></i>UI (Espresso)</li>
-                            <li class="pt-2 font-semibold">Familiar with:</li>
-                            <li><i class="fab fa-apple mr-2 text-gray-500"></i>KMP, iOS</li>
-                            <li><i class="fab fa-flutter mr-2 text-blue-300"></i>Flutter, AS3</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-briefcase"></i> Career Journey</span>
-
-            </div>
-            <div class="space-y-12 timeline-container">
-                <div class="card animate-on-scroll delay-1 flex flex-col md:flex-row gap-6">
-                    <div class="md:w-1/3">
-                        <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
-                        <p class="text-gray-600 font-medium">Kivra</p>
-                        <p class="text-sm text-gray-500">June 2023 - Present | Stockholm, Sweden</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-700 mb-3">
-                            Playing a key role in enhancing Sweden's leading digital mailbox service.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Spearheaded the development of invoice payments using Kotlin and Jetpack Compose, resulting in a <strong>25% increase in successful payment completions</strong> within the first quarter.</li>
-                            <li>Collaborated effectively with cross-functional teams (product, backend, design) to integrate <strong>2 new payment gateways</strong>, enhancing user options and platform capabilities.</li>
-                            <li>Contributed to key architectural decisions, focusing on robust performance, enhanced security protocols, and maintainability.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-2 flex flex-col md:flex-row gap-6">
-                     <div class="md:w-1/3">
-                        <h3 class="text-xl font-semibold text-sky-700">Senior Android Engineer</h3>
-                        <p class="text-gray-600 font-medium">Eliq</p>
-                        <p class="text-sm text-gray-500">Sep 2018 - May 2023 | Gothenburg, Sweden</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-700 mb-3">
-                            Led the development of tailored energy management solutions for diverse international clients.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Led the development of <strong>20+ white-label Android applications</strong> using Kotlin.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-3 flex flex-col md:flex-row gap-6">
-                     <div class="md:w-1/3">
-                        <h3 class="text-xl font-semibold text-sky-700">Android Engineer (Erasmus+ Trainee)</h3>
-                        <p class="text-gray-600 font-medium">UIZ GmbH</p>
-                        <p class="text-sm text-gray-500">Jul 2017 - Aug 2018 | Berlin, Germany</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-700 mb-3">
-                           Gained valuable international experience and contributed to mobile application development.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Successfully re-architected and implemented robust <strong>offline capabilities</strong> for a white-label restaurant app, significantly increasing app utility in low-connectivity environments.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-4 flex flex-col md:flex-row gap-6">
-                     <div class="md:w-1/3">
-                        <h3 class="text-xl font-semibold text-sky-700">Android Engineer</h3>
-                        <p class="text-gray-600 font-medium">Inov8 Limited</p>
-                        <p class="text-sm text-gray-500">May 2015 - April 2017 | Lahore, Pakistan</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-700 mb-3">
-                            Developed and maintained applications for mobile and branchless banking.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-1">
-                            <li>Developed and maintained <strong>6+ Android applications</strong> for mobile and branchless banking, serving over <strong>5 million users</strong> and processing significant transaction volumes.</li>
-                            <li>Collaborated directly with the MasterCard team to successfully integrate <strong>MasterPass QR payment</strong> functionality.</li>
-                            <li>Ensured application security and compliance with <strong>PCI DSS standards</strong>.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-project-diagram"></i> Featured Projects</span>
-
-            </div>
-            <p class="section-subtitle animate-on-scroll">Showcasing a few highlights from my work and personal explorations.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card animate-on-scroll delay-1">
-                    <img src="https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra+App" alt="Kivra App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/667EEA/FFFFFF?text=Kivra';">
-                    <div class="card-content">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Kivra - Digital Mail & Payments</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Contributed significantly to Sweden's leading digital mail service. Spearheaded invoice payment features using Kotlin & Jetpack Compose, boosting successful payments by 25%, and integrated new payment gateways.
-                        </p>
-                    </div>
-                    <div class="mt-auto">
-                        <div class="mb-4">
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">Jetpack Compose</span>
-                            <span class="tag">Fintech</span>
-                            <span class="tag">Android SDK</span>
-                        </div>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=com.kivra.Kivra" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium mr-4" title="View on Google Play">
-                                <i class="fab fa-google-play mr-1"></i> View on Play Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-2">
-                    <img src="https://placehold.co/600x400/C4B5FD/4C1D95?text=Design+System" alt="Android Design System" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/C4B5FD/4C1D95?text=DesignSys';">
-                    <div class="card-content">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Android Design System</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            A modern and flexible design system library example built with Jetpack Compose. It provides reusable UI components, consistent theming, design tokens, and accessibility support for Android applications.
-                        </p>
-                    </div>
-                     <div class="mt-auto">
-                        <div class="mb-4">
-                            <span class="tag">Jetpack Compose</span>
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Design System</span>
-                            <span class="tag">Android</span>
-                        </div>
-                        <div>
-                            <a href="https://github.com/rrohaill/Design-System" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium">
-                                <i class="fab fa-github mr-1"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-3">
-                    <img src="https://placehold.co/600x400/DDD6FE/5B21B6?text=Meezan+Bank" alt="Meezan Bank App Icon" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDD6FE/5B21B6?text=Banking';">
-                    <div class="card-content">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Meezan Bank - Mobile Banking (via Inov8)</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Contributed to the development and maintenance of mobile banking applications at Inov8 Ltd., serving over 5 million users. Key work included MasterPass QR payment integration and ensuring PCI DSS compliance.
-                        </p>
-                    </div>
-                    <div class="mt-auto">
-                        <div class="mb-4">
-                            <span class="tag">Java</span>
-                            <span class="tag">Android SDK</span>
-                            <span class="tag">Fintech</span>
-                            <span class="tag">Security</span>
-                            <span class="tag">PCI DSS</span>
-                        </div>
-                        <div>
-                            <a href="https://play.google.com/store/apps/details?id=invo8.meezan.mb" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium" title="View on Google Play">
-                                <i class="fab fa-google-play mr-1"></i> View on Play Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="hobby-projects" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-lightbulb"></i> Hobby Projects</span>
-
-            </div>
-            <p class="section-subtitle animate-on-scroll">Personal projects and experiments built for fun and learning.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card animate-on-scroll delay-1">
-                    <img src="https://placehold.co/600x400/667EEA/FFFFFF?text=Pulse+AI" alt="Pulse AI" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/667EEA/FFFFFF?text=Pulse+AI';">
-                    <div class="card-content">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Pulse AI &mdash; Local AI News Dashboard</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            A privacy-first macOS desktop app that aggregates news from RSS, Reddit, Twitter, and GitHub, then uses a local Llama 3.1 model to score and enrich articles. 200+ articles in, 15 curated articles out &mdash; no API keys, no subscriptions, runs entirely on your Mac.
-                        </p>
-                    </div>
-                    <div class="mt-auto">
-                        <div class="mb-4">
-                            <span class="tag">AI</span>
-                            <span class="tag">Ollama</span>
-                            <span class="tag">Llama 3.1</span>
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Electron</span>
-                            <span class="tag">TypeScript</span>
-                        </div>
-                        <div>
-                            <a href="blog.html#building-pulse-ai" class="text-sky-600 hover:text-sky-800 font-medium" title="Read the build story">
-                                <i class="fas fa-book-open mr-1"></i> Read the Build Story
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card animate-on-scroll delay-2">
-                    <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Budgeting+App" alt="Budgeting App" class="rounded-t-lg mb-4 object-cover h-48 w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/10B981/FFFFFF?text=Budget';">
-                    <div class="card-content">
-                        <h3 class="text-xl font-semibold text-sky-700 mb-2">Budgeting App</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            A modern budgeting application built with React and TypeScript. Follows the 50/30/20 rule for managing monthly income across Needs, Wants, and Savings. Features expense tracking, visual budget breakdowns, and multi-language support.
-                        </p>
-                    </div>
-                    <div class="mt-auto">
-                        <div class="mb-4">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Vite</span>
-                            <span class="tag">Tailwind CSS</span>
-                            <span class="tag">Radix UI</span>
-                        </div>
-                        <div>
-                            <a href="budgeting-app/dist/index.html?v=3" target="_blank" class="text-sky-600 hover:text-sky-800 font-medium mr-4" title="Open Budgeting App">
-                                <i class="fas fa-external-link-alt mr-1"></i> Open App
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-16 md:py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-             <div class="section-heading-container animate-scale">
-                <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Get In Touch</span>
-
-            </div>
-            <p class="section-subtitle animate-on-scroll">
-                I'm always open to discussing new projects, collaborations, or opportunities to build something impactful. Located in Gothenburg, Sweden.
-            </p>
-            <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" class="btn btn-primary text-lg mb-8 inline-block animate-on-scroll delay-1"> <!-- Uses general .btn-primary -->
-                <i class="fas fa-envelope mr-2"></i> Send Me An Email
+    <!-- ===== NAVIGATION ===== -->
+    <header class="site-nav" id="site-nav">
+        <nav class="nav-inner">
+            <a href="#top" class="nav-brand">
+                rohail<span class="text-gradient">.dev</span>
             </a>
-            <div class="flex justify-center space-x-6 mt-8">
-                <a href="https://www.linkedin.com/in/rrohaill/" target="_blank" class="icon-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/rrohaill" target="_blank" class="icon-link" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                 <a href="https://medium.com/@rrohaill" target="_blank" class="icon-link" aria-label="Medium">
-                    <i class="fab fa-medium"></i>
-                </a>
-                <a href="https://stackoverflow.com/users/10998096/rrohaill" target="_blank" class="icon-link" aria-label="Stack Overflow">
-                    <i class="fab fa-stack-overflow"></i>
-                </a>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#work">Work</a>
+                <a href="#labs">Labs</a>
+                <a href="blog.html">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#experience" class="mobile-nav-link">Experience</a>
+            <a href="#work" class="mobile-nav-link">Work</a>
+            <a href="#labs" class="mobile-nav-link">Labs</a>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="top" class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-grid-overlay grid-lines" aria-hidden="true"></div>
+
+        <div class="hero-content">
+            <div class="hero-bento-grid">
+
+                <!-- Main intro tile -->
+                <div class="bento hero-main-tile hero-enter hero-d1">
+                    <span class="chip">
+                        <svg class="icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                        Available for senior Android roles
+                    </span>
+
+                    <h1>
+                        I build Android products<br>
+                        <span class="text-gradient">millions of people</span><br>
+                        actually use.
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Senior Android Engineer with 8+ years across fintech, digital mail and energy — obsessed with user experience, Kotlin craft and shipping things that hold up in production.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="btn-primary">
+                            View my work
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1iiadAauX50YslK-ahlYKm_r3vJvHtXZ3/view?usp=sharing" target="_blank" rel="noreferrer" class="btn-secondary">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            Download CV
+                        </a>
+                    </div>
+
+                    <div class="hero-chips">
+                        <span class="chip">Kotlin</span>
+                        <span class="chip">Jetpack Compose</span>
+                        <span class="chip">Design systems</span>
+                        <span class="chip">AI tooling</span>
+                        <span class="chip">Ownership</span>
+                    </div>
+                </div>
+
+                <!-- Visual tile -->
+                <div class="bento hero-visual-tile hero-enter hero-d2">
+                    <img src="assets/hero-glow.jpg" alt="Abstract illustration of layered Android app interface cards" width="1200" height="912">
+                    <div class="hero-visual-overlay">
+                        <p>Compose-first UI craft</p>
+                        <p>Motion, a11y and design tokens by default</p>
+                    </div>
+                </div>
+
+                <!-- Stats tile -->
+                <div class="bento hero-stats-tile hero-enter hero-d3">
+                    <div class="stats-grid">
+                        <div>
+                            <p class="stat-value">8+</p>
+                            <p class="stat-label">Years of craft</p>
+                        </div>
+                        <div>
+                            <p class="stat-value">20+</p>
+                            <p class="stat-label">Apps shipped</p>
+                        </div>
+                        <div>
+                            <p class="stat-value">5M+</p>
+                            <p class="stat-label">Users reached</p>
+                        </div>
+                        <div>
+                            <p class="stat-value">+25%</p>
+                            <p class="stat-label">Payment completions</p>
+                        </div>
+                    </div>
+                    <p class="stats-location">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Gothenburg, Sweden
+                    </p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-gray-300 py-12 text-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. All rights reserved.</p>
-            <p class="text-sm mt-2">Based in Gothenburg, Sweden.</p>
-            <p class="text-sm mt-1">Crafted with <i class="fas fa-heart text-red-500"></i> and Tailwind CSS.</p>
-            <p class="text-xs mt-4">
-                "Sometimes it is the people no one can imagine anything of who do the things no one can imagine."
-            </p>
+    <!-- ===== ABOUT ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="about">
+                <span class="chip">About</span>
+                <h2>Engineering with the user in the room</h2>
+                <p class="section-subtitle">Fintech and digital mail at Kivra, energy platforms at Eliq, mobile banking at Meezan — 20+ production apps across Sweden, Germany and Pakistan.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="bento animate-on-scroll">
+                    <h3>Ownership, not just code</h3>
+                    <p>My core expertise is Kotlin and Jetpack Compose, but I think beyond the platform. I care about the business outcome behind every feature, collaborate openly across product, design and backend, and take responsibility from idea to production. At Kivra that meant spearheading invoice payments and lifting successful transactions by 25% in a quarter.</p>
+                    <p>Lately I've been exploring AI-powered tooling and building side projects like Pulse AI, a privacy-first desktop news dashboard. Curiosity drives me more than tech stacks.</p>
+                </div>
+
+                <div class="bento animate-on-scroll delay-1">
+                    <h3>Off the clock</h3>
+                    <ul class="hobbies-list">
+                        <li><span class="accent-dot"></span> Mentoring developers</li>
+                        <li><span class="accent-dot"></span> Helping small businesses go digital</li>
+                        <li><span class="accent-dot"></span> Golf, badminton, gym</li>
+                        <li><span class="accent-dot"></span> Home fixes and tinkering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="skills">
+                <span class="chip">Expertise</span>
+                <h2>The toolkit behind 20+ shipped apps</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="bento animate-on-scroll delay-1">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Kotlin — expert</li>
+                        <li>Java — advanced</li>
+                        <li>TypeScript</li>
+                    </ul>
+                </div>
+                <div class="bento animate-on-scroll delay-2">
+                    <h3>Architecture</h3>
+                    <ul>
+                        <li>Jetpack Compose</li>
+                        <li>MVVM · MVI · Clean</li>
+                        <li>Android SDK</li>
+                        <li>Retrofit · OkHttp</li>
+                        <li>Room · SQLite</li>
+                    </ul>
+                </div>
+                <div class="bento animate-on-scroll delay-3">
+                    <h3>Tooling</h3>
+                    <ul>
+                        <li>Firebase</li>
+                        <li>Git · GitHub · GitLab</li>
+                        <li>Amplitude · Braze</li>
+                        <li>Jira · Confluence</li>
+                    </ul>
+                </div>
+                <div class="bento animate-on-scroll delay-4">
+                    <h3>Quality</h3>
+                    <ul>
+                        <li>JUnit · Mockito</li>
+                        <li>Espresso UI tests</li>
+                        <li>Integration & functional</li>
+                        <li>KMP · iOS · Flutter (familiar)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="experience">
+                <span class="chip">Career</span>
+                <h2>Ten years of shipping, four teams</h2>
+            </div>
+
+            <div class="experience-list">
+                <!-- Kivra -->
+                <article class="bento experience-card animate-on-scroll delay-1">
+                    <div class="experience-header">
+                        <h3>Senior Android Engineer <span class="company">· Kivra</span></h3>
+                        <p class="meta">Jun 2023 — Present — Stockholm, Sweden</p>
+                    </div>
+                    <p class="summary">Enhancing Sweden's leading digital mailbox service.</p>
+                    <ul class="points">
+                        <li><span class="accent-dot"></span> Spearheaded invoice payments in Kotlin & Jetpack Compose — 25% more successful payment completions in the first quarter.</li>
+                        <li><span class="accent-dot"></span> Integrated 2 new payment gateways with product, backend and design.</li>
+                        <li><span class="accent-dot"></span> Drove architecture decisions for performance, security and maintainability.</li>
+                    </ul>
+                </article>
+
+                <!-- Eliq -->
+                <article class="bento experience-card animate-on-scroll delay-2">
+                    <div class="experience-header">
+                        <h3>Senior Android Engineer <span class="company">· Eliq</span></h3>
+                        <p class="meta">Sep 2018 — May 2023 — Gothenburg, Sweden</p>
+                    </div>
+                    <p class="summary">Energy management solutions for international clients.</p>
+                    <ul class="points">
+                        <li><span class="accent-dot"></span> Led development of 20+ white-label Android apps in Kotlin.</li>
+                    </ul>
+                </article>
+
+                <!-- UIZ -->
+                <article class="bento experience-card animate-on-scroll delay-3">
+                    <div class="experience-header">
+                        <h3>Android Engineer (Erasmus+) <span class="company">· UIZ GmbH</span></h3>
+                        <p class="meta">Jul 2017 — Aug 2018 — Berlin, Germany</p>
+                    </div>
+                    <p class="summary">Mobile application development for white-label clients.</p>
+                    <ul class="points">
+                        <li><span class="accent-dot"></span> Re-architected offline capabilities for a restaurant app, making it usable in low-connectivity environments.</li>
+                    </ul>
+                </article>
+
+                <!-- Inov8 -->
+                <article class="bento experience-card animate-on-scroll delay-4">
+                    <div class="experience-header">
+                        <h3>Android Engineer <span class="company">· Inov8 Limited</span></h3>
+                        <p class="meta">May 2015 — Apr 2017 — Lahore, Pakistan</p>
+                    </div>
+                    <p class="summary">Mobile and branchless banking at scale.</p>
+                    <ul class="points">
+                        <li><span class="accent-dot"></span> Shipped 6+ banking apps serving 5M+ users.</li>
+                        <li><span class="accent-dot"></span> Integrated MasterPass QR payments with the MasterCard team.</li>
+                        <li><span class="accent-dot"></span> Ensured PCI DSS compliance across releases.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WORK ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="work">
+                <span class="chip">Selected work</span>
+                <h2>Products in real users' hands</h2>
+            </div>
+
+            <div class="work-grid">
+                <!-- Kivra -->
+                <article class="bento project-card span-2 animate-on-scroll delay-1">
+                    <h3 class="featured">Kivra — Digital Mail & Payments</h3>
+                    <p class="blurb">Sweden's leading digital mail service. Spearheaded invoice payment features in Kotlin & Jetpack Compose, boosting successful payments by 25%.</p>
+                    <div class="project-tags">
+                        <span class="chip">Kotlin</span>
+                        <span class="chip">Jetpack Compose</span>
+                        <span class="chip">Fintech</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.kivra.Kivra" target="_blank" rel="noreferrer" class="cta-link">
+                        View on Play Store
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </article>
+
+                <!-- Design System -->
+                <article class="bento project-card animate-on-scroll delay-2">
+                    <h3>Android Design System</h3>
+                    <p class="blurb">A flexible Compose design system library: reusable components, consistent theming, design tokens and accessibility support.</p>
+                    <div class="project-tags">
+                        <span class="chip">Compose</span>
+                        <span class="chip">Design System</span>
+                        <span class="chip">A11y</span>
+                    </div>
+                    <a href="https://github.com/rrohaill/Design-System" target="_blank" rel="noreferrer" class="cta-link">
+                        View code
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </article>
+
+                <!-- Meezan -->
+                <article class="bento project-card span-3 animate-on-scroll delay-3">
+                    <h3>Meezan Bank — Mobile Banking</h3>
+                    <p class="blurb">Mobile banking for 5M+ users at Inov8. MasterPass QR payment integration and PCI DSS compliance.</p>
+                    <div class="project-tags">
+                        <span class="chip">Java</span>
+                        <span class="chip">Security</span>
+                        <span class="chip">Fintech</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=invo8.meezan.mb" target="_blank" rel="noreferrer" class="cta-link">
+                        View on Play Store
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LABS ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="labs">
+                <span class="chip">Labs</span>
+                <h2>Side projects and experiments</h2>
+                <p class="section-subtitle">Where I test ideas that don't fit a sprint.</p>
+            </div>
+
+            <div class="labs-grid">
+                <!-- Pulse AI -->
+                <article class="bento project-card animate-on-scroll delay-1">
+                    <h3>Pulse AI — Local AI News Dashboard</h3>
+                    <p class="blurb">Privacy-first macOS app aggregating RSS, Reddit, X and GitHub, then scoring articles with a local Llama 3.1 model. 200+ in, 15 curated out — no API keys, no subscriptions.</p>
+                    <div class="project-tags">
+                        <span class="chip">Ollama</span>
+                        <span class="chip">Llama 3.1</span>
+                        <span class="chip">Electron</span>
+                        <span class="chip">Next.js</span>
+                    </div>
+                    <a href="blog.html#building-pulse-ai" class="cta-link">
+                        Read the build story
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </article>
+
+                <!-- Budgeting App -->
+                <article class="bento project-card animate-on-scroll delay-2">
+                    <h3>Budgeting App</h3>
+                    <p class="blurb">A 50/30/20 budgeting app in React + TypeScript with expense tracking, visual breakdowns and multi-language support.</p>
+                    <div class="project-tags">
+                        <span class="chip">React</span>
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">Tailwind</span>
+                    </div>
+                    <a href="budgeting-app/dist/index.html?v=3" target="_blank" rel="noreferrer" class="cta-link">
+                        Open app
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="bento contact-card animate-on-scroll" id="contact">
+                <span class="chip">Contact</span>
+                <h2>Building something ambitious? <span class="text-gradient">Let's talk.</span></h2>
+                <p class="contact-desc">Open to senior Android roles, collaborations and product-minded engineering work. Based in Gothenburg, Sweden.</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" rel="noreferrer" class="btn-primary">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Send me an email
+                </a>
+                <div class="social-links">
+                    <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/rrohaill/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://medium.com/@rrohaill" target="_blank" rel="noreferrer">Medium</a>
+                    <a href="https://stackoverflow.com/users/10998096/rrohaill" target="_blank" rel="noreferrer">Stack Overflow</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. Based in Gothenburg, Sweden.</p>
+            <p class="quote">"Sometimes it is the people no one can imagine anything of who do the things no one can imagine."</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle (smooth transition)
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('menu-open');
-            const icon = mobileMenuButton.querySelector('i');
-            if (mobileMenu.classList.contains('menu-open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+        // ===== Navigation scroll effect =====
+        const siteNav = document.getElementById('site-nav');
+        function onNavScroll() {
+            if (window.scrollY > 12) {
+                siteNav.classList.add('scrolled');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                siteNav.classList.remove('scrolled');
+            }
+        }
+        onNavScroll();
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+
+        // ===== Mobile menu toggle =====
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            if (isOpen) {
+                menuIcon.innerHTML = '<line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>';
+            } else {
+                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
             }
         });
 
-        // Smooth scrolling for navigation links
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
+                navToggle.setAttribute('aria-label', 'Open menu');
+            });
+        });
+
+        // ===== Smooth scrolling =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-                if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
-                    mobileMenu.classList.remove('menu-open');
-                    const icon = mobileMenuButton.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
-        // Scroll-triggered entrance animations (Intersection Observer)
+        // ===== Scroll-triggered entrance animations =====
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -796,50 +1324,14 @@
                     scrollObserver.unobserve(entry.target);
                 }
             });
-        }, { rootMargin: '-80px 0px', threshold: 0.1 });
+        }, { rootMargin: '-60px 0px', threshold: 0.1 });
 
-        document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale, .section-heading-container').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
             scrollObserver.observe(el);
         });
 
-        // Active section highlighting in nav
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }, { passive: true });
-
-        // Hero parallax effect
-        const heroBg = document.querySelector('.hero-bg');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY < heroBg.offsetHeight) {
-                heroBg.style.backgroundPositionY = (window.scrollY * 0.4) + 'px';
-            }
-        }, { passive: true });
-
+        // ===== Footer year =====
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        document.querySelectorAll('img').forEach(img => {
-            if (!img.hasAttribute('onerror')) {
-                const placeholderType = img.alt.toLowerCase().includes('project') || img.alt.toLowerCase().includes('app') || img.alt.toLowerCase().includes('icon') || img.alt.toLowerCase().includes('system') ? 'App/Project' : 'Image';
-                img.onerror = function() {
-                    this.onerror=null;
-                    this.src=`https://placehold.co/${this.naturalWidth || 200}x${this.naturalHeight || 200}/CCCCCC/757575?text=${placeholderType}`;
-                };
-            }
-        });
     </script>
 
 </body>

@@ -1,98 +1,85 @@
-# My Personal Portfolio Website
+# Rohail Ahmad — Personal Portfolio & Engineering Hub
 
-This repository contains the complete source code for my personal portfolio website, designed to showcase my skills, experience, and projects as a Senior Android Engineer. The site is built with modern web technologies and features a clean, responsive design.
+Personal portfolio website and blog of **Rohail Ahmad**, Senior Android Engineer (8+ years of experience, shipping Kotlin & Jetpack Compose products serving millions of users across fintech, digital mail, and energy).
 
-**Live Demo:** [**https://www.rrohaill.dev/**](https://www.rrohaill.dev/) 
+**Live Site:** [**rrohaill.dev**](https://rrohaill.github.io/)
 
 ---
 
-![Portfolio Screenshot](assets/screenshot.png)
-[**https://www.rrohaill.dev/**](https://www.rrohaill.dev/)
+## 🎨 Theme & Design System: "Midnight Indigo"
 
-## ✨ About The Project
+The site features a **Midnight Indigo** dark-mode design system built from scratch with modern web standards:
 
-This portfolio was created to be a central hub for my professional identity. It's a place where I can present my journey as a software developer, highlight my technical expertise, and provide a curated look at the projects I'm most proud of. The goal was to build a site that is not only informative but also visually appealing and easy to navigate.
+- **Color Palette**: Deep navy canvas (`oklch(0.14 0.045 280)`), electric indigo primary (`oklch(0.58 0.22 285)`), and `oklch` color spaces.
+- **Typography**: [Sora](https://fonts.google.com/specimen/Sora) for bold display headings and [Manrope](https://fonts.google.com/specimen/Manrope) for clean body prose.
+- **Layout Architecture**: Bento-grid layout with elevated cards, gradient surfaces, radial hero glow, and hover-triggered indigo glowing borders.
+- **Micro-Interactions**: Frosted-glass fixed navbar with blur on scroll, scroll-triggered entrance animations via `IntersectionObserver`, and interactive chip badges.
 
-### Key Features:
+---
 
-* **Fully Responsive Design:** Looks great on all devices, from mobile phones to desktops.
-* **Structured Sections:** Clear and concise sections for an introduction (Hero), About Me, Skills, Career Journey, and Featured Projects.
-* **Modern Aesthetics:** Uses a clean layout, a professional font (Inter), and tasteful animations and hover effects.
-* **Easy to Customize:** Built with standard HTML and Tailwind CSS, making it straightforward for other developers to adapt for their own use.
-* **Contact Information:** Provides clear links to my professional profiles and email for easy contact.
+## 📁 Repository Structure
+
+```
+.
+├── index.html              # Main portfolio landing page (Hero, About, Skills, Career, Work, Labs, Contact)
+├── blog.html               # Custom single-page blog engine (List view & Article view)
+├── blog/
+│   ├── posts.json          # Blog metadata repository
+│   ├── building-pulse-ai.md               # Article: Pulse AI macOS App build story
+│   └── building-scalable-android-apps.md  # Article: Clean Architecture in Android
+├── assets/
+│   ├── hero-glow.jpg       # Hero visual bento tile background image
+│   └── screenshot.png      # Site preview screenshot
+├── budgeting-app/          # Embedded React + TypeScript 50/30/20 Budgeting App
+│   └── dist/               # Production build served at /budgeting-app/dist/index.html
+└── PixelSanitizer/         # PixelSanitizer app landing page & privacy policy
+```
+
+---
+
+## ✨ Features & Sections
+
+- **Hero Bento Grid**: Interactive intro card, stats counter (8+ years, 20+ apps, 5M+ users, +25% payment conversions), Compose UI craft tile, and quick CV download.
+- **About Me**: Engineering philosophy ("Ownership, not just code"), impact metrics, and personal interests.
+- **Skills Matrix**: 4-column breakdown covering Languages (Kotlin, Java, TypeScript), Architecture (Compose, MVVM/MVI, Room, Retrofit), Tooling, and Testing/Quality.
+- **Career Journey**: Timeline highlighting senior roles at Kivra, Eliq, UIZ GmbH, and Inov8.
+- **Selected Work**: High-impact production applications (Kivra, Android Design System, Meezan Bank).
+- **Labs & Side Projects**: Pulse AI (Local LLM macOS news dashboard) and Budgeting App (React + TS 50/30/20 rule calculator).
+- **Built-in Blog Engine**: Lightweight JS markdown parser supporting code blocks, quotes, tags, deep-linking via hashes (`#slug`), and fallback rendering for `file://` local previewing.
+
+---
 
 ## 🚀 Tech Stack
 
-This project is built using a modern, lightweight tech stack focused on performance and ease of maintenance:
+- **HTML5**: Semantic markup, accessible structure.
+- **Vanilla CSS3**: Design system tokens (`:root` variables), `oklch()` color function, CSS Grid (Bento layout), Flexbox, radial/linear gradients, `backdrop-filter`.
+- **Vanilla JavaScript (ES6+)**: `IntersectionObserver` scroll animations, hash-based client routing for blog articles, responsive navigation toggle.
+- **Typography**: Google Fonts (Sora & Manrope).
+- **SVG & Icons**: Inline SVG vectors for zero external library dependencies.
 
-* **[HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5):** For the core structure and content.
-* **[Tailwind CSS](https://tailwindcss.com/):** A utility-first CSS framework for rapid and responsive UI development. All styling is handled directly in the HTML via utility classes.
-* **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript):** For interactivity, including the mobile navigation menu and smooth scrolling.
-* **[Font Awesome](https://fontawesome.com/):** Used for the icons throughout the site.
-* **[Google Fonts](https://fonts.google.com/):** Specifically, the 'Inter' font family is used for clean and readable typography.
+---
 
-## 🛠️ Getting Started
+## 🛠️ Local Development & Viewing
 
-To get a local copy up and running, follow these simple steps.
+You can view the site locally without any build step or server setup:
 
-### Prerequisites
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/rrohaill/rrohaill.github.io.git
+   cd rrohaill.github.io
+   ```
 
-You only need a modern web browser to view the project.
+2. **Open in browser:**
+   - Simply double-click `index.html` or open it in your browser.
+   - For testing the React `budgeting-app`, run a quick local HTTP server:
+     ```sh
+     npx serve .
+     # or
+     python3 -m http.server 8000
+     ```
 
-### Installation & Usage
-
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    ```
-2.  **Navigate to the project directory:**
-    ```sh
-    cd your-repo-name
-    ```
-3.  **Open the `index.html` file in your browser:**
-    * You can simply double-click the `index.html` file, or right-click and choose "Open with" your preferred browser.
-
-## 🎨 How to Customize for Your Own Use
-
-This portfolio is designed to be easily adapted. If you'd like to use it as a template for your own portfolio, here’s how to customize it:
-
-1.  **Personal Information (Hero Section):**
-    * Open `index.html`.
-    * In the `<section id="home">`, change the name in the `<h1>` tag and the tagline in the `<p>` tags.
-    * Update the `href` in the "Download CV" button to point to your own resume file.
-
-2.  **Profile Picture:**
-    * Add your profile picture to the main project folder (e.g., `my-photo.jpg`).
-    * In the `<section id="home">` and `<section id="about">`, find the `<img>` tags and change the `src` attribute from `IMG-20240504-WA0095.jpg` to the filename of your photo.
-
-3.  **About Me & Hobbies:**
-    * In the `<section id="about">`, edit the paragraphs (`<p>`) and the list items (`<li>`) under "Hobbies" with your own information.
-
-4.  **Skills:**
-    * In the `<section id="skills">`, find the skill cards. You can change the names of skills, add new list items (`<li>`), or remove ones you don't need. You can find more icons to use from [Font Awesome](https://fontawesome.com/icons).
-
-5.  **Career Journey (Experience):**
-    * In the `<section id="experience">`, each job is a `<div class="card ...">`. Copy, edit, or remove these blocks to match your career history. Update the job title, company name, dates, and your list of achievements.
-
-6.  **Featured Projects:**
-    * In the `<section id="projects">`, each project is also a `<div class="card ...">`.
-    * Update the project title, description, and the list of technologies (`<span class="tag">`).
-    * Change the `href` for the "View on Play Store" or "View Code" links to point to your own projects.
-    * Replace the placeholder project images by changing the `src` attribute in the `<img>` tags.
-
-7.  **Contact & Social Links:**
-    * In the `<section id="contact">`, update the `mailto:` link with your email address.
-    * Change the `href` attributes for the social media icons (LinkedIn, GitHub, etc.) to your own profile URLs.
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
-Project Link: [https://github.com/rrohaill/portfolio-website](https://github.com/rrohaill/rrohaill.github.io) 
-
-## 🙏 Acknowledgements
-
-* [Tailwind CSS](https://tailwindcss.com/)
-* [Font Awesome](https://fontawesome.com/)
-* [Google Fonts](https://fonts.google.com/)
-* [placehold.co](https://placehold.co/) for placeholder images.
+This project is open-source under the [MIT License](LICENSE).

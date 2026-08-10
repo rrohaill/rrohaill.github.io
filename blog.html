@@ -3,145 +3,598 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Rohail Ahmad</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Blog — Rohail Ahmad</title>
+    <meta name="description" content="Sharing what I learn, build, and think about along the way — Rohail Ahmad's blog on Android engineering, AI tooling, and side projects.">
+    <meta name="author" content="Rohail Ahmad">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ===== DESIGN SYSTEM: Midnight Indigo (shared with index.html) ===== */
+        :root {
+            --radius: 1rem;
+            --radius-2xl: calc(var(--radius) + 12px);
+
+            --background: oklch(0.14 0.045 280);
+            --foreground: oklch(0.96 0.01 270);
+
+            --surface: oklch(0.19 0.055 279);
+            --surface-raised: oklch(0.24 0.065 278);
+
+            --card: oklch(0.19 0.055 279);
+            --card-foreground: oklch(0.96 0.01 270);
+
+            --primary: oklch(0.58 0.22 285);
+            --primary-foreground: oklch(0.99 0 0);
+            --primary-soft: oklch(0.72 0.15 285);
+
+            --secondary: oklch(0.28 0.07 278);
+            --secondary-foreground: oklch(0.96 0.01 270);
+
+            --muted: oklch(0.24 0.055 278);
+            --muted-foreground: oklch(0.72 0.03 275);
+
+            --accent: oklch(0.3 0.09 280);
+            --accent-foreground: oklch(0.97 0.01 270);
+
+            --border: oklch(0.98 0.01 280 / 10%);
+            --input: oklch(0.98 0.01 280 / 14%);
+            --ring: oklch(0.58 0.22 285);
+
+            --gradient-hero: radial-gradient(
+                120% 80% at 15% 0%,
+                color-mix(in oklab, var(--primary) 38%, transparent) 0%,
+                transparent 60%
+            ),
+            radial-gradient(90% 70% at 90% 10%, oklch(0.4 0.13 260 / 0.5) 0%, transparent 55%);
+
+            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
+
+            --gradient-surface: linear-gradient(
+                160deg,
+                color-mix(in oklab, var(--surface-raised) 90%, transparent),
+                color-mix(in oklab, var(--surface) 92%, transparent)
+            );
+
+            --shadow-elevated: 0 24px 60px -24px oklch(0.05 0.05 280 / 0.9);
+            --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+                0 18px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+            --transition-smooth: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ===== BASE RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: var(--border);
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1f2937;
-        }
-        .nav-link {
-            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-colors;
-        }
-        .nav-link.active {
-            @apply bg-sky-100 text-sky-700;
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        h1, h2, h3, h4 {
+            font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
         }
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        nav {
-            animation: slideDown 0.5s ease-out;
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
 
-        /* Hero */
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        ul, ol { list-style: none; }
+
+        ::selection {
+            background: color-mix(in oklab, var(--primary) 45%, transparent);
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .bento {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border);
+            background: var(--gradient-surface);
+            box-shadow: var(--shadow-elevated);
+            overflow: hidden;
+            transition: transform var(--transition-smooth),
+                        border-color var(--transition-smooth),
+                        box-shadow var(--transition-smooth);
+        }
+
+        .bento:hover {
+            transform: translateY(-4px);
+            border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: color-mix(in oklab, var(--surface-raised) 70%, transparent);
+            padding: 0.3rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            letter-spacing: 0.01em;
+        }
+
+        .grid-lines {
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 300ms ease;
+        }
+
+        .site-nav.scrolled {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: color-mix(in oklab, var(--background) 80%, transparent);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+        }
+
+        .nav-brand {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+        }
+
+        .nav-links a {
+            border-radius: 9999px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            transition: color var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--secondary);
+            color: var(--foreground);
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            padding: 0.5rem;
+            color: var(--foreground);
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-toggle { display: none; }
+        }
+
+        .nav-toggle svg { width: 16px; height: 16px; }
+
+        .mobile-menu {
+            display: none;
+            border-top: 1px solid var(--border);
+            background: color-mix(in oklab, var(--background) 95%, transparent);
+            backdrop-filter: blur(20px);
+            padding: 0 1.25rem 1.25rem;
+        }
+
+        .mobile-menu.open { display: block; }
+
+        @media (min-width: 768px) {
+            .mobile-menu { display: none !important; }
+        }
+
+        .mobile-menu a {
+            display: block;
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+        }
+
+        /* ===== BLOG HERO ===== */
         .blog-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
             position: relative;
             overflow: hidden;
+            padding: 8rem 1.25rem 3rem;
         }
-        .blog-hero::before {
-            content: '';
+
+        @media (min-width: 768px) {
+            .blog-hero { padding: 10rem 1.25rem 4rem; }
+        }
+
+        .blog-hero .hero-bg {
+            pointer-events: none;
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
-            background-size: 30px 30px;
-            pointer-events: none;
+            background: var(--gradient-hero);
         }
+
+        .blog-hero .grid-overlay {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .blog-hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        @media (min-width: 768px) {
+            .blog-hero-content h1 { font-size: 3rem; }
+        }
+
+        .blog-hero-content p {
+            margin-top: 0.75rem;
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Hero entrance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
         .hero-enter {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.7s ease-out forwards;
         }
-        .hero-enter-1 { animation-delay: 0.1s; }
-        .hero-enter-2 { animation-delay: 0.3s; }
+        .hero-d1 { animation-delay: 0.1s; }
+        .hero-d2 { animation-delay: 0.3s; }
 
-        /* Blog cards */
+        /* ===== BLOG CONTENT ===== */
+        .blog-main {
+            padding: 3rem 1.25rem 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .blog-main { padding: 4rem 1.25rem 6rem; }
+        }
+
+        .blog-container {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Post grid */
+        .posts-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .posts-grid { grid-template-columns: 1fr 1fr; }
+        }
+
         .blog-card {
-            @apply bg-white rounded-xl overflow-hidden h-full flex flex-col;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(56, 189, 248, 0.1);
-        }
-        .blog-tag {
-            @apply px-3 py-1 rounded-full text-xs font-medium;
-            color: #667eea;
-            background: rgba(102,126,234,0.08);
-            border: 1px solid rgba(102,126,234,0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .blog-tag:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(102,126,234,0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 1.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            animation: cardFadeIn 0.5s ease-out both;
         }
 
-        /* Mobile menu */
-        #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        #mobile-menu.menu-open {
-            max-height: 400px;
+        .blog-card:nth-child(1) { animation-delay: 0.05s; }
+        .blog-card:nth-child(2) { animation-delay: 0.15s; }
+        .blog-card:nth-child(3) { animation-delay: 0.25s; }
+        .blog-card:nth-child(4) { animation-delay: 0.35s; }
+
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Article prose styles */
-        .prose h1 { @apply text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight; }
-        .prose h2 { @apply text-2xl font-bold text-gray-800 mt-10 mb-4 pb-2 border-b border-gray-200; }
-        .prose h3 { @apply text-xl font-semibold text-gray-800 mt-8 mb-3; }
-        .prose p { @apply text-gray-600 leading-relaxed mb-5; }
-        .prose ul, .prose ol { @apply text-gray-600 mb-5 pl-6 space-y-2; }
-        .prose ul { list-style-type: disc; }
-        .prose ol { list-style-type: decimal; }
-        .prose li { @apply leading-relaxed; }
-        .prose a { @apply text-sky-600 hover:text-sky-800 underline; }
-        .prose blockquote {
-            @apply border-l-4 border-sky-400 pl-5 py-3 my-6 bg-sky-50 rounded-r-lg italic text-gray-600;
+        .blog-card .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
         }
-        .prose code {
-            @apply bg-gray-100 text-pink-600 px-1.5 py-0.5 rounded text-sm font-mono;
-        }
-        .prose pre {
-            @apply bg-gray-900 text-gray-100 p-5 rounded-xl my-6 overflow-x-auto text-sm leading-relaxed;
-        }
-        .prose pre code {
-            @apply bg-transparent text-gray-100 p-0;
-        }
-        .prose strong { @apply text-gray-800 font-semibold; }
-        .prose img { @apply rounded-xl my-6 shadow-md; }
-        .prose hr { @apply my-8 border-gray-200; }
 
-        /* Back button */
+        .blog-card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card .card-excerpt {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-card .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        /* Empty state */
+        .empty-state {
+            display: none;
+            text-align: center;
+            padding: 5rem 0;
+            color: var(--muted-foreground);
+        }
+
+        .empty-state.show { display: block; }
+
+        .empty-state p {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Single post view */
+        #post-view {
+            display: none;
+        }
+
+        #post-view.show { display: block; }
+        #post-list.hidden { display: none; }
+
         .back-link {
-            @apply inline-flex items-center gap-2 text-gray-500 hover:text-sky-600 font-medium transition-all;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            transition: color var(--transition-smooth), transform var(--transition-smooth);
         }
+
         .back-link:hover {
+            color: var(--foreground);
             transform: translateX(-3px);
         }
 
-        /* Accessibility */
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .post-article {
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border);
+            background: var(--gradient-surface);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        @media (min-width: 768px) {
+            .post-article { padding: 3rem; }
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .post-tags-bottom {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* ===== PROSE STYLES ===== */
+        .prose h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--foreground);
+        }
+
+        @media (min-width: 768px) {
+            .prose h1 { font-size: 2.5rem; }
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--foreground);
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--foreground);
+        }
+
+        .prose p {
+            color: var(--muted-foreground);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .prose ul, .prose ol {
+            color: var(--muted-foreground);
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+
+        .prose li {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .prose a {
+            color: var(--primary-soft);
+            text-decoration: underline;
+            transition: color var(--transition-smooth);
+        }
+
+        .prose a:hover { color: var(--foreground); }
+
+        .prose blockquote {
+            border-left: 4px solid var(--primary);
+            padding: 0.75rem 1.25rem;
+            margin: 1.5rem 0;
+            background: color-mix(in oklab, var(--primary) 8%, transparent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-style: italic;
+            color: var(--muted-foreground);
+        }
+
+        .prose code {
+            background: var(--surface-raised);
+            color: var(--primary-soft);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+        }
+
+        .prose pre {
+            background: oklch(0.12 0.04 280);
+            color: var(--foreground);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            border: 1px solid var(--border);
+        }
+
+        .prose pre code {
+            background: transparent;
+            color: var(--foreground);
+            padding: 0;
+        }
+
+        .prose strong { color: var(--foreground); font-weight: 600; }
+        .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+        .prose hr { margin: 2rem 0; border: none; border-top: 1px solid var(--border); }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 2rem 1.25rem;
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        @media (min-width: 768px) {
+            .footer-inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-inner .quote { font-style: italic; }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ===== ACCESSIBILITY ===== */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -153,113 +606,141 @@
                 transform: none !important;
             }
         }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--background); }
+        ::-webkit-scrollbar-thumb { background: var(--surface-raised); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-sky-600">Rohail Ahmad</a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="nav-link">Home</a>
-                        <a href="index.html#about" class="nav-link">About</a>
-                        <a href="index.html#skills" class="nav-link">Skills</a>
-                        <a href="index.html#experience" class="nav-link">Experience</a>
-                        <a href="index.html#projects" class="nav-link">Projects</a>
-                        <a href="blog.html" class="nav-link active">Blog</a>
-                        <a href="index.html#contact" class="nav-link">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="md:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block nav-link text-base">Home</a>
-                <a href="index.html#about" class="block nav-link text-base">About</a>
-                <a href="index.html#skills" class="block nav-link text-base">Skills</a>
-                <a href="index.html#experience" class="block nav-link text-base">Experience</a>
-                <a href="index.html#projects" class="block nav-link text-base">Projects</a>
-                <a href="blog.html" class="block nav-link text-base active">Blog</a>
-                <a href="index.html#contact" class="block nav-link text-base">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <!-- ===== NAVIGATION ===== -->
+    <header class="site-nav" id="site-nav">
+        <nav class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                rohail<span class="text-gradient">.dev</span>
+            </a>
 
-    <!-- Blog Hero -->
-    <section class="blog-hero text-white py-14 md:py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-3 hero-enter hero-enter-1">Blog</h1>
-            <p class="text-lg md:text-xl text-white/80 hero-enter hero-enter-2">Sharing what I learn, build, and think about along the way.</p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="index.html#work">Work</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="index.html#about" class="mobile-nav-link">About</a>
+            <a href="index.html#skills" class="mobile-nav-link">Skills</a>
+            <a href="index.html#experience" class="mobile-nav-link">Experience</a>
+            <a href="index.html#work" class="mobile-nav-link">Work</a>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- ===== BLOG HERO ===== -->
+    <section class="blog-hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="grid-overlay grid-lines" aria-hidden="true"></div>
+        <div class="blog-hero-content">
+            <h1 class="hero-enter hero-d1">Blog</h1>
+            <p class="hero-enter hero-d2">Sharing what I learn, build, and think about along the way.</p>
         </div>
     </section>
 
-    <!-- Blog Content -->
-    <main class="py-12 md:py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ===== BLOG CONTENT ===== -->
+    <main class="blog-main">
+        <div class="blog-container">
 
             <!-- Post List View -->
             <div id="post-list">
-                <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div id="posts-grid" class="posts-grid">
                     <!-- Posts rendered by JS -->
                 </div>
-                <div id="empty-state" class="hidden text-center py-20">
-                    <i class="fas fa-pen-nib text-5xl text-gray-300 mb-4"></i>
-                    <p class="text-xl text-gray-400 font-medium">No posts yet. Stay tuned!</p>
+                <div id="empty-state" class="empty-state">
+                    <p>No posts yet. Stay tuned!</p>
                 </div>
             </div>
 
             <!-- Single Post View -->
-            <div id="post-view" class="hidden">
-                <a href="blog.html" class="back-link mb-8 block">
-                    <i class="fas fa-arrow-left"></i> Back to all posts
+            <div id="post-view">
+                <a href="blog.html" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    Back to all posts
                 </a>
-                <article class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                    <div id="post-meta" class="mb-8"></div>
+                <article class="post-article">
+                    <div id="post-meta" class="post-meta"></div>
                     <div id="post-content" class="prose"></div>
-                    <div id="post-tags" class="mt-10 pt-6 border-t border-gray-100"></div>
+                    <div id="post-tags" class="post-tags-bottom"></div>
                 </article>
             </div>
 
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-12 text-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. All rights reserved.</p>
-            <p class="text-sm mt-2">Based in Gothenburg, Sweden.</p>
-            <p class="text-sm mt-1">Crafted with <i class="fas fa-heart text-red-500"></i> and Tailwind CSS.</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. Based in Gothenburg, Sweden.</p>
+            <p class="quote">"Sometimes it is the people no one can imagine anything of who do the things no one can imagine."</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('menu-open');
-            const icon = mobileMenuButton.querySelector('i');
-            if (mobileMenu.classList.contains('menu-open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+        // ===== Navigation scroll effect =====
+        const siteNav = document.getElementById('site-nav');
+        function onNavScroll() {
+            if (window.scrollY > 12) {
+                siteNav.classList.add('scrolled');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                siteNav.classList.remove('scrolled');
+            }
+        }
+        onNavScroll();
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+
+        // ===== Mobile menu toggle =====
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            if (isOpen) {
+                menuIcon.innerHTML = '<line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>';
+            } else {
+                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
             }
         });
 
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
+                navToggle.setAttribute('aria-label', 'Open menu');
+            });
+        });
+
+        // ===== Year =====
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Scroll animations
+        // ===== Scroll animations =====
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -269,10 +750,10 @@
             });
         }, { rootMargin: '-40px 0px', threshold: 0.1 });
 
-        // Lightweight Markdown parser
+        // ===== Lightweight Markdown parser =====
         function parseMarkdown(md) {
             let html = md;
-            // Code blocks (``` ... ```)
+            // Code blocks
             html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
                 return `<pre><code class="language-${lang}">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()}</code></pre>`;
             });
@@ -308,7 +789,7 @@
                 ).join('');
                 return `<ol>${items}</ol>`;
             });
-            // Paragraphs (lines not already wrapped)
+            // Paragraphs
             html = html.split('\n\n').map(block => {
                 block = block.trim();
                 if (!block) return '';
@@ -318,106 +799,517 @@
             return html;
         }
 
-        // Format date
+        // ===== Format date =====
         function formatDate(dateStr) {
             const date = new Date(dateStr + 'T00:00:00');
             return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         }
 
-        // Render post card
+        // ===== Render post card =====
         function renderPostCard(post, index) {
             return `
-                <a href="#${post.slug}" class="blog-card animate-on-scroll delay-${index + 1}" style="cursor:pointer; text-decoration:none; color:inherit;">
-                    <div class="p-7 flex flex-col h-full">
-                        <div class="flex items-center gap-3 text-sm text-gray-400 mb-4">
-                            <span><i class="far fa-calendar-alt mr-1"></i> ${formatDate(post.date)}</span>
-                            <span><i class="far fa-clock mr-1"></i> ${post.readTime}</span>
-                        </div>
-                        <h2 class="text-xl font-bold text-gray-800 mb-3">${post.title}</h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-5 flex-grow">${post.excerpt}</p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-                        </div>
+                <a href="#${post.slug}" class="bento blog-card">
+                    <div class="card-meta">
+                        <span>📅 ${formatDate(post.date)}</span>
+                        <span>⏱ ${post.readTime}</span>
+                    </div>
+                    <h2>${post.title}</h2>
+                    <p class="card-excerpt">${post.excerpt}</p>
+                    <div class="tag-row">
+                        ${post.tags.map(tag => `<span class="chip">${tag}</span>`).join('')}
                     </div>
                 </a>
             `;
         }
 
-        // Load and render all posts
-        let postsData = [];
-
-        async function loadPosts() {
-            try {
-                const res = await fetch('blog/posts.json');
-                postsData = await res.json();
-                const grid = document.getElementById('posts-grid');
-                const emptyState = document.getElementById('empty-state');
-
-                if (postsData.length === 0) {
-                    grid.classList.add('hidden');
-                    emptyState.classList.remove('hidden');
-                    return;
-                }
-
-                // Sort by date descending
-                postsData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                grid.innerHTML = postsData.map((post, i) => renderPostCard(post, i)).join('');
-
-                // Observe new cards for scroll animation
-                grid.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
-            } catch (e) {
-                console.error('Failed to load posts:', e);
+        // ===== Posts data (embedded to avoid file:// CORS issues) =====
+        let postsData = [
+            {
+                "slug": "building-pulse-ai",
+                "title": "I Built a Local AI News Dashboard That Replaces My Doomscrolling",
+                "date": "2026-04-02",
+                "excerpt": "How I built Pulse AI — a macOS desktop app that aggregates news from RSS, Reddit, and Twitter, scores them with a local Llama 3.1 model, and surfaces only what matters. No API keys, no subscriptions.",
+                "tags": ["AI", "Next.js", "Electron", "Ollama", "TypeScript"],
+                "readTime": "10 min"
+            },
+            {
+                "slug": "building-scalable-android-apps",
+                "title": "Building Scalable Android Apps with Clean Architecture",
+                "date": "2026-04-02",
+                "excerpt": "Lessons learned from building 20+ production Android apps. How Clean Architecture, MVVM, and modularization help teams scale without sacrificing velocity.",
+                "tags": ["Android", "Architecture", "Kotlin"],
+                "readTime": "6 min"
             }
+        ];
+
+        function renderPosts() {
+            const grid = document.getElementById('posts-grid');
+            const emptyState = document.getElementById('empty-state');
+
+            if (postsData.length === 0) {
+                grid.style.display = 'none';
+                emptyState.classList.add('show');
+                return;
+            }
+
+            postsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+            grid.innerHTML = postsData.map((post, i) => renderPostCard(post, i)).join('');
         }
 
-        // Load single post
+        // ===== Embedded Post Markdown Content (fallback for file:// protocol) =====
+        const embeddedPostContent = {
+            "building-pulse-ai": `# I Built a Local AI News Dashboard That Replaces My Doomscrolling
+
+I was spending 2+ hours every morning cycling through Hacker News, Reddit, Twitter, and a dozen RSS feeds trying to stay on top of AI news. Most of it was noise. So I built **Pulse AI** — a macOS desktop app that does it for me.
+
+No API keys. No subscriptions. Everything runs on your Mac.
+
+---
+
+## ⚡ The 30-Second Pitch
+
+> **200+ articles in → 15 curated articles out.**
+>
+> Pulse AI fetches from RSS, Reddit, Twitter/X, and GitHub. A local Llama 3.1 model scores every article 0-100, filters out the noise, then enriches the good stuff with summaries, tags, and a "why it matters" explanation.
+
+---
+
+## 🧠 The Two-Pass AI Pipeline
+
+This is the heart of the system. Every article goes through two AI passes — entirely on your machine via Ollama:
+
+**Pass 1** scores articles with a strict rubric:
+
+\`\`\`typescript
+export const SCORING_SYSTEM_PROMPT = \`You are an AI/tech news editor.
+Score each article from 0 to 100 based on:
+- Novelty (20 pts): Is this genuinely new information or a rehash?
+- Technical Depth (25 pts): Does it have substance, or is it surface-level?
+- Impact (25 pts): How many people does this affect? Industry-wide > niche.
+- Relevance (30 pts): How relevant is this to AI, machine learning, and tech?
+
+Be strict. Most articles should score 30-60.
+Only truly exceptional content scores 80+.
+Clickbait and press releases with no substance should score low.\`;
+\`\`\`
+
+**Pass 2** enriches the winners with structured analysis:
+
+\`\`\`typescript
+export const ENRICHMENT_SYSTEM_PROMPT = \`You are an AI news analyst.
+Your response must be valid JSON with these exact fields:
+- "summary": A concise 2-3 sentence summary of the key points
+- "importanceRating": Integer 1-5 (1=minor, 5=groundbreaking)
+- "whyItMatters": 1-2 sentences explaining the broader significance
+- "tags": Array of 2-5 lowercase category tags\`;
+\`\`\`
+
+The result? Each article card shows a score badge, importance stars, AI summary, and tags — enough to decide in 2 seconds if it's worth reading.
+
+---
+
+## 🔌 One Interface, Two AI Backends
+
+The AI provider is a simple abstraction. Swap between Ollama (free, local) and OpenAI (cloud) with one env var:
+
+\`\`\`typescript
+export async function complete(
+  prompt: string,
+  systemPrompt: string,
+  options: CompletionOptions = {}
+): Promise<string> {
+  const settings = await getAISettings();
+
+  if (settings.provider === "ollama") {
+    return completeOllama(prompt, systemPrompt, settings.model, options);
+  }
+  return completeOpenAI(prompt, systemPrompt, settings.model, options);
+}
+\`\`\`
+
+The Ollama path hits \`localhost:11434\` — no network, no latency, no bill:
+
+\`\`\`typescript
+async function completeOllama(prompt, systemPrompt, model, options) {
+  const baseUrl = process.env.OLLAMA_BASE_URL || "http://localhost:11434";
+
+  const body = {
+    model,
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: prompt },
+    ],
+    stream: false,
+    options: { temperature: 0.3, num_predict: 2000 },
+  };
+
+  if (options.responseFormat === "json") body.format = "json";
+
+  const response = await fetch(\`\${baseUrl}/api/chat\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  const data = await response.json();
+  return data.message?.content || "";
+}
+\`\`\`
+
+---
+
+## 🔄 The Ingestion Pipeline
+
+The orchestrator is the most critical piece. It follows a resilient pattern — **articles are saved even if AI is unavailable**:
+
+\`\`\`
+Fetch → Deduplicate → Store → Score → Enrich
+  ↑                      ↑       ↑        ↑
+  always runs         always   optional  optional
+                      works    (AI may   (only for
+                                be down)  high scores)
+\`\`\`
+
+In code, that looks like this:
+
+\`\`\`typescript
+export async function runIngestionPipeline() {
+  // 1. Fetch from all enabled sources
+  const enabledSources = await db.select().from(sources)
+    .where(eq(sources.enabled, 1));
+
+  let allFetched = [];
+  for (const source of enabledSources) {
+    switch (source.type) {
+      case "rss":     fetched = await fetchRSS(source.url); break;
+      case "reddit":  fetched = await fetchReddit(source.url); break;
+      case "github":  fetched = await fetchGitHub(source.url); break;
+      case "twitter": fetched = await fetchTwitter(source.url); break;
+    }
+    allFetched.push(...fetched.map(a => ({ ...a, sourceId: source.id })));
+  }
+
+  // 2. Deduplicate against existing DB entries
+  const unique = await deduplicateArticles(allFetched);
+
+  // 3. Insert (always works — no AI dependency)
+  for (const article of unique) { /* insert into SQLite */ }
+
+  // 4. Score with AI (gracefully skip if Ollama is down)
+  try {
+    const check = await fetch("http://localhost:11434/api/tags")
+      .catch(() => null);
+    if (!check?.ok) throw new Error("skip");
+
+    const scores = await scoreArticles(insertedArticles);
+    // 5. Enrich only high-scoring articles
+    const toEnrich = scores.filter(s => s.score >= threshold);
+    for (const article of toEnrich) {
+      await enrichArticle(article.title, article.content);
+    }
+  } catch {
+    console.log("AI unavailable — articles saved without scores");
+  }
+}
+\`\`\`
+
+The key insight: the pipeline **degrades gracefully**. No Ollama? Articles still appear — just without AI scores and summaries.
+
+---
+
+## 📊 The Data Model
+
+The schema tells the full story — raw content flows in, AI enrichment flows through, user ratings flow back:
+
+\`\`\`typescript
+export const articles = sqliteTable("articles", {
+  id:               text("id").primaryKey(),
+  sourceId:         text("source_id").references(() => sources.id),
+  title:            text("title").notNull(),
+  rawContent:       text("raw_content"),
+  publishedAt:      text("published_at").notNull(),
+
+  // AI Pass 1: Scoring
+  relevanceScore:   integer("relevance_score"),     // 0-100
+
+  // AI Pass 2: Enrichment
+  isEnriched:       integer("is_enriched").default(0),
+  aiSummary:        text("ai_summary"),
+  importanceRating: integer("importance_rating"),    // 1-5 stars
+  whyItMatters:     text("why_it_matters"),
+  tags:             text("tags"),                    // JSON array
+
+  // User actions
+  bookmarked:       integer("bookmarked").default(0),
+});
+\`\`\`
+
+And here's the trick that makes AI scoring **personalized** — user thumbs up/down feed back into the scoring prompt:
+
+\`\`\`typescript
+async function getCalibrationContext() {
+  const recentRatings = await db
+    .select({
+      rating: userRatings.rating,
+      title: articles.title,
+      score: articles.relevanceScore,
+    })
+    .from(userRatings)
+    .innerJoin(articles, eq(userRatings.articleId, articles.id))
+    .orderBy(desc(userRatings.createdAt))
+    .limit(20);
+
+  const liked = recentRatings
+    .filter(r => r.rating > 0)
+    .map(r => \`"\${r.title}" (score: \${r.score}, user: liked)\`);
+
+  const disliked = recentRatings
+    .filter(r => r.rating < 0)
+    .map(r => \`"\${r.title}" (score: \${r.score}, user: disliked)\`);
+
+  return \`Articles the user LIKED:\\n\${liked.join("\\n")}
+          \\nArticles the user DISLIKED:\\n\${disliked.join("\\n")}\`;
+}
+\`\`\`
+
+Every thumbs-up/down becomes few-shot context for the next scoring batch. No fine-tuning, no training — just prompt engineering with your own feedback.
+
+---
+
+## 🎯 Dynamic Category Discovery
+
+I didn't want to hardcode "AI & Tech" and "Politics" filter tabs. What if someone adds sports or science sources?
+
+The solution: categories are **discovered at runtime** from whatever data exists:
+
+\`\`\`typescript
+const { topicCategories, sourceCategories } = useMemo(() => {
+  const topics = [{ key: "all", label: "All", icon: Layers }];
+  const sources = [];
+
+  for (const key of Object.keys(counts)) {
+    if (sourceTypeKeys.has(key)) {
+      // It's a source type (rss, reddit, github, twitter)
+      if (counts[key] > 0) {
+        const meta = SOURCE_META[key]; // pre-mapped icons
+        sources.push({ key, label: meta?.label ?? capitalize(key), icon: meta?.icon ?? Rss });
+      }
+    } else if (counts[key] > 0) {
+      // It's a topic category — discovered from article data
+      const meta = TOPIC_META[key]; // known icons for common topics
+      topics.push({ key, label: meta?.label ?? capitalize(key), icon: meta?.icon ?? Tag });
+    }
+  }
+
+  topics.push({ key: "saved", label: "Saved", icon: Bookmark });
+  return { topicCategories: topics, sourceCategories: sources };
+}, [counts]);
+\`\`\`
+
+Add a source with \`category: "science"\` and a Microscope icon tab appears automatically. No code changes.
+
+---
+
+## 🖥️ The Setup Wizard That Makes It Just Work
+
+The hardest UX problem was onboarding. "Install Ollama, pull a 4.7GB model, configure env vars" is a non-starter.
+
+So the Electron app has a first-run wizard. The most interesting part — streaming the model download with real-time GB progress:
+
+\`\`\`javascript
+ipcMain.handle("pull-model", async (event, model) => {
+  const postData = JSON.stringify({ name: model, stream: true });
+
+  const req = http.request({
+    hostname: "localhost", port: 11434,
+    path: "/api/pull", method: "POST",
+  }, (res) => {
+    let buffer = "";
+
+    res.on("data", (chunk) => {
+      buffer += chunk.toString();
+      const lines = buffer.split("\\n");
+      buffer = lines.pop() || ""; // keep incomplete line
+
+      for (const line of lines) {
+        const data = JSON.parse(line);
+        if (data.total && data.completed) {
+          const percent = Math.round((data.completed / data.total) * 100);
+          const gb = (data.completed / 1024 / 1024 / 1024).toFixed(2);
+          const totalGb = (data.total / 1024 / 1024 / 1024).toFixed(2);
+
+          event.sender.send("setup-progress", {
+            stage: "pull",
+            status: \`\${data.status} — \${gb}GB / \${totalGb}GB\`,
+            percent,
+          });
+        }
+      }
+    });
+  });
+
+  req.write(postData);
+  req.end();
+});
+\`\`\`
+
+Ollama's pull API streams NDJSON — one JSON object per line. The \`buffer\` trick handles chunks that split mid-line. The user sees a smooth progress bar from 0% to 100% as 4.7GB downloads.
+
+---
+
+## 🏗️ Tech Stack At A Glance
+
+| Layer | Choice | Why |
+|---|---|---|
+| **Framework** | Next.js 16 | Server components + API routes in one project |
+| **Database** | SQLite + Drizzle | Zero-config, single file, WAL mode for concurrency |
+| **AI** | Ollama + Llama 3.1 | Free, local, no API keys, good enough for scoring |
+| **Desktop** | Electron | Wrap the web app, add setup wizard, ship as .dmg |
+| **Styling** | Tailwind CSS 4 | Dark theme that's easy on the eyes at 6am |
+
+---
+
+## 💡 What I Learned
+
+**SQLite is underrated for desktop apps.** WAL mode, concurrent reads/writes, the entire DB is one portable file. No Postgres, no Docker, no config.
+
+**Local LLMs are good enough for structured tasks.** Llama 3.1 isn't GPT-4, but for scoring articles 0-100 and writing 2-sentence summaries? More than good enough.
+
+**The setup experience IS the product.** The wizard was 20% of the development effort. But it's what makes the difference between "cool GitHub project" and "tool I actually use."
+
+**Graceful degradation is everything.** The app works without AI running. Articles still appear, you can still browse and bookmark. AI is an enhancement, not a requirement.
+
+---
+
+## 🚀 Try It
+
+**Download the macOS app:**
+1. Grab the \`.dmg\` from the [releases page](https://github.com/rrohaill/pulse-ai/releases/latest)
+2. Drag to Applications
+3. Launch — the wizard handles the rest
+
+**Or run as a web app:**
+\`\`\`bash
+git clone https://github.com/rrohaill/pulse-ai.git
+cd pulse-ai && npm install && npm run dev
+\`\`\`
+
+The repo is at [github.com/rrohaill/pulse-ai](https://github.com/rrohaill/pulse-ai). Stars and feedback welcome.`,
+
+            "building-scalable-android-apps": `# Building Scalable Android Apps with Clean Architecture
+
+After building over 20 production Android applications across fintech, energy, and digital mail domains, I've developed strong opinions about what makes a codebase scale well. Here are the key lessons.
+
+## Why Architecture Matters
+
+In the early days of a project, you can get away with putting everything in Activities and Fragments. But as the team grows and features pile up, the codebase becomes fragile. A change in one place breaks something unexpected elsewhere.
+
+**Clean Architecture** solves this by enforcing clear boundaries between layers:
+
+- **Presentation Layer** - ViewModels, UI state, Compose/XML
+- **Domain Layer** - Use cases, business logic, repository interfaces
+- **Data Layer** - Repository implementations, API clients, local storage
+
+## The MVVM Pattern in Practice
+
+At Kivra, we use MVVM with Jetpack Compose extensively. Here's what works well:
+
+- **Unidirectional data flow** - State flows down, events flow up
+- **StateFlow over LiveData** - Better lifecycle handling and testability
+- **Sealed classes for UI state** - Makes impossible states impossible
+
+\`\`\`kotlin
+sealed class PaymentState {
+    object Loading : PaymentState()
+    data class Success(val payment: Payment) : PaymentState()
+    data class Error(val message: String) : PaymentState()
+}
+\`\`\`
+
+## Modularization Strategy
+
+For large apps, modularization is essential. We typically split into:
+
+1. **:app** - Application module, dependency injection setup
+2. **:feature:*** - Feature modules (e.g., \`:feature:payments\`, \`:feature:inbox\`)
+3. **:core:network** - Retrofit setup, interceptors
+4. **:core:ui** - Design system components, theming
+5. **:core:common** - Shared utilities, extensions
+
+> The key insight: modules should depend on abstractions, not concrete implementations. This makes swapping implementations trivial and testing straightforward.
+
+## Testing Strategy
+
+A pragmatic testing approach that actually works:
+
+- **Unit tests** for ViewModels and Use Cases (JUnit + Mockito)
+- **Integration tests** for Repository implementations
+- **UI tests** for critical user flows (Espresso / Compose Testing)
+
+Don't aim for 100% coverage. Focus on testing business logic and critical paths.
+
+## Key Takeaways
+
+1. Invest in architecture early - it pays dividends as the team scales
+2. Modularize by feature, not by layer
+3. Use Kotlin's type system to make bugs impossible at compile time
+4. Write tests for behavior, not implementation details
+5. Keep your dependency graph clean - no circular dependencies
+
+The best architecture is one your whole team understands and can maintain. Don't over-engineer for hypothetical futures.`
+        };
+
+        // ===== Load single post =====
         async function loadPost(slug) {
+            let md = "";
             try {
                 const res = await fetch(`blog/${slug}.md`);
-                if (!res.ok) throw new Error('Post not found');
-                const md = await res.text();
-                const post = postsData.find(p => p.slug === slug);
-
-                document.getElementById('post-list').classList.add('hidden');
-                document.getElementById('post-view').classList.remove('hidden');
-
-                document.getElementById('post-meta').innerHTML = `
-                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
-                        <span><i class="far fa-calendar-alt mr-1"></i> ${formatDate(post.date)}</span>
-                        <span><i class="far fa-clock mr-1"></i> ${post.readTime}</span>
-                    </div>
-                `;
-
-                // Skip the first H1 line from markdown (we show it in meta)
-                const contentMd = md.replace(/^# .+\n+/, '');
-                document.getElementById('post-content').innerHTML = parseMarkdown(contentMd);
-
-                document.getElementById('post-tags').innerHTML = `
-                    <div class="flex flex-wrap gap-2">
-                        ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-                    </div>
-                `;
-
-                document.title = `${post.title} - Rohail Ahmad`;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (res.ok) {
+                    md = await res.text();
+                } else {
+                    throw new Error("Fetch failed");
+                }
             } catch (e) {
-                console.error('Failed to load post:', e);
-                document.getElementById('post-content').innerHTML = '<p class="text-gray-500">Post not found.</p>';
+                // Fallback to embedded content for file:// protocol or offline access
+                md = embeddedPostContent[slug] || "";
             }
+
+            const post = postsData.find(p => p.slug === slug);
+            if (!md || !post) {
+                document.getElementById('post-content').innerHTML = '<p style="color:var(--muted-foreground)">Post not found.</p>';
+                return;
+            }
+
+            document.getElementById('post-list').classList.add('hidden');
+            document.getElementById('post-view').classList.add('show');
+
+            document.getElementById('post-meta').innerHTML = `
+                <span>📅 ${formatDate(post.date)}</span>
+                <span>⏱ ${post.readTime}</span>
+            `;
+
+            const contentMd = md.replace(/^# .+\n+/, '');
+            document.getElementById('post-content').innerHTML = parseMarkdown(contentMd);
+
+            document.getElementById('post-tags').innerHTML =
+                post.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+
+            document.title = `${post.title} — Rohail Ahmad`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Route based on hash
-        async function route() {
+        // ===== Route based on hash =====
+        function route() {
             const hash = window.location.hash.slice(1);
             if (hash) {
-                await loadPosts();
+                document.getElementById('post-list').classList.add('hidden');
+                document.getElementById('post-view').classList.add('show');
                 loadPost(hash);
             } else {
                 document.getElementById('post-list').classList.remove('hidden');
-                document.getElementById('post-view').classList.add('hidden');
-                document.title = 'Blog - Rohail Ahmad';
-                loadPosts();
+                document.getElementById('post-view').classList.remove('show');
+                document.title = 'Blog — Rohail Ahmad';
+                renderPosts();
             }
         }
 
