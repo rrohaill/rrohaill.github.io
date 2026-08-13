@@ -1,5 +1,13 @@
 [
   {
+    "slug": "building-pixelsanitizer",
+    "title": "Building PixelSanitizer: A Privacy-First Android App for Photo Metadata Removal",
+    "date": "2026-08-13",
+    "excerpt": "How I built PixelSanitizer in Kotlin & Jetpack Compose — a privacy-focused Android app to inspect EXIF metadata, detect privacy risks, and strip sensitive data 100% on-device.",
+    "tags": ["Android", "Kotlin", "Jetpack Compose", "Privacy", "Play Store"],
+    "readTime": "5 min"
+  },
+  {
     "slug": "building-pulse-ai",
     "title": "I Built a Local AI News Dashboard That Replaces My Doomscrolling",
     "date": "2026-04-02",

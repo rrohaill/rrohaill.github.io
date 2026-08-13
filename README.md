@@ -25,9 +25,11 @@ The site features a **Midnight Indigo** dark-mode design system built from scrat
 ├── blog.html               # Custom single-page blog engine (List view & Article view)
 ├── blog/
 │   ├── posts.json          # Blog metadata repository
+│   ├── building-pixelsanitizer.md         # Article: PixelSanitizer Android App build story
 │   ├── building-pulse-ai.md               # Article: Pulse AI macOS App build story
 │   └── building-scalable-android-apps.md  # Article: Clean Architecture in Android
 ├── assets/
+│   ├── pixelsanitizer/     # PixelSanitizer app screenshots & graphics
 │   ├── hero-glow.jpg       # Hero visual bento tile background image
 │   └── screenshot.png      # Site preview screenshot
 ├── budgeting-app/          # Embedded React + TypeScript 50/30/20 Budgeting App
@@ -44,7 +46,7 @@ The site features a **Midnight Indigo** dark-mode design system built from scrat
 - **Skills Matrix**: 4-column breakdown covering Languages (Kotlin, Java, TypeScript), Architecture (Compose, MVVM/MVI, Room, Retrofit), Tooling, and Testing/Quality.
 - **Career Journey**: Timeline highlighting senior roles at Kivra, Eliq, UIZ GmbH, and Inov8.
 - **Selected Work**: High-impact production applications (Kivra, Android Design System, Meezan Bank).
-- **Labs & Side Projects**: Pulse AI (Local LLM macOS news dashboard) and Budgeting App (React + TS 50/30/20 rule calculator).
+- **Labs & Side Projects**: PixelSanitizer (Android photo EXIF privacy stripper in Kotlin + Compose), Pulse AI (Local LLM macOS news dashboard), and Budgeting App (React + TS 50/30/20 rule calculator).
 - **Built-in Blog Engine**: Lightweight JS markdown parser supporting code blocks, quotes, tags, deep-linking via hashes (`#slug`), and fallback rendering for `file://` local previewing.
 
 ---
