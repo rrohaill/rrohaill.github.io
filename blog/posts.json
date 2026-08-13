@@ -8,6 +8,14 @@
     "readTime": "5 min"
   },
   {
+    "slug": "building-android-design-system",
+    "title": "Building a Flexible Android Design System with Jetpack Compose",
+    "date": "2026-05-15",
+    "excerpt": "How I designed and built a flexible Compose design system library providing reusable UI components, centralized design tokens, dynamic theming, and accessibility support.",
+    "tags": ["Android", "Jetpack Compose", "Design System", "Kotlin", "UI/UX"],
+    "readTime": "6 min"
+  },
+  {
     "slug": "building-pulse-ai",
     "title": "I Built a Local AI News Dashboard That Replaces My Doomscrolling",
     "date": "2026-04-02",

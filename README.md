@@ -45,8 +45,8 @@ The site features a **Midnight Indigo** dark-mode design system built from scrat
 - **About Me**: Engineering philosophy ("Ownership, not just code"), impact metrics, and personal interests.
 - **Skills Matrix**: 4-column breakdown covering Languages (Kotlin, Java, TypeScript), Architecture (Compose, MVVM/MVI, Room, Retrofit), Tooling, and Testing/Quality.
 - **Career Journey**: Timeline highlighting senior roles at Kivra, Eliq, UIZ GmbH, and Inov8.
-- **Selected Work**: High-impact production applications (Kivra, Android Design System, Meezan Bank).
-- **Labs & Side Projects**: PixelSanitizer (Android photo EXIF privacy stripper in Kotlin + Compose), Pulse AI (Local LLM macOS news dashboard), and Budgeting App (React + TS 50/30/20 rule calculator).
+- **Selected Work**: High-impact production applications (Kivra, Mölndal Energi, Meezan Bank).
+- **Labs & Side Projects**: PixelSanitizer (Android photo EXIF privacy stripper), Pulse AI (Local LLM macOS news dashboard), Android Design System (Jetpack Compose tokens & UI library), and Budgeting App (React + TS 50/30/20 rule calculator).
 - **Built-in Blog Engine**: Lightweight JS markdown parser supporting code blocks, quotes, tags, deep-linking via hashes (`#slug`), and fallback rendering for `file://` local previewing.
 
 ---
