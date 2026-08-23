@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Publications — Rohail Ahmad</title>
+    <meta name="description" content="Books and publications by Rohail Ahmad — including Cracking the Android FAANG Interview. Modern architecture, Jetpack Compose, and system design.">
+    <meta name="author" content="Rohail Ahmad">
+    <meta property="og:title" content="Cracking the Android FAANG Interview — Rohail Ahmad">
+    <meta property="og:description" content="Modern Architecture • Jetpack Compose • FAANG Vault. The ultimate interview preparation book for senior Android engineers.">
+    <meta property="og:image" content="assets/crackandroidinterview-cover.png">
+    <meta property="og:type" content="book">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/crackandroidinterview-cover.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://gumroad.com/js/gumroad.js"></script>
+    <style>
+        /* ===== DESIGN SYSTEM: Midnight Indigo ===== */
+        :root {
+            --radius: 1rem;
+            --radius-sm: calc(var(--radius) - 4px);
+            --radius-md: calc(var(--radius) - 2px);
+            --radius-lg: var(--radius);
+            --radius-xl: calc(var(--radius) + 6px);
+            --radius-2xl: calc(var(--radius) + 12px);
+            --radius-3xl: calc(var(--radius) + 20px);
+
+            --background: oklch(0.14 0.045 280);
+            --foreground: oklch(0.96 0.01 270);
+
+            --surface: oklch(0.19 0.055 279);
+            --surface-raised: oklch(0.24 0.065 278);
+
+            --card: oklch(0.19 0.055 279);
+            --card-foreground: oklch(0.96 0.01 270);
+
+            --primary: oklch(0.58 0.22 285);
+            --primary-foreground: oklch(0.99 0 0);
+            --primary-soft: oklch(0.72 0.15 285);
+
+            --secondary: oklch(0.28 0.07 278);
+            --secondary-foreground: oklch(0.96 0.01 270);
+
+            --muted: oklch(0.24 0.055 278);
+            --muted-foreground: oklch(0.72 0.03 275);
+
+            --accent: oklch(0.3 0.09 280);
+            --accent-foreground: oklch(0.97 0.01 270);
+
+            --destructive: oklch(0.6 0.22 20);
+            --border: oklch(0.98 0.01 280 / 10%);
+            --input: oklch(0.98 0.01 280 / 14%);
+            --ring: oklch(0.58 0.22 285);
+
+            --gradient-hero: radial-gradient(
+                120% 80% at 15% 0%,
+                color-mix(in oklab, var(--primary) 38%, transparent) 0%,
+                transparent 60%
+            ),
+            radial-gradient(90% 70% at 90% 10%, oklch(0.4 0.13 260 / 0.5) 0%, transparent 55%),
+            radial-gradient(80% 60% at 50% 100%, oklch(0.35 0.14 155 / 0.2) 0%, transparent 60%);
+
+            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
+            --gradient-emerald: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+
+            --gradient-surface: linear-gradient(
+                160deg,
+                color-mix(in oklab, var(--surface-raised) 90%, transparent),
+                color-mix(in oklab, var(--surface) 92%, transparent)
+            );
+
+            --shadow-elevated: 0 24px 60px -24px oklch(0.05 0.05 280 / 0.9);
+            --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+                0 18px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+            --transition-smooth: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ===== BASE RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: var(--border);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        ul, ol { list-style: none; }
+
+        ::selection {
+            background: color-mix(in oklab, var(--primary) 45%, transparent);
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .bento {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border);
+            background: var(--gradient-surface);
+            box-shadow: var(--shadow-elevated);
+            overflow: hidden;
+            transition: transform var(--transition-smooth),
+                        border-color var(--transition-smooth),
+                        box-shadow var(--transition-smooth);
+        }
+
+        .bento:hover {
+            border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-emerald {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: color-mix(in oklab, var(--surface-raised) 70%, transparent);
+            padding: 0.35rem 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            letter-spacing: 0.01em;
+            backdrop-filter: blur(8px);
+        }
+
+        .chip.primary {
+            background: color-mix(in oklab, var(--primary) 20%, transparent);
+            border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+            color: var(--primary-soft);
+        }
+
+        .chip.emerald {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: #34d399;
+        }
+
+        .grid-lines {
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: color-mix(in oklab, var(--background) 75%, transparent);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--transition-smooth);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            font-weight: 500;
+            transition: color var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--foreground);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .nav-pay-btn {
+            background: var(--gradient-emerald);
+            color: #ffffff !important;
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 700 !important;
+            font-size: 0.825rem !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 4px 14px -3px rgba(16, 185, 129, 0.5);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .nav-pay-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px -3px rgba(16, 185, 129, 0.7);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--foreground);
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--background);
+            gap: 0.75rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-nav-link {
+            font-size: 0.95rem;
+            color: var(--muted-foreground);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color var(--transition-smooth);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: var(--foreground);
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted-foreground);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            background: color-mix(in oklab, var(--surface-raised) 70%, transparent);
+            border: 1px solid var(--border);
+            transition: color var(--transition-smooth), border-color var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            color: var(--foreground);
+            border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+            background: var(--surface-raised);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .books-hero {
+            position: relative;
+            padding: 7.5rem 0 3.5rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-hero);
+            pointer-events: none;
+        }
+
+        .hero-grid-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .books-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .books-hero h1 {
+            font-size: clamp(2.3rem, 4.8vw, 3.5rem);
+            font-weight: 800;
+            margin: 1.25rem 0 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .books-hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--muted-foreground);
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* ===== VIEW CONTAINERS ===== */
+        #books-list-view,
+        #book-detail-view {
+            transition: opacity 250ms ease, transform 250ms ease;
+        }
+
+        .view-hidden {
+            display: none !important;
+        }
+
+        /* ===== BOOKS CATALOG GRID (List View) ===== */
+        .books-catalog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding-bottom: 5rem;
+        }
+
+        .book-tile-card {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 3rem;
+            padding: 2.75rem;
+            align-items: center;
+            background: radial-gradient(120% 120% at 10% 20%, rgba(16, 185, 129, 0.12), transparent 70%), var(--gradient-surface);
+            border-radius: var(--radius-3xl);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            cursor: pointer;
+            transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .book-tile-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(52, 211, 153, 0.6);
+            box-shadow: 0 20px 50px -15px rgba(16, 185, 129, 0.3);
+        }
+
+        .book-tile-cover-wrapper {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.85);
+            transition: transform var(--transition-smooth);
+        }
+
+        .book-tile-card:hover .book-tile-cover-wrapper {
+            transform: scale(1.02);
+        }
+
+        .book-tile-cover-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .book-tile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .book-tile-info h2 {
+            font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+            font-weight: 800;
+        }
+
+        .book-tile-info .tagline {
+            font-size: 0.95rem;
+            color: #34d399;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .book-tile-info .blurb {
+            color: var(--muted-foreground);
+            font-size: 0.975rem;
+            line-height: 1.7;
+        }
+
+        .book-tile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .book-tile-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn-view-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-accent);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.4rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            transition: transform var(--transition-smooth);
+        }
+
+        .btn-view-details:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ===== DETAIL VIEW: 3D BOOK & SECTIONS ===== */
+        .featured-book-section {
+            padding: 0.5rem 0 4.5rem;
+            position: relative;
+        }
+
+        .featured-book-card {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 3.5rem;
+            padding: 3.5rem;
+            align-items: center;
+            background: var(--gradient-surface);
+            border-radius: var(--radius-3xl);
+            border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--border));
+        }
+
+        /* 3D BOOK MOCKUP */
+        .book-mockup-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            padding: 1rem;
+        }
+
+        .book-3d {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            transform-style: preserve-3d;
+            transform: rotateY(-18deg) rotateX(10deg);
+            transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 500ms ease;
+            cursor: pointer;
+        }
+
+        .book-mockup-wrapper:hover .book-3d {
+            transform: rotateY(-6deg) rotateX(4deg) translateY(-8px) scale(1.03);
+        }
+
+        .book-cover {
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background-color: #0b1120;
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            box-shadow:
+                -15px 20px 40px -10px oklch(0.02 0.02 280 / 0.9),
+                0 0 50px -10px rgba(16, 185, 129, 0.25);
+            overflow: hidden;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 16px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.05));
+            border-right: 1px solid rgba(255,255,255,0.1);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .book-spine-pages {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            right: -14px;
+            width: 16px;
+            background: linear-gradient(90deg, #d1d5db, #f3f4f6 40%, #9ca3af);
+            border-radius: 0 4px 4px 0;
+            box-shadow: inset 1px 0 3px rgba(0,0,0,0.4);
+            transform: rotateY(90deg) translateZ(-7px);
+        }
+
+        .book-shadow {
+            position: absolute;
+            bottom: -35px;
+            left: 5%;
+            width: 90%;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.7), transparent 70%);
+            transform: rotateX(85deg);
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        /* BOOK DETAILS INFO */
+        .book-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+        }
+
+        .book-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.75rem;
+            align-items: center;
+        }
+
+        .book-heading h2 {
+            font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .book-heading .tagline {
+            font-size: 1.05rem;
+            color: #34d399;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .book-synopsis {
+            color: var(--muted-foreground);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .book-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.875rem;
+            color: var(--foreground);
+        }
+
+        .highlight-item svg {
+            width: 18px;
+            height: 18px;
+            color: #34d399;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* LANDING PAGE PAY BUTTON & CTAS */
+        .book-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            align-items: center;
+        }
+
+        .btn-pay-landing {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--gradient-emerald);
+            color: #ffffff;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 25px -4px rgba(16, 185, 129, 0.6);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .btn-pay-landing:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px -4px rgba(16, 185, 129, 0.8);
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: color-mix(in oklab, var(--surface-raised) 80%, transparent);
+            color: var(--foreground);
+            padding: 0.9rem 1.4rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: background var(--transition-smooth), border-color var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-raised);
+            border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+        }
+
+        /* ===== CHAPTERS & OUTLINE SECTION ===== */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            margin: 0.75rem 0 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--muted-foreground);
+            font-size: 1rem;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .chapter-card {
+            padding: 1.75rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .chapter-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #34d399;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .chapter-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .chapter-card p {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        .chapter-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+            padding-top: 0.75rem;
+        }
+
+        .topic-pill {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 9999px;
+            background: color-mix(in oklab, var(--surface) 90%, transparent);
+            border: 1px solid var(--border);
+            color: var(--muted-foreground);
+        }
+
+        /* ===== AUDIENCE & TAKEAWAYS ===== */
+        .audience-section {
+            margin-bottom: 5rem;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .audience-card {
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .audience-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #34d399;
+        }
+
+        .audience-card h3 {
+            font-size: 1.15rem;
+        }
+
+        .audience-card p {
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        /* ===== GUMROAD PAY BANNER ===== */
+        .pay-banner {
+            padding: 3.5rem 2.5rem;
+            border-radius: var(--radius-2xl);
+            text-align: center;
+            background: radial-gradient(120% 120% at 50% 0%, rgba(16, 185, 129, 0.2), transparent 70%), var(--gradient-surface);
+            margin-bottom: 5rem;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .pay-banner-content {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .pay-banner h2 {
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin: 0.75rem 0 0.5rem;
+        }
+
+        .pay-banner p {
+            color: var(--muted-foreground);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.65;
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-section {
+            margin-bottom: 6rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: border-color var(--transition-smooth), background var(--transition-smooth);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .faq-question svg {
+            transition: transform 300ms ease;
+            color: var(--muted-foreground);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+            color: #34d399;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 350ms cubic-bezier(0, 1, 0, 1), opacity 300ms ease, margin-top 300ms ease;
+            opacity: 0;
+            color: var(--muted-foreground);
+            font-size: 0.925rem;
+            line-height: 1.65;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 0.85rem;
+            transition: max-height 350ms cubic-bezier(1, 0, 1, 0), opacity 300ms ease, margin-top 300ms ease;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            background: color-mix(in oklab, var(--background) 90%, transparent);
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--foreground);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .book-tile-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .featured-book-card {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 2.5rem 1.75rem;
+                text-align: center;
+            }
+
+            .book-mockup-wrapper {
+                margin: 0 auto;
+            }
+
+            .book-3d {
+                width: 280px;
+                height: 190px;
+            }
+
+            .book-meta-row, .book-cta-group {
+                justify-content: center;
+            }
+
+            .book-highlights {
+                text-align: left;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .books-hero { padding: 6.5rem 0 2.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--background); }
+        ::-webkit-scrollbar-thumb { background: var(--surface-raised); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <header class="site-nav" id="site-nav">
+        <nav class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                rohail<span class="text-gradient">.dev</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="index.html#work">Work</a>
+                <a href="index.html#labs">Labs</a>
+                <a href="books.html" class="active">Books</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="nav-pay-btn gumroad-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    Buy on Gumroad
+                </a>
+            </div>
+
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="index.html#about" class="mobile-nav-link">About</a>
+            <a href="index.html#skills" class="mobile-nav-link">Skills</a>
+            <a href="index.html#experience" class="mobile-nav-link">Experience</a>
+            <a href="index.html#work" class="mobile-nav-link">Work</a>
+            <a href="index.html#labs" class="mobile-nav-link">Labs</a>
+            <a href="books.html" class="mobile-nav-link active">Books</a>
+            <a href="blog.html" class="mobile-nav-link">Blog</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="mobile-nav-link" style="color:#34d399; font-weight:700;">
+                Buy on Gumroad →
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="books-hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-grid-overlay grid-lines" aria-hidden="true"></div>
+
+        <div class="container books-hero-content">
+            <span class="chip primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                Author &amp; Technical Publications
+            </span>
+            <h1 id="page-title">Books &amp; <span class="text-gradient">Publications</span></h1>
+            <p class="books-hero-subtitle" id="page-subtitle">
+                Battle-tested architectural blueprints, deep technical playbooks, and practical insights written for engineers who build for scale.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <main class="container">
+
+        <!-- ============================================== -->
+        <!-- VIEW 1: BOOKS CATALOG (List of Book Tiles)    -->
+        <!-- ============================================== -->
+        <div id="books-list-view">
+            <div class="books-catalog-grid">
+                
+                <!-- Book Tile Item -->
+                <article class="bento book-tile-card" onclick="openBookDetail('crack-android-interview')">
+                    <div class="book-tile-cover-wrapper">
+                        <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
+                    </div>
+
+                    <div class="book-tile-info">
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="chip emerald">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Now on Gumroad
+                            </span>
+                            <span class="chip">FAANG Vault</span>
+                            <span class="chip">Instant Access</span>
+                        </div>
+
+                        <div>
+                            <h2>Cracking the Android FAANG Interview</h2>
+                            <div class="tagline">Modern Architecture • Jetpack Compose • FAANG Vault</div>
+                        </div>
+
+                        <p class="blurb">
+                            The definitive insider masterclass on Android system design, Jetpack Compose internals, Kotlin Coroutines pitfalls, and curated live coding challenges asked at top tech companies.
+                        </p>
+
+                        <div class="book-tile-tags">
+                            <span class="chip" style="font-size:0.7rem;">Kotlin</span>
+                            <span class="chip" style="font-size:0.7rem;">Jetpack Compose</span>
+                            <span class="chip" style="font-size:0.7rem;">System Design</span>
+                            <span class="chip" style="font-size:0.7rem;">Concurrency</span>
+                            <span class="chip" style="font-size:0.7rem;">FAANG Vault</span>
+                        </div>
+
+                        <div class="book-tile-actions" onclick="event.stopPropagation()">
+                            <a href="#crack-android-interview" class="btn-view-details">
+                                View Book Details &amp; Chapters
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Buy on Gumroad
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW 2: BOOK DETAILS & LANDING PAGE            -->
+        <!-- ============================================== -->
+        <div id="book-detail-view" class="view-hidden">
+            
+            <!-- Back Navigation -->
+            <a href="books.html" class="back-link" onclick="goBackToCatalog(event)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                Back to all books
+            </a>
+
+            <!-- Featured Showcase with 3D Mockup -->
+            <section class="featured-book-section">
+                <div class="bento featured-book-card">
+                    
+                    <!-- 3D Book Interactive Mockup -->
+                    <div class="book-mockup-wrapper">
+                        <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="book-3d" id="book-mockup" title="Get Cracking the Android FAANG Interview on Gumroad">
+                            <div class="book-cover">
+                                <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
+                            </div>
+                            <div class="book-spine-pages"></div>
+                            <div class="book-shadow"></div>
+                        </a>
+                    </div>
+
+                    <!-- Book Information & Details -->
+                    <div class="book-details">
+                        <div class="book-meta-row">
+                            <span class="chip emerald">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Published &amp; Ready
+                            </span>
+                            <span class="chip">Gumroad Edition</span>
+                            <span class="chip">Architecture &amp; FAANG Vault</span>
+                            <span class="chip">Instant Download</span>
+                        </div>
+
+                        <div class="book-heading">
+                            <h2>Cracking the Android FAANG Interview</h2>
+                            <div class="tagline">Modern Architecture • Jetpack Compose • FAANG Vault</div>
+                        </div>
+
+                        <p class="book-synopsis">
+                            Distilled from 8+ years of engineering experience and rigorous interviews across top-tier tech companies. This comprehensive guide equips senior and staff Android engineers with battle-tested system design blueprints, Jetpack Compose performance internals, concurrency pitfalls, and high-frequency FAANG interview questions.
+                        </p>
+
+                        <div class="book-highlights">
+                            <div class="highlight-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>FAANG Android System Design frameworks</span>
+                            </div>
+                            <div class="highlight-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Jetpack Compose recomposition &amp; internals</span>
+                            </div>
+                            <div class="highlight-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Coroutines, Flow &amp; threading traps</span>
+                            </div>
+                            <div class="highlight-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Curated FAANG live coding questions &amp; solutions</span>
+                            </div>
+                        </div>
+
+                        <!-- Landing Page Pay Button -->
+                        <div class="book-cta-group">
+                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Buy on Gumroad — Instant Access
+                            </a>
+                            <a href="#curriculum" class="btn-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                View Curriculum
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== CHAPTER BREAKDOWN ===== -->
+            <section id="curriculum">
+                <div class="section-header">
+                    <span class="chip emerald">Curriculum &amp; FAANG Vault</span>
+                    <h2>What's Inside The Book</h2>
+                    <p>Structured around real interview evaluation rubrics used by Meta, Google, Amazon, Uber, and Netflix.</p>
+                </div>
+
+                <div class="chapters-grid">
+                    <!-- Chapter 1 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 01</span>
+                        <h3>Mobile System Design &amp; Architecture Rounds</h3>
+                        <p>End-to-end blueprints for designing Instagram Feed, WhatsApp Messaging, Uber Driver Tracking, and Netflix Offline Video Download on Android.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">System Design</span>
+                            <span class="topic-pill">API Pagination</span>
+                            <span class="topic-pill">Data Layer Caching</span>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 2 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 02</span>
+                        <h3>Jetpack Compose Internals &amp; UI Architecture</h3>
+                        <p>Deep-dive into Slot API design, Snapshot state system, side-effects (LaunchedEffect, rememberCoroutineScope), and debugging unstable recomposition.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">Jetpack Compose</span>
+                            <span class="topic-pill">Stability &amp; Metrics</span>
+                            <span class="topic-pill">Custom Layouts</span>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 3 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 03</span>
+                        <h3>Concurrency, Coroutines &amp; Memory Mastery</h3>
+                        <p>Structured concurrency, CoroutineScope lifecycle bindings, Flow backpressure operators, race condition mitigation, and LeakCanary memory profiling.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">Kotlin Flow</span>
+                            <span class="topic-pill">Thread Safety</span>
+                            <span class="topic-pill">Memory Profiling</span>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 4 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 04</span>
+                        <h3>The FAANG Live Coding Vault</h3>
+                        <p>Common live coding challenges: custom thread-safe LRU cache, diff algorithms, reactive search autocomplete, and asynchronous task coordinators.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">Live Coding</span>
+                            <span class="topic-pill">LRU Cache</span>
+                            <span class="topic-pill">Data Structures</span>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 5 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 05</span>
+                        <h3>Offline-First, Network Resilience &amp; Security</h3>
+                        <p>Room DB encryption with SQLCipher, WorkManager resilient sync heuristics, certificate pinning, biometric cryptography, and battery efficiency.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">WorkManager</span>
+                            <span class="topic-pill">Biometrics</span>
+                            <span class="topic-pill">Cert Pinning</span>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 6 -->
+                    <div class="bento chapter-card">
+                        <span class="chapter-number">Part 06</span>
+                        <h3>Staff Level Leadership &amp; Behavioral Frameworks</h3>
+                        <p>Navigating cross-functional conflict, technical design reviews (RFCs), mentorship metrics, and answering STAR behavioral questions like a Lead.</p>
+                        <div class="chapter-topics">
+                            <span class="topic-pill">STAR Method</span>
+                            <span class="topic-pill">Tech Lead Craft</span>
+                            <span class="topic-pill">RFC Reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TARGET AUDIENCE ===== -->
+            <section class="audience-section">
+                <div class="section-header">
+                    <span class="chip">Target Audience</span>
+                    <h2>Who Is This Book Built For?</h2>
+                    <p>Engineers preparing for Senior, Lead, or Staff Android interviews who want to pass with confidence.</p>
+                </div>
+
+                <div class="audience-grid">
+                    <div class="bento audience-card">
+                        <div class="audience-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3>Senior Android Engineers</h3>
+                        <p>Ace complex system design and live coding rounds. Learn what FAANG interviewers specifically look for in high-signal answers.</p>
+                    </div>
+
+                    <div class="bento audience-card">
+                        <div class="audience-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 22 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h3>Tech Leads &amp; Architects</h3>
+                        <p>Demonstrate architectural maturity, cross-module dependency management, build optimization, and scalable technical vision.</p>
+                    </div>
+
+                    <div class="bento audience-card">
+                        <div class="audience-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        </div>
+                        <h3>Modern Native Developers</h3>
+                        <p>Gain deep conceptual clarity across declarative UI, unidirectional data flows, memory leak diagnostics, and production telemetry.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== GUMROAD PAY BANNER ===== -->
+            <section class="pay-banner">
+                <div class="pay-banner-content">
+                    <span class="chip emerald">Instant Access via Gumroad</span>
+                    <h2>Ready to Land Your Dream Android Role?</h2>
+                    <p>Get immediate access to the full book, code templates, architecture diagrams, and the FAANG interview vault.</p>
+                    
+                    <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        Get the Book on Gumroad
+                    </a>
+                </div>
+            </section>
+
+            <!-- ===== FAQ SECTION ===== -->
+            <section class="faq-section">
+                <div class="section-header">
+                    <span class="chip">Questions</span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Everything you need to know about purchasing, formats, and updates.</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="bento faq-item active" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>How do I access the book after purchasing on Gumroad?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="faq-answer">
+                            Immediately after checkout on Gumroad, you will receive instant download links to the PDF version and companion resources, as well as an email receipt with lifetime access to all future revisions.
+                        </div>
+                    </div>
+
+                    <div class="bento faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Does this book cover both System Design and Coding rounds?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! The book is comprehensively divided into Mobile System Design architectures, Jetpack Compose deep-dives, Kotlin Concurrency pitfalls, and hands-on live coding algorithms commonly asked in FAANG interviews.
+                        </div>
+                    </div>
+
+                    <div class="bento faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Will I receive future updates and errata?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="faq-answer">
+                            Yes. All future updates, added interview questions, and revisions are delivered free of charge directly through your Gumroad library.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                &copy; <span id="currentYear"></span> Rohail Ahmad. Built with precision.
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="blog.html">Blog</a>
+                <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" style="color:#34d399; font-weight:600;">Gumroad Store</a>
+                <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/rrohaill" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPT & ROUTING ===== -->
+    <script>
+        // Set dynamic year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+        }
+
+        // View Routing: Catalog vs Book Detail
+        const listView = document.getElementById('books-list-view');
+        const detailView = document.getElementById('book-detail-view');
+        const pageTitle = document.getElementById('page-title');
+        const pageSubtitle = document.getElementById('page-subtitle');
+
+        function openBookDetail(slug) {
+            window.location.hash = slug;
+        }
+
+        function goBackToCatalog(e) {
+            if (e) e.preventDefault();
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            handleRoute();
+        }
+
+        function handleRoute() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'crack-android-interview') {
+                listView.classList.add('view-hidden');
+                detailView.classList.remove('view-hidden');
+                pageTitle.innerHTML = 'Cracking the <span class="text-emerald">Android FAANG</span> Interview';
+                pageSubtitle.textContent = 'Modern Architecture • Jetpack Compose • FAANG Vault';
+                document.title = 'Cracking the Android FAANG Interview — Rohail Ahmad';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                detailView.classList.add('view-hidden');
+                listView.classList.remove('view-hidden');
+                pageTitle.innerHTML = 'Books &amp; <span class="text-gradient">Publications</span>';
+                pageSubtitle.textContent = 'Battle-tested architectural blueprints, deep technical playbooks, and practical insights written for engineers who build for scale.';
+                document.title = 'Books & Publications — Rohail Ahmad';
+            }
+        }
+
+        window.addEventListener('hashchange', handleRoute);
+        window.addEventListener('DOMContentLoaded', handleRoute);
+        handleRoute();
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        // 3D Tilt Micro-interaction on mouse move
+        const bookCard = document.querySelector('.featured-book-card');
+        const book3d = document.getElementById('book-mockup');
+        if (bookCard && book3d) {
+            bookCard.addEventListener('mousemove', (e) => {
+                const rect = bookCard.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateY = (x / rect.width) * 16 - 10;
+                const rotateX = -(y / rect.height) * 16 + 6;
+                book3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-4px) scale(1.02)`;
+            });
+
+            bookCard.addEventListener('mouseleave', () => {
+                book3d.style.transform = 'rotateY(-18deg) rotateX(10deg)';
+            });
+        }
+    </script>
+</body>
+</html>
