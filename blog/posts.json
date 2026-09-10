@@ -1,5 +1,13 @@
 [
   {
+    "slug": "building-fitbrief",
+    "title": "Building FitBrief: Private, On-Device AI Fitness Summaries with Health Connect & Gemini Nano",
+    "date": "2026-09-10",
+    "excerpt": "How I built FitBrief in Kotlin & Jetpack Compose — turning Health Connect data into private, plain-language fitness summaries using on-device Gemini Nano and LiteRT-LM.",
+    "tags": ["Android", "Kotlin", "Jetpack Compose", "Health Connect", "Gemini Nano", "AI"],
+    "readTime": "6 min"
+  },
+  {
     "slug": "building-pixelsanitizer",
     "title": "Building PixelSanitizer: A Privacy-First Android App for Photo Metadata Removal",
     "date": "2026-08-13",

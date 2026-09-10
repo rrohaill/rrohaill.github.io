@@ -676,6 +676,74 @@
 
         @media (min-width: 768px) {
             .labs-grid { grid-template-columns: repeat(2, 1fr); }
+            .labs-grid .span-2 { grid-column: span 2; }
+        }
+
+        .project-card.fitbrief-featured {
+            background: radial-gradient(120% 120% at 10% 20%, rgba(59, 130, 246, 0.14), rgba(168, 85, 247, 0.08) 60%, transparent 85%), var(--gradient-surface);
+            border-color: rgba(59, 130, 246, 0.35);
+        }
+
+        .project-card.fitbrief-featured:hover {
+            border-color: rgba(96, 165, 250, 0.6);
+            box-shadow: 0 20px 50px -15px rgba(59, 130, 246, 0.25);
+        }
+
+        .fitbrief-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 860px) {
+            .fitbrief-inner {
+                grid-template-columns: 1.25fr 0.95fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .fitbrief-screens {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            padding: 0.5rem;
+        }
+
+        .fitbrief-screen-mockup {
+            max-width: 170px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.85);
+            background: #000;
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .fitbrief-screen-mockup.screen-1 {
+            transform: translateY(0) rotate(-1deg);
+        }
+
+        .fitbrief-screen-mockup.screen-2 {
+            transform: translateY(14px) rotate(1.5deg);
+        }
+
+        .project-card.fitbrief-featured:hover .fitbrief-screen-mockup.screen-1 {
+            transform: translateY(-6px) rotate(-2deg);
+            box-shadow: 0 20px 45px -8px rgba(59, 130, 246, 0.35);
+        }
+
+        .project-card.fitbrief-featured:hover .fitbrief-screen-mockup.screen-2 {
+            transform: translateY(8px) rotate(2deg);
+            box-shadow: 0 20px 45px -8px rgba(168, 85, 247, 0.35);
+        }
+
+        .fitbrief-screen-mockup img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .project-card {
@@ -1207,6 +1275,66 @@
             </div>
 
             <div class="labs-grid">
+                <!-- FitBrief (Featured Span-2) -->
+                <article class="bento project-card fitbrief-featured span-2 animate-on-scroll delay-1">
+                    <div class="fitbrief-inner">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+                                <span class="chip" style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); color: #60a5fa; font-size: 0.75rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    On-Device AI
+                                </span>
+                                <span class="chip" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.35); color: #c084fc; font-size: 0.75rem;">Gemini Nano</span>
+                                <span class="chip" style="font-size: 0.75rem;">Health Connect</span>
+                                <span class="chip" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24; font-size: 0.75rem;">
+                                    Play Store Coming Soon
+                                </span>
+                            </div>
+
+                            <h3 class="featured" style="font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 700; margin-bottom: 0.5rem;">
+                                FitBrief — On-Device AI Fitness Summaries
+                            </h3>
+                            <p class="blurb" style="margin-top: 0.5rem; line-height: 1.7;">
+                                A modern Kotlin &amp; Jetpack Compose Android app that turns Health Connect data into private, plain-language fitness summaries using on-device Generative AI (Gemini Nano &amp; LiteRT-LM). Aggregates steps, distance, active calories, heart-rate zone bands, and sleep sessions—with 100% of biometric data staying strictly on the device.
+                            </p>
+
+                            <div class="project-tags" style="margin-top: 1rem;">
+                                <span class="chip">Kotlin</span>
+                                <span class="chip">Jetpack Compose</span>
+                                <span class="chip">Health Connect</span>
+                                <span class="chip">Gemini Nano</span>
+                                <span class="chip">LiteRT-LM</span>
+                                <span class="chip">WorkManager</span>
+                                <span class="chip">Privacy</span>
+                            </div>
+
+                            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center;">
+                                <a href="https://github.com/rrohaill/FitBrief" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0; font-weight: 700; color: #60a5fa; display: inline-flex; align-items: center; gap: 0.4rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                    View on GitHub
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                                </a>
+                                <a href="blog.html#building-fitbrief" class="cta-link" style="margin-top:0; display: inline-flex; align-items: center; gap: 0.4rem;">
+                                    Build story
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                                </a>
+                                <span class="chip" style="background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); font-size: 0.75rem;">
+                                    Play Store release pending
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="fitbrief-screens">
+                            <div class="fitbrief-screen-mockup screen-1" title="FitBrief Today Dashboard">
+                                <img src="assets/fitbrief/01-dashboard-today.png" alt="FitBrief Today Dashboard with Health Metrics" loading="lazy">
+                            </div>
+                            <div class="fitbrief-screen-mockup screen-2" title="FitBrief AI Activity Timeline">
+                                <img src="assets/fitbrief/02-dashboard-timeline.png" alt="FitBrief AI Activity Timeline and On-Device Summaries" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
                 <!-- PixelSanitizer -->
                 <article class="bento project-card animate-on-scroll delay-1">
                     <h3>PixelSanitizer — Photo Privacy</h3>
