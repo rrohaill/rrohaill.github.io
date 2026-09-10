@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books & Publications — Rohail Ahmad</title>
-    <meta name="description" content="Books and publications by Rohail Ahmad — including Cracking the Android FAANG Interview. Modern architecture, Jetpack Compose, and system design.">
+    <title>Books &amp; Publications — Rohail Ahmad</title>
+    <meta name="description" content="Books and publications by Rohail Ahmad — including Cracking the Android FAANG Interview and My Little Hands Coloring Book.">
     <meta name="author" content="Rohail Ahmad">
-    <meta property="og:title" content="Cracking the Android FAANG Interview — Rohail Ahmad">
-    <meta property="og:description" content="Modern Architecture • Jetpack Compose • FAANG Vault. The ultimate interview preparation book for senior Android engineers.">
+    <meta property="og:title" content="Books &amp; Publications — Rohail Ahmad">
+    <meta property="og:description" content="Technical playbooks, architecture guides, and creative books published by Rohail Ahmad.">
     <meta property="og:image" content="assets/crackandroidinterview-cover.png">
-    <meta property="og:type" content="book">
+    <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="assets/crackandroidinterview-cover.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +64,8 @@
 
             --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
             --gradient-emerald: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+            --gradient-amazon: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #c2410c 100%);
+            --gradient-kids: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
 
             --gradient-surface: linear-gradient(
                 160deg,
@@ -152,6 +154,13 @@
             color: transparent;
         }
 
+        .text-amber {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
         .chip {
             display: inline-flex;
             align-items: center;
@@ -177,6 +186,18 @@
             background: rgba(16, 185, 129, 0.15);
             border-color: rgba(16, 185, 129, 0.35);
             color: #34d399;
+        }
+
+        .chip.amber {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.35);
+            color: #fbbf24;
+        }
+
+        .chip.kids {
+            background: rgba(236, 72, 153, 0.15);
+            border-color: rgba(236, 72, 153, 0.35);
+            color: #f472b6;
         }
 
         .grid-lines {
@@ -220,7 +241,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.75rem;
+            gap: 1.5rem;
         }
 
         .nav-links a {
@@ -245,25 +266,6 @@
             height: 2px;
             background: var(--primary);
             border-radius: 2px;
-        }
-
-        .nav-pay-btn {
-            background: var(--gradient-emerald);
-            color: #ffffff !important;
-            padding: 0.45rem 1rem;
-            border-radius: var(--radius-md);
-            font-weight: 700 !important;
-            font-size: 0.825rem !important;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 14px -3px rgba(16, 185, 129, 0.5);
-            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-        }
-
-        .nav-pay-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px -3px rgba(16, 185, 129, 0.7);
         }
 
         .nav-toggle {
@@ -372,7 +374,9 @@
 
         /* ===== VIEW CONTAINERS ===== */
         #books-list-view,
-        #book-detail-view {
+        #book-detail-view,
+        #detail-crack-android-interview,
+        #detail-my-little-hands {
             transition: opacity 250ms ease, transform 250ms ease;
         }
 
@@ -382,37 +386,56 @@
 
         /* ===== BOOKS CATALOG GRID (List View) ===== */
         .books-catalog-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
             padding-bottom: 5rem;
         }
 
         .book-tile-card {
             display: grid;
-            grid-template-columns: 380px 1fr;
+            grid-template-columns: 360px 1fr;
             gap: 3rem;
             padding: 2.75rem;
             align-items: center;
-            background: radial-gradient(120% 120% at 10% 20%, rgba(16, 185, 129, 0.12), transparent 70%), var(--gradient-surface);
             border-radius: var(--radius-3xl);
-            border: 1px solid rgba(16, 185, 129, 0.35);
+            border: 1px solid var(--border);
             cursor: pointer;
             transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
         }
 
-        .book-tile-card:hover {
+        .book-tile-card.tech-theme {
+            background: radial-gradient(120% 120% at 10% 20%, rgba(16, 185, 129, 0.12), transparent 70%), var(--gradient-surface);
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+
+        .book-tile-card.tech-theme:hover {
             transform: translateY(-4px);
             border-color: rgba(52, 211, 153, 0.6);
             box-shadow: 0 20px 50px -15px rgba(16, 185, 129, 0.3);
         }
 
+        .book-tile-card.kids-theme {
+            background: radial-gradient(120% 120% at 10% 20%, rgba(245, 158, 11, 0.12), rgba(236, 72, 153, 0.08) 50%, transparent 75%), var(--gradient-surface);
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .book-tile-card.kids-theme:hover {
+            transform: translateY(-4px);
+            border-color: rgba(251, 191, 36, 0.6);
+            box-shadow: 0 20px 50px -15px rgba(245, 158, 11, 0.3);
+        }
+
         .book-tile-cover-wrapper {
             border-radius: var(--radius-lg);
             overflow: hidden;
-            border: 1px solid rgba(52, 211, 153, 0.35);
+            border: 1px solid var(--border);
             box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.85);
             transition: transform var(--transition-smooth);
+            background-color: #0b1120;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .book-tile-card:hover .book-tile-cover-wrapper {
@@ -438,7 +461,6 @@
 
         .book-tile-info .tagline {
             font-size: 0.95rem;
-            color: #34d399;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -490,13 +512,21 @@
 
         .featured-book-card {
             display: grid;
-            grid-template-columns: 400px 1fr;
+            grid-template-columns: 380px 1fr;
             gap: 3.5rem;
             padding: 3.5rem;
             align-items: center;
             background: var(--gradient-surface);
             border-radius: var(--radius-3xl);
-            border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--border));
+            border: 1px solid var(--border);
+        }
+
+        .featured-book-card.tech-border {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .featured-book-card.kids-border {
+            border-color: rgba(245, 158, 11, 0.4);
         }
 
         /* 3D BOOK MOCKUP */
@@ -510,12 +540,17 @@
 
         .book-3d {
             position: relative;
-            width: 320px;
+            width: 300px;
             height: 220px;
             transform-style: preserve-3d;
             transform: rotateY(-18deg) rotateX(10deg);
             transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 500ms ease;
             cursor: pointer;
+        }
+
+        .book-3d.kids-ratio {
+            width: 280px;
+            height: 270px;
         }
 
         .book-mockup-wrapper:hover .book-3d {
@@ -527,10 +562,9 @@
             inset: 0;
             border-radius: 8px;
             background-color: #0b1120;
-            border: 1px solid rgba(52, 211, 153, 0.35);
+            border: 1px solid var(--border);
             box-shadow:
-                -15px 20px 40px -10px oklch(0.02 0.02 280 / 0.9),
-                0 0 50px -10px rgba(16, 185, 129, 0.25);
+                -15px 20px 40px -10px oklch(0.02 0.02 280 / 0.9);
             overflow: hidden;
             z-index: 2;
             display: flex;
@@ -616,7 +650,6 @@
 
         .book-heading .tagline {
             font-size: 1.05rem;
-            color: #34d399;
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
@@ -630,7 +663,7 @@
 
         .book-highlights {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.85rem;
             margin: 0.5rem 0;
         }
@@ -646,7 +679,6 @@
         .highlight-item svg {
             width: 18px;
             height: 18px;
-            color: #34d399;
             flex-shrink: 0;
             margin-top: 2px;
         }
@@ -660,12 +692,12 @@
             align-items: center;
         }
 
-        .btn-pay-landing {
+        .btn-pay-emerald {
             display: inline-flex;
             align-items: center;
             gap: 0.65rem;
             background: var(--gradient-emerald);
-            color: #ffffff;
+            color: #ffffff !important;
             padding: 0.9rem 1.8rem;
             border-radius: var(--radius-md);
             font-weight: 700;
@@ -676,10 +708,30 @@
             transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
         }
 
-        .btn-pay-landing:hover {
+        .btn-pay-emerald:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 35px -4px rgba(16, 185, 129, 0.8);
-            color: #ffffff;
+        }
+
+        .btn-pay-amazon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--gradient-amazon);
+            color: #ffffff !important;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 25px -4px rgba(245, 158, 11, 0.6);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .btn-pay-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px -4px rgba(245, 158, 11, 0.8);
         }
 
         .btn-secondary {
@@ -719,14 +771,14 @@
             font-size: 1rem;
         }
 
-        .chapters-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             margin-bottom: 5rem;
         }
 
-        .chapter-card {
+        .feature-card {
             padding: 1.75rem;
             border-radius: var(--radius-xl);
             display: flex;
@@ -734,26 +786,25 @@
             gap: 0.75rem;
         }
 
-        .chapter-number {
+        .feature-number {
             font-size: 0.75rem;
             font-weight: 700;
-            color: #34d399;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
-        .chapter-card h3 {
+        .feature-card h3 {
             font-size: 1.15rem;
             font-weight: 700;
         }
 
-        .chapter-card p {
+        .feature-card p {
             font-size: 0.875rem;
             color: var(--muted-foreground);
             line-height: 1.6;
         }
 
-        .chapter-topics {
+        .feature-topics {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
@@ -768,6 +819,69 @@
             background: color-mix(in oklab, var(--surface) 90%, transparent);
             border: 1px solid var(--border);
             color: var(--muted-foreground);
+        }
+
+        /* ===== SPREAD SHOWCASE BANNER ===== */
+        .spread-showcase-card {
+            padding: 2.5rem;
+            border-radius: var(--radius-3xl);
+            margin-bottom: 5rem;
+            background: var(--gradient-surface);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            text-align: center;
+        }
+
+        .spread-image-wrapper {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 15px 45px -10px rgba(0,0,0,0.85);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            margin: 2rem 0;
+        }
+
+        .spread-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .spread-badges-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        /* ===== SPECS & DETAILS TABLE ===== */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 5rem;
+        }
+
+        .spec-card {
+            padding: 1.5rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            background: color-mix(in oklab, var(--surface) 80%, transparent);
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--foreground);
         }
 
         /* ===== AUDIENCE & TAKEAWAYS ===== */
@@ -793,12 +907,9 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #34d399;
         }
 
         .audience-card h3 {
@@ -811,15 +922,23 @@
             line-height: 1.6;
         }
 
-        /* ===== GUMROAD PAY BANNER ===== */
+        /* ===== PAY BANNER ===== */
         .pay-banner {
             padding: 3.5rem 2.5rem;
             border-radius: var(--radius-2xl);
             text-align: center;
-            background: radial-gradient(120% 120% at 50% 0%, rgba(16, 185, 129, 0.2), transparent 70%), var(--gradient-surface);
             margin-bottom: 5rem;
-            border: 1px solid rgba(16, 185, 129, 0.35);
             box-shadow: var(--shadow-elevated);
+        }
+
+        .pay-banner.tech-banner {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(16, 185, 129, 0.2), transparent 70%), var(--gradient-surface);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .pay-banner.kids-banner {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.1) 60%, transparent 80%), var(--gradient-surface);
+            border: 1px solid rgba(245, 158, 11, 0.35);
         }
 
         .pay-banner-content {
@@ -875,6 +994,10 @@
         .faq-item.active .faq-question svg {
             transform: rotate(180deg);
             color: #34d399;
+        }
+
+        .faq-item.kids-theme.active .faq-question svg {
+            color: #fbbf24;
         }
 
         .faq-answer {
@@ -949,6 +1072,11 @@
                 height: 190px;
             }
 
+            .book-3d.kids-ratio {
+                width: 260px;
+                height: 250px;
+            }
+
             .book-meta-row, .book-cta-group {
                 justify-content: center;
             }
@@ -995,10 +1123,6 @@
                 <a href="books.html" class="active">Books</a>
                 <a href="blog.html">Blog</a>
                 <a href="index.html#contact">Contact</a>
-                <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="nav-pay-btn gumroad-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                    Buy on Gumroad
-                </a>
             </div>
 
             <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu">
@@ -1020,9 +1144,6 @@
             <a href="books.html" class="mobile-nav-link active">Books</a>
             <a href="blog.html" class="mobile-nav-link">Blog</a>
             <a href="index.html#contact" class="mobile-nav-link">Contact</a>
-            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="mobile-nav-link" style="color:#34d399; font-weight:700;">
-                Buy on Gumroad →
-            </a>
         </div>
     </header>
 
@@ -1034,11 +1155,11 @@
         <div class="container books-hero-content">
             <span class="chip primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
-                Author &amp; Technical Publications
+                Author &amp; Publications
             </span>
             <h1 id="page-title">Books &amp; <span class="text-gradient">Publications</span></h1>
             <p class="books-hero-subtitle" id="page-subtitle">
-                Battle-tested architectural blueprints, deep technical playbooks, and practical insights written for engineers who build for scale.
+                Technical engineering playbooks, system design blueprints, and creative publications by Rohail Ahmad.
             </p>
         </div>
     </section>
@@ -1052,8 +1173,8 @@
         <div id="books-list-view">
             <div class="books-catalog-grid">
                 
-                <!-- Book Tile Item -->
-                <article class="bento book-tile-card" onclick="openBookDetail('crack-android-interview')">
+                <!-- Book Tile 1: Cracking the Android FAANG Interview -->
+                <article class="bento book-tile-card tech-theme" onclick="openBookDetail('crack-android-interview')">
                     <div class="book-tile-cover-wrapper">
                         <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
                     </div>
@@ -1062,15 +1183,15 @@
                         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                             <span class="chip emerald">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Now on Gumroad
+                                Available on Gumroad
                             </span>
+                            <span class="chip">Architecture &amp; System Design</span>
                             <span class="chip">FAANG Vault</span>
-                            <span class="chip">Instant Access</span>
                         </div>
 
                         <div>
                             <h2>Cracking the Android FAANG Interview</h2>
-                            <div class="tagline">Modern Architecture • Jetpack Compose • FAANG Vault</div>
+                            <div class="tagline" style="color: #34d399;">Modern Architecture • Jetpack Compose • FAANG Vault</div>
                         </div>
 
                         <p class="blurb">
@@ -1082,7 +1203,7 @@
                             <span class="chip" style="font-size:0.7rem;">Jetpack Compose</span>
                             <span class="chip" style="font-size:0.7rem;">System Design</span>
                             <span class="chip" style="font-size:0.7rem;">Concurrency</span>
-                            <span class="chip" style="font-size:0.7rem;">FAANG Vault</span>
+                            <span class="chip" style="font-size:0.7rem;">Live Coding Vault</span>
                         </div>
 
                         <div class="book-tile-actions" onclick="event.stopPropagation()">
@@ -1090,9 +1211,56 @@
                                 View Book Details &amp; Chapters
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </a>
-                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-emerald gumroad-button" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                                 Buy on Gumroad
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Book Tile 2: My Little Hands Coloring Book -->
+                <article class="bento book-tile-card kids-theme" onclick="openBookDetail('my-little-hands')">
+                    <div class="book-tile-cover-wrapper" style="border-color: rgba(251, 191, 36, 0.4);">
+                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book Cover by Rohail Ahmad">
+                    </div>
+
+                    <div class="book-tile-info">
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="chip amber">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                Now on Amazon
+                            </span>
+                            <span class="chip kids">Ages 1 · 2 · 3</span>
+                            <span class="chip">Paperback Edition</span>
+                            <span class="chip">42 Big Illustrations</span>
+                        </div>
+
+                        <div>
+                            <h2>My Little Hands Coloring Book</h2>
+                            <div class="tagline" style="color: #fbbf24;">Hours of Happy Coloring &amp; First Words for Toddlers</div>
+                        </div>
+
+                        <p class="blurb">
+                            A gentle first coloring book made just for little hands. Every page features one big, simple picture with thick, extra-bold outlines—easy for tiny fingers to color without distractions. Say the words underneath together to build vocabulary and fine-motor confidence.
+                        </p>
+
+                        <div class="book-tile-tags">
+                            <span class="chip" style="font-size:0.7rem;">🖍️ Extra-Bold Lines</span>
+                            <span class="chip" style="font-size:0.7rem;">🗣️ Learn First Words</span>
+                            <span class="chip" style="font-size:0.7rem;">📖 One Picture Per Page</span>
+                            <span class="chip" style="font-size:0.7rem;">🐱 Friendly Animals</span>
+                            <span class="chip" style="font-size:0.7rem;">🍎 Yummy Food</span>
+                        </div>
+
+                        <div class="book-tile-actions" onclick="event.stopPropagation()">
+                            <a href="#my-little-hands" class="btn-view-details">
+                                View Book Details &amp; Sample Pages
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Buy on Amazon
                             </a>
                         </div>
                     </div>
@@ -1102,7 +1270,7 @@
         </div>
 
         <!-- ============================================== -->
-        <!-- VIEW 2: BOOK DETAILS & LANDING PAGE            -->
+        <!-- VIEW 2: BOOK DETAILS & LANDING PAGES           -->
         <!-- ============================================== -->
         <div id="book-detail-view" class="view-hidden">
             
@@ -1112,249 +1280,525 @@
                 Back to all books
             </a>
 
-            <!-- Featured Showcase with 3D Mockup -->
-            <section class="featured-book-section">
-                <div class="bento featured-book-card">
-                    
-                    <!-- 3D Book Interactive Mockup -->
-                    <div class="book-mockup-wrapper">
-                        <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="book-3d" id="book-mockup" title="Get Cracking the Android FAANG Interview on Gumroad">
-                            <div class="book-cover">
-                                <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
+            <!-- ========================================== -->
+            <!-- DETAIL SUBVIEW A: CRACKING ANDROID INTERVIEW -->
+            <!-- ========================================== -->
+            <div id="detail-crack-android-interview" class="view-hidden">
+                <!-- Featured Showcase with 3D Mockup -->
+                <section class="featured-book-section">
+                    <div class="bento featured-book-card tech-border">
+                        
+                        <!-- 3D Book Interactive Mockup -->
+                        <div class="book-mockup-wrapper">
+                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="book-3d" id="book-mockup-tech" title="Get Cracking the Android FAANG Interview on Gumroad">
+                                <div class="book-cover" style="border-color: rgba(52, 211, 153, 0.35); box-shadow: -15px 20px 40px -10px rgba(0,0,0,0.9), 0 0 50px -10px rgba(16, 185, 129, 0.25);">
+                                    <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
+                                </div>
+                                <div class="book-spine-pages"></div>
+                                <div class="book-shadow"></div>
+                            </a>
+                        </div>
+
+                        <!-- Book Information & Details -->
+                        <div class="book-details">
+                            <div class="book-meta-row">
+                                <span class="chip emerald">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Published &amp; Ready
+                                </span>
+                                <span class="chip">Gumroad Edition</span>
+                                <span class="chip">Architecture &amp; FAANG Vault</span>
+                                <span class="chip">Instant Download</span>
                             </div>
-                            <div class="book-spine-pages"></div>
-                            <div class="book-shadow"></div>
+
+                            <div class="book-heading">
+                                <h2>Cracking the Android FAANG Interview</h2>
+                                <div class="tagline" style="color: #34d399;">Modern Architecture • Jetpack Compose • FAANG Vault</div>
+                            </div>
+
+                            <p class="book-synopsis">
+                                Distilled from 8+ years of engineering experience and rigorous interviews across top-tier tech companies. This comprehensive guide equips senior and staff Android engineers with battle-tested system design blueprints, Jetpack Compose performance internals, concurrency pitfalls, and high-frequency FAANG interview questions.
+                            </p>
+
+                            <div class="book-highlights">
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>FAANG Android System Design frameworks</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Jetpack Compose recomposition &amp; internals</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Coroutines, Flow &amp; threading traps</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Curated FAANG live coding questions &amp; solutions</span>
+                                </div>
+                            </div>
+
+                            <!-- Landing Page Pay Button -->
+                            <div class="book-cta-group">
+                                <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-emerald gumroad-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                    Buy on Gumroad — Instant Access
+                                </a>
+                                <a href="#curriculum" class="btn-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                    View Curriculum
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ===== CHAPTER BREAKDOWN ===== -->
+                <section id="curriculum">
+                    <div class="section-header">
+                        <span class="chip emerald">Curriculum &amp; FAANG Vault</span>
+                        <h2>What's Inside The Book</h2>
+                        <p>Structured around real interview evaluation rubrics used by Meta, Google, Amazon, Uber, and Netflix.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <!-- Chapter 1 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 01</span>
+                            <h3>Mobile System Design &amp; Architecture Rounds</h3>
+                            <p>End-to-end blueprints for designing Instagram Feed, WhatsApp Messaging, Uber Driver Tracking, and Netflix Offline Video Download on Android.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">System Design</span>
+                                <span class="topic-pill">API Pagination</span>
+                                <span class="topic-pill">Data Layer Caching</span>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 2 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 02</span>
+                            <h3>Jetpack Compose Internals &amp; UI Architecture</h3>
+                            <p>Deep-dive into Slot API design, Snapshot state system, side-effects (LaunchedEffect, rememberCoroutineScope), and debugging unstable recomposition.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Jetpack Compose</span>
+                                <span class="topic-pill">Stability &amp; Metrics</span>
+                                <span class="topic-pill">Custom Layouts</span>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 3 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 03</span>
+                            <h3>Concurrency, Coroutines &amp; Memory Mastery</h3>
+                            <p>Structured concurrency, CoroutineScope lifecycle bindings, Flow backpressure operators, race condition mitigation, and LeakCanary memory profiling.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Kotlin Flow</span>
+                                <span class="topic-pill">Thread Safety</span>
+                                <span class="topic-pill">Memory Profiling</span>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 4 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 04</span>
+                            <h3>The FAANG Live Coding Vault</h3>
+                            <p>Common live coding challenges: custom thread-safe LRU cache, diff algorithms, reactive search autocomplete, and asynchronous task coordinators.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Live Coding</span>
+                                <span class="topic-pill">LRU Cache</span>
+                                <span class="topic-pill">Data Structures</span>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 5 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 05</span>
+                            <h3>Offline-First, Network Resilience &amp; Security</h3>
+                            <p>Room DB encryption with SQLCipher, WorkManager resilient sync heuristics, certificate pinning, biometric cryptography, and battery efficiency.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">WorkManager</span>
+                                <span class="topic-pill">Biometrics</span>
+                                <span class="topic-pill">Cert Pinning</span>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 6 -->
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #34d399;">Part 06</span>
+                            <h3>Staff Level Leadership &amp; Behavioral Frameworks</h3>
+                            <p>Navigating cross-functional conflict, technical design reviews (RFCs), mentorship metrics, and answering STAR behavioral questions like a Lead.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">STAR Method</span>
+                                <span class="topic-pill">Tech Lead Craft</span>
+                                <span class="topic-pill">RFC Reviews</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== TARGET AUDIENCE ===== -->
+                <section class="audience-section">
+                    <div class="section-header">
+                        <span class="chip">Target Audience</span>
+                        <h2>Who Is This Book Built For?</h2>
+                        <p>Engineers preparing for Senior, Lead, or Staff Android interviews who want to pass with confidence.</p>
+                    </div>
+
+                    <div class="audience-grid">
+                        <div class="bento audience-card">
+                            <div class="audience-icon" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                            <h3>Senior Android Engineers</h3>
+                            <p>Ace complex system design and live coding rounds. Learn what FAANG interviewers specifically look for in high-signal answers.</p>
+                        </div>
+
+                        <div class="bento audience-card">
+                            <div class="audience-icon" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 22 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                            </div>
+                            <h3>Tech Leads &amp; Architects</h3>
+                            <p>Demonstrate architectural maturity, cross-module dependency management, build optimization, and scalable technical vision.</p>
+                        </div>
+
+                        <div class="bento audience-card">
+                            <div class="audience-icon" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            </div>
+                            <h3>Modern Native Developers</h3>
+                            <p>Gain deep conceptual clarity across declarative UI, unidirectional data flows, memory leak diagnostics, and production telemetry.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== GUMROAD PAY BANNER ===== -->
+                <section class="pay-banner tech-banner">
+                    <div class="pay-banner-content">
+                        <span class="chip emerald">Instant Access via Gumroad</span>
+                        <h2>Ready to Land Your Dream Android Role?</h2>
+                        <p>Get immediate access to the full book, code templates, architecture diagrams, and the FAANG interview vault.</p>
+                        
+                        <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-emerald gumroad-button" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                            Get the Book on Gumroad
                         </a>
                     </div>
+                </section>
 
-                    <!-- Book Information & Details -->
-                    <div class="book-details">
-                        <div class="book-meta-row">
-                            <span class="chip emerald">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Published &amp; Ready
-                            </span>
-                            <span class="chip">Gumroad Edition</span>
-                            <span class="chip">Architecture &amp; FAANG Vault</span>
-                            <span class="chip">Instant Download</span>
-                        </div>
+                <!-- ===== FAQ SECTION ===== -->
+                <section class="faq-section">
+                    <div class="section-header">
+                        <span class="chip">Questions</span>
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Everything you need to know about purchasing, formats, and updates.</p>
+                    </div>
 
-                        <div class="book-heading">
-                            <h2>Cracking the Android FAANG Interview</h2>
-                            <div class="tagline">Modern Architecture • Jetpack Compose • FAANG Vault</div>
-                        </div>
-
-                        <p class="book-synopsis">
-                            Distilled from 8+ years of engineering experience and rigorous interviews across top-tier tech companies. This comprehensive guide equips senior and staff Android engineers with battle-tested system design blueprints, Jetpack Compose performance internals, concurrency pitfalls, and high-frequency FAANG interview questions.
-                        </p>
-
-                        <div class="book-highlights">
-                            <div class="highlight-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>FAANG Android System Design frameworks</span>
+                    <div class="faq-container">
+                        <div class="bento faq-item active" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>How do I access the book after purchasing on Gumroad?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                             </div>
-                            <div class="highlight-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Jetpack Compose recomposition &amp; internals</span>
-                            </div>
-                            <div class="highlight-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Coroutines, Flow &amp; threading traps</span>
-                            </div>
-                            <div class="highlight-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Curated FAANG live coding questions &amp; solutions</span>
+                            <div class="faq-answer">
+                                Immediately after checkout on Gumroad, you will receive instant download links to the PDF version and companion resources, as well as an email receipt with lifetime access to all future revisions.
                             </div>
                         </div>
 
-                        <!-- Landing Page Pay Button -->
-                        <div class="book-cta-group">
-                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                Buy on Gumroad — Instant Access
+                        <div class="bento faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Does this book cover both System Design and Coding rounds?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                Yes! The book is comprehensively divided into Mobile System Design architectures, Jetpack Compose deep-dives, Kotlin Concurrency pitfalls, and hands-on live coding algorithms commonly asked in FAANG interviews.
+                            </div>
+                        </div>
+
+                        <div class="bento faq-item" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Will I receive future updates and errata?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                Yes. All future updates, added interview questions, and revisions are delivered free of charge directly through your Gumroad library.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DETAIL SUBVIEW B: MY LITTLE HANDS COLORING BOOK -->
+            <!-- ========================================== -->
+            <div id="detail-my-little-hands" class="view-hidden">
+                <!-- Featured Showcase with 3D Mockup -->
+                <section class="featured-book-section">
+                    <div class="bento featured-book-card kids-border">
+                        
+                        <!-- 3D Book Interactive Mockup -->
+                        <div class="book-mockup-wrapper">
+                            <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="book-3d kids-ratio" id="book-mockup-kids" title="Get My Little Hands Coloring Book on Amazon">
+                                <div class="book-cover" style="border-color: rgba(251, 191, 36, 0.45); box-shadow: -15px 20px 40px -10px rgba(0,0,0,0.9), 0 0 50px -10px rgba(245, 158, 11, 0.3);">
+                                    <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book Cover by Rohail Ahmad">
+                                </div>
+                                <div class="book-spine-pages"></div>
+                                <div class="book-shadow"></div>
                             </a>
-                            <a href="#curriculum" class="btn-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                                View Curriculum
-                            </a>
                         </div>
+
+                        <!-- Book Information & Details -->
+                        <div class="book-details">
+                            <div class="book-meta-row">
+                                <span class="chip amber">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    Available on Amazon
+                                </span>
+                                <span class="chip kids">Ages 1 · 2 · 3</span>
+                                <span class="chip">Amazon Paperback</span>
+                                <span class="chip">Prime Delivery</span>
+                            </div>
+
+                            <div class="book-heading">
+                                <h2>My Little Hands Coloring Book</h2>
+                                <div class="tagline" style="color: #fbbf24;">Hours of Happy Coloring &amp; First Words for Toddlers</div>
+                            </div>
+
+                            <p class="book-synopsis">
+                                A gentle first coloring book made just for little hands. Every page has one big, simple picture with a thick, bold outline — easy for tiny fingers to color and impossible to get lost in. Say the word underneath together, and coloring time becomes first-words time!
+                            </p>
+
+                            <div class="book-highlights">
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>42 familiar pictures:</strong> friendly animals, yummy food, things that go &amp; everyday objects</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Extra-bold lines</strong> that help toddlers stay inside the shape</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>One picture per page</strong> — no clutter, no distractions</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Builds vocabulary</strong>, color recognition &amp; fine-motor skills</span>
+                                </div>
+                            </div>
+
+                            <!-- Landing Page Pay Button -->
+                            <div class="book-cta-group">
+                                <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                    Order on Amazon
+                                </a>
+                                <a href="#spread-preview" class="btn-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                    Look Inside Cover &amp; Spread
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ===== FULL COVER SPREAD SHOWCASE ===== -->
+                <section id="spread-preview" class="bento spread-showcase-card">
+                    <div class="section-header" style="margin-bottom: 1.5rem;">
+                        <span class="chip amber">Look Inside &amp; Cover Spread</span>
+                        <h2>Created for Joy, Discovery &amp; First Words</h2>
+                        <p>Designed with love to give young children a calming, screen-free creative adventure.</p>
                     </div>
 
-                </div>
-            </section>
-
-            <!-- ===== CHAPTER BREAKDOWN ===== -->
-            <section id="curriculum">
-                <div class="section-header">
-                    <span class="chip emerald">Curriculum &amp; FAANG Vault</span>
-                    <h2>What's Inside The Book</h2>
-                    <p>Structured around real interview evaluation rubrics used by Meta, Google, Amazon, Uber, and Netflix.</p>
-                </div>
-
-                <div class="chapters-grid">
-                    <!-- Chapter 1 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 01</span>
-                        <h3>Mobile System Design &amp; Architecture Rounds</h3>
-                        <p>End-to-end blueprints for designing Instagram Feed, WhatsApp Messaging, Uber Driver Tracking, and Netflix Offline Video Download on Android.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">System Design</span>
-                            <span class="topic-pill">API Pagination</span>
-                            <span class="topic-pill">Data Layer Caching</span>
-                        </div>
+                    <div class="spread-image-wrapper">
+                        <img src="assets/mylittlehands-spread.png" alt="My Little Hands Coloring Book Full Cover Spread with Front, Back and Featured Illustrations">
                     </div>
 
-                    <!-- Chapter 2 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 02</span>
-                        <h3>Jetpack Compose Internals &amp; UI Architecture</h3>
-                        <p>Deep-dive into Slot API design, Snapshot state system, side-effects (LaunchedEffect, rememberCoroutineScope), and debugging unstable recomposition.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">Jetpack Compose</span>
-                            <span class="topic-pill">Stability &amp; Metrics</span>
-                            <span class="topic-pill">Custom Layouts</span>
-                        </div>
+                    <div class="spread-badges-row">
+                        <span class="chip" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3);">
+                            ✏️ Extra-bold lines
+                        </span>
+                        <span class="chip" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">
+                            🗣️ Learn first words
+                        </span>
+                        <span class="chip" style="background: rgba(236, 72, 153, 0.15); color: #f472b6; border-color: rgba(236, 72, 153, 0.3);">
+                            📖 One picture per page
+                        </span>
+                        <span class="chip" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+                            👶 Perfect for toddlers ages 1, 2 &amp; 3
+                        </span>
+                    </div>
+                </section>
+
+                <!-- ===== KEY FEATURES & CATEGORIES ===== -->
+                <section>
+                    <div class="section-header">
+                        <span class="chip amber">Why Toddlers &amp; Parents Love It</span>
+                        <h2>What Makes This Coloring Book Special</h2>
+                        <p>Thoughtfully engineered page-by-page to maximize fun and early childhood learning.</p>
                     </div>
 
-                    <!-- Chapter 3 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 03</span>
-                        <h3>Concurrency, Coroutines &amp; Memory Mastery</h3>
-                        <p>Structured concurrency, CoroutineScope lifecycle bindings, Flow backpressure operators, race condition mitigation, and LeakCanary memory profiling.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">Kotlin Flow</span>
-                            <span class="topic-pill">Thread Safety</span>
-                            <span class="topic-pill">Memory Profiling</span>
+                    <div class="features-grid">
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 01</span>
+                            <h3>42 Big &amp; Familiar Toddler Pictures</h3>
+                            <p>Featuring beloved friendly animals (kittens, fish, ducks, butterflies), delicious foods (apples, snacks), vehicles, sun, flowers, balloons and everyday items toddlers recognize immediately.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Animals</span>
+                                <span class="topic-pill">Food</span>
+                                <span class="topic-pill">Everyday Life</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 02</span>
+                            <h3>Thick, Extra-Bold Outlines</h3>
+                            <p>Extra-wide black borders help little hands stay inside shapes easily, giving toddlers a sense of accomplishment and boosting their motor-control confidence.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Tantrum-Free</span>
+                                <span class="topic-pill">Confidence Boost</span>
+                                <span class="topic-pill">Motor Skills</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 03</span>
+                            <h3>First Words &amp; Speech Development</h3>
+                            <p>Each illustration includes a bold word label underneath. Parents and caregivers can read and point aloud, turning fun coloring sessions into interactive language practice.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Early Vocabulary</span>
+                                <span class="topic-pill">Speech Milestones</span>
+                                <span class="topic-pill">Bonding Time</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 04</span>
+                            <h3>One Picture Per Page — Zero Clutter</h3>
+                            <p>Single-sided printing prevents marker bleed-through and eliminates confusing backgrounds so young toddlers can focus entirely on the subject without distractions.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">No Bleed-Through</span>
+                                <span class="topic-pill">Single Sided</span>
+                                <span class="topic-pill">Zero Visual Noise</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 05</span>
+                            <h3>Screen-Free Creative Calm</h3>
+                            <p>The ideal healthy alternative to tablets and phones. Perfect for quiet playtime at home, cozy afternoons, restaurant entertainment, and traveling.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Screen-Free</span>
+                                <span class="topic-pill">Mindful Play</span>
+                                <span class="topic-pill">Travel Friendly</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #fbbf24;">Feature 06</span>
+                            <h3>The Perfect Gift for 1–3 Year Olds</h3>
+                            <p>A wonderful present for first birthdays, toddler holidays, baby showers, preschool classrooms, and daycare starter packs.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Birthday Gift</span>
+                                <span class="topic-pill">Holiday Present</span>
+                                <span class="topic-pill">Preschool</span>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Chapter 4 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 04</span>
-                        <h3>The FAANG Live Coding Vault</h3>
-                        <p>Common live coding challenges: custom thread-safe LRU cache, diff algorithms, reactive search autocomplete, and asynchronous task coordinators.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">Live Coding</span>
-                            <span class="topic-pill">LRU Cache</span>
-                            <span class="topic-pill">Data Structures</span>
-                        </div>
+                <!-- ===== BOOK SPECIFICATIONS ===== -->
+                <section>
+                    <div class="section-header">
+                        <span class="chip">Book Specifications</span>
+                        <h2>Publication &amp; Format Details</h2>
                     </div>
 
-                    <!-- Chapter 5 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 05</span>
-                        <h3>Offline-First, Network Resilience &amp; Security</h3>
-                        <p>Room DB encryption with SQLCipher, WorkManager resilient sync heuristics, certificate pinning, biometric cryptography, and battery efficiency.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">WorkManager</span>
-                            <span class="topic-pill">Biometrics</span>
-                            <span class="topic-pill">Cert Pinning</span>
+                    <div class="specs-grid">
+                        <div class="bento spec-card">
+                            <span class="spec-label">Author</span>
+                            <span class="spec-value">Rohail Ahmad</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Target Age Group</span>
+                            <span class="spec-value">Ages 1, 2 &amp; 3 (Toddlers &amp; Preschool)</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Format</span>
+                            <span class="spec-value">High Quality Paperback</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Illustration Style</span>
+                            <span class="spec-value">Extra-Bold Single-Sided Line Art</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Illustration Count</span>
+                            <span class="spec-value">42 Big &amp; Simple Pictures</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Distribution</span>
+                            <span class="spec-value">Worldwide via Amazon</span>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Chapter 6 -->
-                    <div class="bento chapter-card">
-                        <span class="chapter-number">Part 06</span>
-                        <h3>Staff Level Leadership &amp; Behavioral Frameworks</h3>
-                        <p>Navigating cross-functional conflict, technical design reviews (RFCs), mentorship metrics, and answering STAR behavioral questions like a Lead.</p>
-                        <div class="chapter-topics">
-                            <span class="topic-pill">STAR Method</span>
-                            <span class="topic-pill">Tech Lead Craft</span>
-                            <span class="topic-pill">RFC Reviews</span>
-                        </div>
+                <!-- ===== AMAZON BUY BANNER ===== -->
+                <section class="pay-banner kids-banner">
+                    <div class="pay-banner-content">
+                        <span class="chip amber">Prime Delivery via Amazon</span>
+                        <h2>Give Your Toddler Hours of Joyful Coloring</h2>
+                        <p>Order a physical copy today and start creating unforgettable first-words and coloring memories together.</p>
+                        
+                        <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                            Buy on Amazon — Fast Delivery
+                        </a>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- ===== TARGET AUDIENCE ===== -->
-            <section class="audience-section">
-                <div class="section-header">
-                    <span class="chip">Target Audience</span>
-                    <h2>Who Is This Book Built For?</h2>
-                    <p>Engineers preparing for Senior, Lead, or Staff Android interviews who want to pass with confidence.</p>
-                </div>
-
-                <div class="audience-grid">
-                    <div class="bento audience-card">
-                        <div class="audience-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <h3>Senior Android Engineers</h3>
-                        <p>Ace complex system design and live coding rounds. Learn what FAANG interviewers specifically look for in high-signal answers.</p>
+                <!-- ===== FAQ FOR PARENTS ===== -->
+                <section class="faq-section">
+                    <div class="section-header">
+                        <span class="chip">Parent FAQs</span>
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Helpful info for parents, teachers, and gift buyers.</p>
                     </div>
 
-                    <div class="bento audience-card">
-                        <div class="audience-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 22 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <div class="faq-container">
+                        <div class="bento faq-item kids-theme active" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>What age range is this book best suited for?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                The book is crafted specifically for toddlers aged 1 to 3 years old. The extra-thick outlines and clean single illustrations are easy for small hands to grasp and color with confidence.
+                            </div>
                         </div>
-                        <h3>Tech Leads &amp; Architects</h3>
-                        <p>Demonstrate architectural maturity, cross-module dependency management, build optimization, and scalable technical vision.</p>
-                    </div>
 
-                    <div class="bento audience-card">
-                        <div class="audience-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        <div class="bento faq-item kids-theme" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>What coloring materials work best with this book?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                Jumbo triangular crayons, washable toddler markers, dot markers, and chunky colored pencils all work wonderfully! Because each illustration is on its own page, you can easily color with markers without ruining the next page.
+                            </div>
                         </div>
-                        <h3>Modern Native Developers</h3>
-                        <p>Gain deep conceptual clarity across declarative UI, unidirectional data flows, memory leak diagnostics, and production telemetry.</p>
-                    </div>
-                </div>
-            </section>
 
-            <!-- ===== GUMROAD PAY BANNER ===== -->
-            <section class="pay-banner">
-                <div class="pay-banner-content">
-                    <span class="chip emerald">Instant Access via Gumroad</span>
-                    <h2>Ready to Land Your Dream Android Role?</h2>
-                    <p>Get immediate access to the full book, code templates, architecture diagrams, and the FAANG interview vault.</p>
-                    
-                    <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-landing gumroad-button" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                        Get the Book on Gumroad
-                    </a>
-                </div>
-            </section>
-
-            <!-- ===== FAQ SECTION ===== -->
-            <section class="faq-section">
-                <div class="section-header">
-                    <span class="chip">Questions</span>
-                    <h2>Frequently Asked Questions</h2>
-                    <p>Everything you need to know about purchasing, formats, and updates.</p>
-                </div>
-
-                <div class="faq-container">
-                    <div class="bento faq-item active" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <span>How do I access the book after purchasing on Gumroad?</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                        <div class="faq-answer">
-                            Immediately after checkout on Gumroad, you will receive instant download links to the PDF version and companion resources, as well as an email receipt with lifetime access to all future revisions.
+                        <div class="bento faq-item kids-theme" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>How can I order and how fast is delivery?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                You can order directly on Amazon via <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" style="color:#fbbf24; text-decoration:underline;">mybook.to/MyLittleHands</a>. The link automatically opens your regional Amazon store with Amazon Prime delivery options.
+                            </div>
                         </div>
                     </div>
-
-                    <div class="bento faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <span>Does this book cover both System Design and Coding rounds?</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                        <div class="faq-answer">
-                            Yes! The book is comprehensively divided into Mobile System Design architectures, Jetpack Compose deep-dives, Kotlin Concurrency pitfalls, and hands-on live coding algorithms commonly asked in FAANG interviews.
-                        </div>
-                    </div>
-
-                    <div class="bento faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <span>Will I receive future updates and errata?</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. All future updates, added interview questions, and revisions are delivered free of charge directly through your Gumroad library.
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
         </div>
 
@@ -1371,6 +1815,7 @@
                 <a href="books.html">Books</a>
                 <a href="blog.html">Blog</a>
                 <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" style="color:#34d399; font-weight:600;">Gumroad Store</a>
+                <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" style="color:#fbbf24; font-weight:600;">Amazon Store</a>
                 <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer">GitHub</a>
                 <a href="https://linkedin.com/in/rrohaill" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
@@ -1391,9 +1836,11 @@
             });
         }
 
-        // View Routing: Catalog vs Book Detail
+        // View Routing: Catalog vs Book Details
         const listView = document.getElementById('books-list-view');
         const detailView = document.getElementById('book-detail-view');
+        const techDetail = document.getElementById('detail-crack-android-interview');
+        const kidsDetail = document.getElementById('detail-my-little-hands');
         const pageTitle = document.getElementById('page-title');
         const pageSubtitle = document.getElementById('page-subtitle');
 
@@ -1409,18 +1856,35 @@
 
         function handleRoute() {
             const hash = window.location.hash.replace('#', '');
+            
             if (hash === 'crack-android-interview') {
                 listView.classList.add('view-hidden');
                 detailView.classList.remove('view-hidden');
+                techDetail.classList.remove('view-hidden');
+                kidsDetail.classList.add('view-hidden');
+                
                 pageTitle.innerHTML = 'Cracking the <span class="text-emerald">Android FAANG</span> Interview';
                 pageSubtitle.textContent = 'Modern Architecture • Jetpack Compose • FAANG Vault';
                 document.title = 'Cracking the Android FAANG Interview — Rohail Ahmad';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (hash === 'my-little-hands' || hash === 'mylittlehands') {
+                listView.classList.add('view-hidden');
+                detailView.classList.remove('view-hidden');
+                techDetail.classList.add('view-hidden');
+                kidsDetail.classList.remove('view-hidden');
+                
+                pageTitle.innerHTML = 'My Little Hands <span class="text-amber">Coloring Book</span>';
+                pageSubtitle.textContent = 'Hours of happy coloring & first words for toddlers (Ages 1 · 2 · 3)';
+                document.title = 'My Little Hands Coloring Book — Rohail Ahmad';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 detailView.classList.add('view-hidden');
+                techDetail.classList.add('view-hidden');
+                kidsDetail.classList.add('view-hidden');
                 listView.classList.remove('view-hidden');
+                
                 pageTitle.innerHTML = 'Books &amp; <span class="text-gradient">Publications</span>';
-                pageSubtitle.textContent = 'Battle-tested architectural blueprints, deep technical playbooks, and practical insights written for engineers who build for scale.';
+                pageSubtitle.textContent = 'Technical engineering playbooks, system design blueprints, and creative publications by Rohail Ahmad.';
                 document.title = 'Books & Publications — Rohail Ahmad';
             }
         }
@@ -1432,29 +1896,37 @@
         // FAQ Toggle
         function toggleFaq(element) {
             const isActive = element.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            const parent = element.closest('.faq-container');
+            if (parent) {
+                parent.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            }
             if (!isActive) {
                 element.classList.add('active');
             }
         }
 
         // 3D Tilt Micro-interaction on mouse move
-        const bookCard = document.querySelector('.featured-book-card');
-        const book3d = document.getElementById('book-mockup');
-        if (bookCard && book3d) {
-            bookCard.addEventListener('mousemove', (e) => {
-                const rect = bookCard.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                const rotateY = (x / rect.width) * 16 - 10;
-                const rotateX = -(y / rect.height) * 16 + 6;
-                book3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-4px) scale(1.02)`;
-            });
+        function setup3dTilt(cardSelector, bookSelector) {
+            const card = document.querySelector(cardSelector);
+            const book = document.getElementById(bookSelector);
+            if (card && book) {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const rotateY = (x / rect.width) * 16 - 10;
+                    const rotateX = -(y / rect.height) * 16 + 6;
+                    book.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-4px) scale(1.02)`;
+                });
 
-            bookCard.addEventListener('mouseleave', () => {
-                book3d.style.transform = 'rotateY(-18deg) rotateX(10deg)';
-            });
+                card.addEventListener('mouseleave', () => {
+                    book.style.transform = 'rotateY(-18deg) rotateX(10deg)';
+                });
+            }
         }
+
+        setup3dTilt('.featured-book-card.tech-border', 'book-mockup-tech');
+        setup3dTilt('.featured-book-card.kids-border', 'book-mockup-kids');
     </script>
 </body>
 </html>
