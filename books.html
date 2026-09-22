@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books &amp; Publications — Rohail Ahmad</title>
-    <meta name="description" content="Books and publications by Rohail Ahmad — including Cracking the Android FAANG Interview and My Little Hands Coloring Book.">
+    <meta name="description" content="Books and publications by Rohail Ahmad — including the Little Hands First Coloring Book series (Things That GO! &amp; First Words) and Cracking the Android FAANG Interview.">
     <meta name="author" content="Rohail Ahmad">
     <meta property="og:title" content="Books &amp; Publications — Rohail Ahmad">
-    <meta property="og:description" content="Technical playbooks, architecture guides, and creative books published by Rohail Ahmad.">
+    <meta property="og:description" content="Technical playbooks, architecture guides, and children's book series published by Rohail Ahmad.">
     <meta property="og:image" content="assets/crackandroidinterview-cover.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -65,6 +65,7 @@
             --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
             --gradient-emerald: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
             --gradient-amazon: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #c2410c 100%);
+            --gradient-sky: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
             --gradient-kids: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
 
             --gradient-surface: linear-gradient(
@@ -161,6 +162,13 @@
             color: transparent;
         }
 
+        .text-sky {
+            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
         .chip {
             display: inline-flex;
             align-items: center;
@@ -192,6 +200,12 @@
             background: rgba(245, 158, 11, 0.15);
             border-color: rgba(245, 158, 11, 0.35);
             color: #fbbf24;
+        }
+
+        .chip.sky {
+            background: rgba(14, 165, 233, 0.15);
+            border-color: rgba(14, 165, 233, 0.35);
+            color: #38bdf8;
         }
 
         .chip.kids {
@@ -376,12 +390,30 @@
         #books-list-view,
         #book-detail-view,
         #detail-crack-android-interview,
-        #detail-my-little-hands {
+        #detail-my-little-hands,
+        #detail-things-that-go {
             transition: opacity 250ms ease, transform 250ms ease;
         }
 
         .view-hidden {
             display: none !important;
+        }
+
+        /* ===== SERIES GROUPING HEADER ===== */
+        .series-banner-box {
+            padding: 2rem 2.5rem;
+            border-radius: var(--radius-2xl);
+            background: radial-gradient(120% 120% at 20% 0%, rgba(245, 158, 11, 0.12), rgba(14, 165, 233, 0.08) 50%, transparent 80%), var(--gradient-surface);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .series-banner-box h2 {
+            font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+            font-weight: 800;
         }
 
         /* ===== BOOKS CATALOG GRID (List View) ===== */
@@ -424,6 +456,17 @@
             transform: translateY(-4px);
             border-color: rgba(251, 191, 36, 0.6);
             box-shadow: 0 20px 50px -15px rgba(245, 158, 11, 0.3);
+        }
+
+        .book-tile-card.vehicles-theme {
+            background: radial-gradient(120% 120% at 10% 20%, rgba(14, 165, 233, 0.15), rgba(249, 115, 22, 0.09) 55%, transparent 80%), var(--gradient-surface);
+            border-color: rgba(14, 165, 233, 0.35);
+        }
+
+        .book-tile-card.vehicles-theme:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 20px 50px -15px rgba(14, 165, 233, 0.3);
         }
 
         .book-tile-cover-wrapper {
@@ -527,6 +570,10 @@
 
         .featured-book-card.kids-border {
             border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .featured-book-card.vehicles-border {
+            border-color: rgba(14, 165, 233, 0.4);
         }
 
         /* 3D BOOK MOCKUP */
@@ -734,6 +781,27 @@
             box-shadow: 0 10px 35px -4px rgba(245, 158, 11, 0.8);
         }
 
+        .btn-pay-sky {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--gradient-sky);
+            color: #ffffff !important;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 25px -4px rgba(14, 165, 233, 0.6);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .btn-pay-sky:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px -4px rgba(14, 165, 233, 0.8);
+        }
+
         .btn-secondary {
             display: inline-flex;
             align-items: center;
@@ -831,12 +899,20 @@
             text-align: center;
         }
 
+        .spread-showcase-card.vehicles-spread {
+            border-color: rgba(14, 165, 233, 0.35);
+        }
+
         .spread-image-wrapper {
             border-radius: var(--radius-xl);
             overflow: hidden;
             box-shadow: 0 15px 45px -10px rgba(0,0,0,0.85);
             border: 1px solid rgba(251, 191, 36, 0.3);
             margin: 2rem 0;
+        }
+
+        .spread-image-wrapper.vehicles-border {
+            border-color: rgba(56, 189, 248, 0.35);
         }
 
         .spread-image-wrapper img {
@@ -851,6 +927,32 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-top: 1.5rem;
+        }
+
+        /* ===== SERIES COMPANION CARD ===== */
+        .series-companion-card {
+            padding: 2.25rem;
+            border-radius: var(--radius-2xl);
+            margin-bottom: 5rem;
+            background: radial-gradient(120% 120% at 80% 20%, rgba(14, 165, 233, 0.12), rgba(245, 158, 11, 0.08) 60%, transparent 80%), var(--gradient-surface);
+            border: 1px solid rgba(14, 165, 233, 0.35);
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .companion-cover-thumb {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px -6px rgba(0,0,0,0.8);
+        }
+
+        .companion-cover-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* ===== SPECS & DETAILS TABLE ===== */
@@ -941,6 +1043,11 @@
             border: 1px solid rgba(245, 158, 11, 0.35);
         }
 
+        .pay-banner.vehicles-banner {
+            background: radial-gradient(120% 120% at 50% 0%, rgba(14, 165, 233, 0.22), rgba(249, 115, 22, 0.12) 60%, transparent 80%), var(--gradient-surface);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+        }
+
         .pay-banner-content {
             max-width: 680px;
             margin: 0 auto;
@@ -998,6 +1105,10 @@
 
         .faq-item.kids-theme.active .faq-question svg {
             color: #fbbf24;
+        }
+
+        .faq-item.vehicles-theme.active .faq-question svg {
+            color: #38bdf8;
         }
 
         .faq-answer {
@@ -1061,6 +1172,12 @@
                 gap: 2.5rem;
                 padding: 2.5rem 1.75rem;
                 text-align: center;
+            }
+
+            .series-companion-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                justify-items: center;
             }
 
             .book-mockup-wrapper {
@@ -1159,7 +1276,7 @@
             </span>
             <h1 id="page-title">Books &amp; <span class="text-gradient">Publications</span></h1>
             <p class="books-hero-subtitle" id="page-subtitle">
-                Technical engineering playbooks, system design blueprints, and creative publications by Rohail Ahmad.
+                Technical engineering playbooks, system design blueprints, and children's book series by Rohail Ahmad.
             </p>
         </div>
     </section>
@@ -1171,9 +1288,124 @@
         <!-- VIEW 1: BOOKS CATALOG (List of Book Tiles)    -->
         <!-- ============================================== -->
         <div id="books-list-view">
+
+            <!-- Series Section Header Banner -->
+            <div class="bento series-banner-box">
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                    <span class="chip kids">🎨 Children's Series</span>
+                    <span class="chip amber">Ages 1 · 2 · 3</span>
+                    <span class="chip">Amazon Paperbacks</span>
+                </div>
+                <div>
+                    <h2>"Little hands first coloring book" Series</h2>
+                    <p style="color: var(--muted-foreground); font-size: 0.95rem; margin-top: 0.35rem; line-height: 1.6;">
+                        Gentle, screen-free coloring books designed for tiny hands. Each book features extra-bold lines to help toddlers stay inside shapes, single-sided pages with no distractions, and names underneath every illustration for early vocabulary and first words.
+                    </p>
+                </div>
+            </div>
+
             <div class="books-catalog-grid">
-                
-                <!-- Book Tile 1: Cracking the Android FAANG Interview -->
+
+                <!-- Series Book 1: My Little Hands Coloring Book -->
+                <article class="bento book-tile-card kids-theme" onclick="openBookDetail('my-little-hands')">
+                    <div class="book-tile-cover-wrapper" style="border-color: rgba(251, 191, 36, 0.4);">
+                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book Cover by Rohail Ahmad">
+                    </div>
+
+                    <div class="book-tile-info">
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="chip amber">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                Series · Book 1
+                            </span>
+                            <span class="chip kids">Ages 1 · 2 · 3</span>
+                            <span class="chip">Amazon Paperback</span>
+                            <span class="chip">42 Big Illustrations</span>
+                        </div>
+
+                        <div>
+                            <h2>My Little Hands Coloring Book</h2>
+                            <div class="tagline" style="color: #fbbf24;">Book 1 · Hours of Happy Coloring &amp; First Words for Toddlers</div>
+                        </div>
+
+                        <p class="blurb">
+                            A gentle first coloring book made just for little hands. Every page features one big, simple picture with thick, extra-bold outlines—easy for tiny fingers to color without distractions. Say the words underneath together to build vocabulary and fine-motor confidence.
+                        </p>
+
+                        <div class="book-tile-tags">
+                            <span class="chip" style="font-size:0.7rem;">🖍️ Extra-Bold Lines</span>
+                            <span class="chip" style="font-size:0.7rem;">🗣️ Learn First Words</span>
+                            <span class="chip" style="font-size:0.7rem;">📖 One Picture Per Page</span>
+                            <span class="chip" style="font-size:0.7rem;">🐱 Friendly Animals</span>
+                            <span class="chip" style="font-size:0.7rem;">🍎 Yummy Food</span>
+                        </div>
+
+                        <div class="book-tile-actions" onclick="event.stopPropagation()">
+                            <a href="#my-little-hands" class="btn-view-details">
+                                View Book Details &amp; Sample Pages
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Series Book 2: Things That GO! -->
+                <article class="bento book-tile-card vehicles-theme" onclick="openBookDetail('things-that-go')">
+                    <div class="book-tile-cover-wrapper" style="border-color: rgba(56, 189, 248, 0.4);">
+                        <img src="assets/thingsthatgo-cover.png" alt="Things That GO! Coloring Book Cover by Rohail Ahmad">
+                    </div>
+
+                    <div class="book-tile-info">
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="chip sky">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                Series · Book 2
+                            </span>
+                            <span class="chip kids">Ages 1 · 2 · 3</span>
+                            <span class="chip">Amazon Paperback</span>
+                            <span class="chip">40 Big Vehicles</span>
+                        </div>
+
+                        <div>
+                            <h2>Things That GO! — My Little Hands</h2>
+                            <div class="tagline" style="color: #38bdf8;">Book 2 · Vroom into Coloring &amp; First Words for Toddlers</div>
+                        </div>
+
+                        <p class="blurb">
+                            A first coloring book for little ones who love things that go! Every page has one big vehicle with a thick, bold outline—easy for tiny fingers to color—and its name underneath, so coloring time turns into first-words time. 40 cars, trucks, diggers, trains &amp; planes.
+                        </p>
+
+                        <div class="book-tile-tags">
+                            <span class="chip" style="font-size:0.7rem;">🖍️ Extra-Bold Lines</span>
+                            <span class="chip" style="font-size:0.7rem;">🗣️ Learn First Words</span>
+                            <span class="chip" style="font-size:0.7rem;">🚜 40 Vehicles</span>
+                            <span class="chip" style="font-size:0.7rem;">🚒 Fire Trucks &amp; Diggers</span>
+                            <span class="chip" style="font-size:0.7rem;">✈️ Planes &amp; Boats</span>
+                        </div>
+
+                        <div class="book-tile-actions" onclick="event.stopPropagation()">
+                            <a href="#things-that-go" class="btn-view-details">
+                                View Book Details &amp; Sample Pages
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" class="btn-pay-sky" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                Buy on Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Technical Section Divider -->
+                <div style="margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                    <span class="chip primary" style="margin-bottom: 1.25rem;">Technical Playbooks &amp; Guides</span>
+                </div>
+
+                <!-- Book Tile 3: Cracking the Android FAANG Interview -->
                 <article class="bento book-tile-card tech-theme" onclick="openBookDetail('crack-android-interview')">
                     <div class="book-tile-cover-wrapper">
                         <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview Cover">
@@ -1214,53 +1446,6 @@
                             <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-pay-emerald gumroad-button" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                                 Buy on Gumroad
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Book Tile 2: My Little Hands Coloring Book -->
-                <article class="bento book-tile-card kids-theme" onclick="openBookDetail('my-little-hands')">
-                    <div class="book-tile-cover-wrapper" style="border-color: rgba(251, 191, 36, 0.4);">
-                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book Cover by Rohail Ahmad">
-                    </div>
-
-                    <div class="book-tile-info">
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="chip amber">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                Now on Amazon
-                            </span>
-                            <span class="chip kids">Ages 1 · 2 · 3</span>
-                            <span class="chip">Paperback Edition</span>
-                            <span class="chip">42 Big Illustrations</span>
-                        </div>
-
-                        <div>
-                            <h2>My Little Hands Coloring Book</h2>
-                            <div class="tagline" style="color: #fbbf24;">Hours of Happy Coloring &amp; First Words for Toddlers</div>
-                        </div>
-
-                        <p class="blurb">
-                            A gentle first coloring book made just for little hands. Every page features one big, simple picture with thick, extra-bold outlines—easy for tiny fingers to color without distractions. Say the words underneath together to build vocabulary and fine-motor confidence.
-                        </p>
-
-                        <div class="book-tile-tags">
-                            <span class="chip" style="font-size:0.7rem;">🖍️ Extra-Bold Lines</span>
-                            <span class="chip" style="font-size:0.7rem;">🗣️ Learn First Words</span>
-                            <span class="chip" style="font-size:0.7rem;">📖 One Picture Per Page</span>
-                            <span class="chip" style="font-size:0.7rem;">🐱 Friendly Animals</span>
-                            <span class="chip" style="font-size:0.7rem;">🍎 Yummy Food</span>
-                        </div>
-
-                        <div class="book-tile-actions" onclick="event.stopPropagation()">
-                            <a href="#my-little-hands" class="btn-view-details">
-                                View Book Details &amp; Sample Pages
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </a>
-                            <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                Buy on Amazon
                             </a>
                         </div>
                     </div>
@@ -1364,7 +1549,6 @@
                     </div>
 
                     <div class="features-grid">
-                        <!-- Chapter 1 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 01</span>
                             <h3>Mobile System Design &amp; Architecture Rounds</h3>
@@ -1376,7 +1560,6 @@
                             </div>
                         </div>
 
-                        <!-- Chapter 2 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 02</span>
                             <h3>Jetpack Compose Internals &amp; UI Architecture</h3>
@@ -1388,7 +1571,6 @@
                             </div>
                         </div>
 
-                        <!-- Chapter 3 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 03</span>
                             <h3>Concurrency, Coroutines &amp; Memory Mastery</h3>
@@ -1400,7 +1582,6 @@
                             </div>
                         </div>
 
-                        <!-- Chapter 4 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 04</span>
                             <h3>The FAANG Live Coding Vault</h3>
@@ -1412,7 +1593,6 @@
                             </div>
                         </div>
 
-                        <!-- Chapter 5 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 05</span>
                             <h3>Offline-First, Network Resilience &amp; Security</h3>
@@ -1424,7 +1604,6 @@
                             </div>
                         </div>
 
-                        <!-- Chapter 6 -->
                         <div class="bento feature-card">
                             <span class="feature-number" style="color: #34d399;">Part 06</span>
                             <h3>Staff Level Leadership &amp; Behavioral Frameworks</h3>
@@ -1530,7 +1709,7 @@
             </div>
 
             <!-- ========================================== -->
-            <!-- DETAIL SUBVIEW B: MY LITTLE HANDS COLORING BOOK -->
+            <!-- DETAIL SUBVIEW B: SERIES BOOK 1 - FIRST WORDS -->
             <!-- ========================================== -->
             <div id="detail-my-little-hands" class="view-hidden">
                 <!-- Featured Showcase with 3D Mockup -->
@@ -1553,7 +1732,7 @@
                             <div class="book-meta-row">
                                 <span class="chip amber">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                    Available on Amazon
+                                    Little Hands First Coloring Book · Book 1
                                 </span>
                                 <span class="chip kids">Ages 1 · 2 · 3</span>
                                 <span class="chip">Amazon Paperback</span>
@@ -1562,7 +1741,7 @@
 
                             <div class="book-heading">
                                 <h2>My Little Hands Coloring Book</h2>
-                                <div class="tagline" style="color: #fbbf24;">Hours of Happy Coloring &amp; First Words for Toddlers</div>
+                                <div class="tagline" style="color: #fbbf24;">Book 1 · Hours of Happy Coloring &amp; First Words for Toddlers</div>
                             </div>
 
                             <p class="book-synopsis">
@@ -1594,13 +1773,32 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                                     Order on Amazon
                                 </a>
-                                <a href="#spread-preview" class="btn-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                                    Look Inside Cover &amp; Spread
+                                <a href="#things-that-go" class="btn-secondary" onclick="openBookDetail('things-that-go')">
+                                    <span>Explore Book 2: Things That GO! →</span>
                                 </a>
                             </div>
                         </div>
 
+                    </div>
+                </section>
+
+                <!-- ===== SERIES COMPANION BANNER ===== -->
+                <section class="bento series-companion-card">
+                    <div class="companion-cover-thumb">
+                        <img src="assets/thingsthatgo-cover.png" alt="Things That GO! Coloring Book Cover">
+                    </div>
+                    <div>
+                        <span class="chip sky" style="font-size: 0.75rem; margin-bottom: 0.4rem;">Next in the Series · Book 2</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem;">Things That GO! — My Little Hands</h3>
+                        <p style="color: var(--muted-foreground); font-size: 0.9rem; line-height: 1.55;">
+                            Love vehicles? Explore Book 2 with 40 big cars, trucks, diggers, fire engines, trains, planes and rockets for vehicle-mad toddlers.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#things-that-go" class="btn-view-details" onclick="openBookDetail('things-that-go')">
+                            View Book 2
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
                     </div>
                 </section>
 
@@ -1718,6 +1916,10 @@
 
                     <div class="specs-grid">
                         <div class="bento spec-card">
+                            <span class="spec-label">Series</span>
+                            <span class="spec-value">Little Hands First Coloring Book (Book 1)</span>
+                        </div>
+                        <div class="bento spec-card">
                             <span class="spec-label">Author</span>
                             <span class="spec-value">Rohail Ahmad</span>
                         </div>
@@ -1728,10 +1930,6 @@
                         <div class="bento spec-card">
                             <span class="spec-label">Format</span>
                             <span class="spec-value">High Quality Paperback</span>
-                        </div>
-                        <div class="bento spec-card">
-                            <span class="spec-label">Illustration Style</span>
-                            <span class="spec-value">Extra-Bold Single-Sided Line Art</span>
                         </div>
                         <div class="bento spec-card">
                             <span class="spec-label">Illustration Count</span>
@@ -1749,11 +1947,11 @@
                     <div class="pay-banner-content">
                         <span class="chip amber">Prime Delivery via Amazon</span>
                         <h2>Give Your Toddler Hours of Joyful Coloring</h2>
-                        <p>Order a physical copy today and start creating unforgettable first-words and coloring memories together.</p>
+                        <p>Order Book 1 today and start creating unforgettable first-words and coloring memories together.</p>
                         
                         <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-pay-amazon" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                            Buy on Amazon — Fast Delivery
+                            Buy Book 1 on Amazon — Fast Delivery
                         </a>
                     </div>
                 </section>
@@ -1800,6 +1998,296 @@
                 </section>
             </div>
 
+            <!-- ========================================== -->
+            <!-- DETAIL SUBVIEW C: SERIES BOOK 2 - THINGS THAT GO -->
+            <!-- ========================================== -->
+            <div id="detail-things-that-go" class="view-hidden">
+                <!-- Featured Showcase with 3D Mockup -->
+                <section class="featured-book-section">
+                    <div class="bento featured-book-card vehicles-border">
+                        
+                        <!-- 3D Book Interactive Mockup -->
+                        <div class="book-mockup-wrapper">
+                            <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" class="book-3d kids-ratio" id="book-mockup-vehicles" title="Get Things That GO! on Amazon">
+                                <div class="book-cover" style="border-color: rgba(56, 189, 248, 0.45); box-shadow: -15px 20px 40px -10px rgba(0,0,0,0.9), 0 0 50px -10px rgba(14, 165, 233, 0.3);">
+                                    <img src="assets/thingsthatgo-cover.png" alt="Things That GO! Coloring Book Cover by Rohail Ahmad">
+                                </div>
+                                <div class="book-spine-pages"></div>
+                                <div class="book-shadow"></div>
+                            </a>
+                        </div>
+
+                        <!-- Book Information & Details -->
+                        <div class="book-details">
+                            <div class="book-meta-row">
+                                <span class="chip sky">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    Little Hands First Coloring Book · Book 2
+                                </span>
+                                <span class="chip kids">Ages 1 · 2 · 3</span>
+                                <span class="chip">Amazon Paperback</span>
+                                <span class="chip">40 Big Vehicles</span>
+                            </div>
+
+                            <div class="book-heading">
+                                <h2>Things That GO! — My Little Hands</h2>
+                                <div class="tagline" style="color: #38bdf8;">Book 2 · Vroom into Coloring &amp; First Words for Toddlers</div>
+                            </div>
+
+                            <p class="book-synopsis">
+                                A first coloring book for little ones who love things that go! Every page has one big vehicle with a thick, bold outline — easy for tiny fingers to color — and its name underneath, so coloring time turns into first-words time. Packed with 40 favorite vehicles from fire trucks to rockets.
+                            </p>
+
+                            <div class="book-highlights">
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>40 favorite vehicles:</strong> cars, trucks, diggers, fire trucks, trains, boats, planes, rockets &amp; more</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Extra-bold lines</strong> that help toddlers stay inside the shape</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>One vehicle per page</strong> — no clutter, no distractions</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Builds vocabulary</strong>, color recognition &amp; fine-motor skills</span>
+                                </div>
+                            </div>
+
+                            <!-- Landing Page Pay Button -->
+                            <div class="book-cta-group">
+                                <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" class="btn-pay-sky">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                    Order on Amazon
+                                </a>
+                                <a href="#my-little-hands" class="btn-secondary" onclick="openBookDetail('my-little-hands')">
+                                    <span>← View Book 1 in Series</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ===== SERIES COMPANION BANNER ===== -->
+                <section class="bento series-companion-card" style="background: radial-gradient(120% 120% at 80% 20%, rgba(245, 158, 11, 0.12), rgba(236, 72, 153, 0.08) 60%, transparent 80%), var(--gradient-surface); border-color: rgba(245, 158, 11, 0.35);">
+                    <div class="companion-cover-thumb">
+                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book Cover">
+                    </div>
+                    <div>
+                        <span class="chip amber" style="font-size: 0.75rem; margin-bottom: 0.4rem;">Part of Series · Book 1</span>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem;">My Little Hands Coloring Book</h3>
+                        <p style="color: var(--muted-foreground); font-size: 0.9rem; line-height: 1.55;">
+                            Start the series with Book 1! 42 familiar pictures of friendly animals, yummy food, and everyday objects with extra-bold lines.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#my-little-hands" class="btn-view-details" onclick="openBookDetail('my-little-hands')">
+                            View Book 1
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- ===== FULL COVER SPREAD SHOWCASE ===== -->
+                <section id="spread-preview-vehicles" class="bento spread-showcase-card vehicles-spread">
+                    <div class="section-header" style="margin-bottom: 1.5rem;">
+                        <span class="chip sky">Look Inside &amp; Cover Spread</span>
+                        <h2>Vroom Into Coloring &amp; First Words</h2>
+                        <p>Perfect for vehicle-mad toddlers who love cars, construction trucks, trains, planes and rockets.</p>
+                    </div>
+
+                    <div class="spread-image-wrapper vehicles-border">
+                        <img src="assets/thingsthatgo-spread.png" alt="Things That GO! Coloring Book Full Cover Spread with Front and Back Cover">
+                    </div>
+
+                    <div class="spread-badges-row">
+                        <span class="chip" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8; border-color: rgba(14, 165, 233, 0.3);">
+                            ✏️ Extra-bold lines
+                        </span>
+                        <span class="chip" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border-color: rgba(249, 115, 22, 0.3);">
+                            🗣️ First words
+                        </span>
+                        <span class="chip" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">
+                            🚜 40 vehicles
+                        </span>
+                        <span class="chip" style="background: rgba(236, 72, 153, 0.15); color: #f472b6; border-color: rgba(236, 72, 153, 0.3);">
+                            👶 Perfect for toddlers ages 1, 2 &amp; 3
+                        </span>
+                    </div>
+                </section>
+
+                <!-- ===== KEY FEATURES & VEHICLE CATEGORIES ===== -->
+                <section>
+                    <div class="section-header">
+                        <span class="chip sky">Vehicle Categories Inside</span>
+                        <h2>40 Favorite Vehicles to Color &amp; Learn</h2>
+                        <p>Carefully selected to spark excitement, build vocabulary, and encourage imaginative play.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 01</span>
+                            <h3>Cars, Taxis &amp; City Cruisers</h3>
+                            <p>Classic cars, city taxis, delivery vans, and everyday vehicles that toddlers see when out on walks with mom and dad.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Cars</span>
+                                <span class="topic-pill">Taxis</span>
+                                <span class="topic-pill">City Life</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 02</span>
+                            <h3>Fire Trucks, Police &amp; Rescuers</h3>
+                            <p>Big fire engines with rescue ladders, hospital ambulances, and hero emergency vehicles with bold siren outlines.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Fire Trucks</span>
+                                <span class="topic-pill">Emergency</span>
+                                <span class="topic-pill">Heroes</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 03</span>
+                            <h3>Diggers, Dump Trucks &amp; Bulldozers</h3>
+                            <p>Heavy machinery loved by toddlers! Excavators scooping dirt, dump trucks tipping rocks, bulldozers and farm tractors.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Excavators</span>
+                                <span class="topic-pill">Tractors</span>
+                                <span class="topic-pill">Construction</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 04</span>
+                            <h3>Trains, Tracks &amp; Locomotives</h3>
+                            <p>Steam engines, freight cars, high-speed passenger trains, and cabooses riding along clickety-clack railway lines.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Choo Choo</span>
+                                <span class="topic-pill">Railroads</span>
+                                <span class="topic-pill">Engines</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 05</span>
+                            <h3>Planes, Helicopters &amp; Space Rockets</h3>
+                            <p>Airplanes gliding through clouds, whirly-bird helicopters with big rotors, and tall space rockets blasting off to the stars.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Airplanes</span>
+                                <span class="topic-pill">Helicopters</span>
+                                <span class="topic-pill">Rockets</span>
+                            </div>
+                        </div>
+
+                        <div class="bento feature-card">
+                            <span class="feature-number" style="color: #38bdf8;">Category 06</span>
+                            <h3>Boats, Ships &amp; Ocean Sailing</h3>
+                            <p>Breezy sailboats, sturdy tugboats, ferry boats and majestic ships sailing across calm blue waters.</p>
+                            <div class="feature-topics">
+                                <span class="topic-pill">Sailboats</span>
+                                <span class="topic-pill">Tugboats</span>
+                                <span class="topic-pill">Water Life</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== BOOK SPECIFICATIONS ===== -->
+                <section>
+                    <div class="section-header">
+                        <span class="chip">Book Specifications</span>
+                        <h2>Publication &amp; Format Details</h2>
+                    </div>
+
+                    <div class="specs-grid">
+                        <div class="bento spec-card">
+                            <span class="spec-label">Series</span>
+                            <span class="spec-value">Little Hands First Coloring Book (Book 2)</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Author</span>
+                            <span class="spec-value">Rohail Ahmad</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Target Age Group</span>
+                            <span class="spec-value">Ages 1, 2 &amp; 3 (Toddlers &amp; Preschool)</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Format</span>
+                            <span class="spec-value">High Quality Paperback</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Vehicle Count</span>
+                            <span class="spec-value">40 Favorite Vehicles</span>
+                        </div>
+                        <div class="bento spec-card">
+                            <span class="spec-label">Distribution</span>
+                            <span class="spec-value">Worldwide via Amazon</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== AMAZON BUY BANNER ===== -->
+                <section class="pay-banner vehicles-banner">
+                    <div class="pay-banner-content">
+                        <span class="chip sky">Prime Delivery via Amazon</span>
+                        <h2>Give Your Little Vehicle Fan Hours of Joy</h2>
+                        <p>Order Book 2 on Amazon today and enjoy hours of creative coloring and first-words fun together.</p>
+                        
+                        <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" class="btn-pay-sky" style="font-size: 1.15rem; padding: 1rem 2.2rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                            Buy Book 2 on Amazon — Fast Delivery
+                        </a>
+                    </div>
+                </section>
+
+                <!-- ===== FAQ FOR PARENTS ===== -->
+                <section class="faq-section">
+                    <div class="section-header">
+                        <span class="chip">Parent FAQs</span>
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Helpful info for parents, teachers, and gift buyers.</p>
+                    </div>
+
+                    <div class="faq-container">
+                        <div class="bento faq-item vehicles-theme active" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>How does Book 2 fit with Book 1 in the series?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                Both books are part of the "Little hands first coloring book" series! Book 1 introduces 42 general first words and familiar objects (animals, food, home items), while Book 2 focuses specifically on 40 exciting vehicles that toddlers love (cars, diggers, fire trucks, planes, and boats). Both share the same toddler-tested extra-bold outlines and single-sided layout.
+                            </div>
+                        </div>
+
+                        <div class="bento faq-item vehicles-theme" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Are pages printed on both sides or single-sided?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                Every single illustration is printed on its own separate page (one picture per page). This completely prevents bleed-through from markers, dot pens, or crayons onto the next drawing.
+                            </div>
+                        </div>
+
+                        <div class="bento faq-item vehicles-theme" onclick="toggleFaq(this)">
+                            <div class="faq-question">
+                                <span>Where can I buy the book?</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="faq-answer">
+                                The book is available worldwide on Amazon via <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" style="color:#38bdf8; text-decoration:underline;">Amazon.com/dp/B0HJVW4Q3Y</a> with fast Prime delivery options in your region.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
         </div>
 
     </main>
@@ -1815,7 +2303,8 @@
                 <a href="books.html">Books</a>
                 <a href="blog.html">Blog</a>
                 <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" style="color:#34d399; font-weight:600;">Gumroad Store</a>
-                <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" style="color:#fbbf24; font-weight:600;">Amazon Store</a>
+                <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" style="color:#fbbf24; font-weight:600;">Book 1 Amazon</a>
+                <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" style="color:#38bdf8; font-weight:600;">Book 2 Amazon</a>
                 <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer">GitHub</a>
                 <a href="https://linkedin.com/in/rrohaill" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
@@ -1841,6 +2330,7 @@
         const detailView = document.getElementById('book-detail-view');
         const techDetail = document.getElementById('detail-crack-android-interview');
         const kidsDetail = document.getElementById('detail-my-little-hands');
+        const vehiclesDetail = document.getElementById('detail-things-that-go');
         const pageTitle = document.getElementById('page-title');
         const pageSubtitle = document.getElementById('page-subtitle');
 
@@ -1862,6 +2352,7 @@
                 detailView.classList.remove('view-hidden');
                 techDetail.classList.remove('view-hidden');
                 kidsDetail.classList.add('view-hidden');
+                vehiclesDetail.classList.add('view-hidden');
                 
                 pageTitle.innerHTML = 'Cracking the <span class="text-emerald">Android FAANG</span> Interview';
                 pageSubtitle.textContent = 'Modern Architecture • Jetpack Compose • FAANG Vault';
@@ -1872,19 +2363,32 @@
                 detailView.classList.remove('view-hidden');
                 techDetail.classList.add('view-hidden');
                 kidsDetail.classList.remove('view-hidden');
+                vehiclesDetail.classList.add('view-hidden');
                 
                 pageTitle.innerHTML = 'My Little Hands <span class="text-amber">Coloring Book</span>';
-                pageSubtitle.textContent = 'Hours of happy coloring & first words for toddlers (Ages 1 · 2 · 3)';
-                document.title = 'My Little Hands Coloring Book — Rohail Ahmad';
+                pageSubtitle.textContent = 'Book 1 in the "Little hands first coloring book" Series · Ages 1 · 2 · 3';
+                document.title = 'My Little Hands Coloring Book (Book 1) — Rohail Ahmad';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (hash === 'things-that-go' || hash === 'thingsthatgo') {
+                listView.classList.add('view-hidden');
+                detailView.classList.remove('view-hidden');
+                techDetail.classList.add('view-hidden');
+                kidsDetail.classList.add('view-hidden');
+                vehiclesDetail.classList.remove('view-hidden');
+                
+                pageTitle.innerHTML = 'Things That <span class="text-sky">GO!</span>';
+                pageSubtitle.textContent = 'Book 2 in the "Little hands first coloring book" Series · Ages 1 · 2 · 3';
+                document.title = 'Things That GO! Coloring Book (Book 2) — Rohail Ahmad';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 detailView.classList.add('view-hidden');
                 techDetail.classList.add('view-hidden');
                 kidsDetail.classList.add('view-hidden');
+                vehiclesDetail.classList.add('view-hidden');
                 listView.classList.remove('view-hidden');
                 
                 pageTitle.innerHTML = 'Books &amp; <span class="text-gradient">Publications</span>';
-                pageSubtitle.textContent = 'Technical engineering playbooks, system design blueprints, and creative publications by Rohail Ahmad.';
+                pageSubtitle.textContent = 'Technical engineering playbooks, system design blueprints, and children\'s book series by Rohail Ahmad.';
                 document.title = 'Books & Publications — Rohail Ahmad';
             }
         }
@@ -1927,6 +2431,7 @@
 
         setup3dTilt('.featured-book-card.tech-border', 'book-mockup-tech');
         setup3dTilt('.featured-book-card.kids-border', 'book-mockup-kids');
+        setup3dTilt('.featured-book-card.vehicles-border', 'book-mockup-vehicles');
     </script>
 </body>
 </html>
