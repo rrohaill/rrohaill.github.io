@@ -875,6 +875,173 @@
 
         .footer-inner .quote { font-style: italic; }
 
+        /* ===== BOOKS SPOTLIGHT CARD ===== */
+        .books-spotlight-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2.25rem 2rem;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(100% 120% at 10% 20%, rgba(16, 185, 129, 0.12), rgba(245, 158, 11, 0.08) 50%, rgba(14, 165, 233, 0.08) 80%, transparent),
+                var(--gradient-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-2xl);
+            transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+
+        .books-spotlight-card:hover {
+            transform: translateY(-4px);
+            border-color: color-mix(in oklab, var(--primary) 50%, transparent);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (min-width: 920px) {
+            .books-spotlight-card {
+                grid-template-columns: 1.25fr 1fr;
+                padding: 2.5rem 3rem;
+                gap: 2.5rem;
+            }
+        }
+
+        .books-spotlight-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            z-index: 2;
+        }
+
+        .books-spotlight-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .books-spotlight-title {
+            font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--foreground);
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .books-spotlight-desc {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .books-spotlight-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-soft);
+            margin-top: 0.5rem;
+            transition: gap var(--transition-smooth), color var(--transition-smooth);
+        }
+
+        .books-spotlight-card:hover .books-spotlight-cta {
+            gap: 0.75rem;
+            color: var(--foreground);
+        }
+
+        .books-spotlight-cta svg {
+            transition: transform var(--transition-smooth);
+        }
+
+        .books-spotlight-card:hover .books-spotlight-cta svg {
+            transform: translateX(4px);
+        }
+
+        /* Overlapping Mini Book Covers Fan */
+        .books-spotlight-covers {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 190px;
+            perspective: 1000px;
+        }
+
+        .mini-cover {
+            position: absolute;
+            width: 120px;
+            height: 155px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: -8px 12px 24px -6px rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 400ms ease;
+            background-color: #0b1120;
+        }
+
+        .mini-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        /* Cover 1: Left */
+        .mini-cover-1 {
+            left: calc(50% - 135px);
+            transform: rotate(-9deg) translateY(4px) scale(0.92);
+            z-index: 1;
+        }
+
+        /* Cover 2: Center */
+        .mini-cover-2 {
+            left: calc(50% - 60px);
+            transform: rotate(0deg) translateY(-4px) scale(1);
+            z-index: 3;
+            box-shadow: -4px 16px 32px -6px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Cover 3: Right */
+        .mini-cover-3 {
+            left: calc(50% + 15px);
+            transform: rotate(9deg) translateY(6px) scale(0.94);
+            z-index: 2;
+        }
+
+        .books-spotlight-card:hover .mini-cover-1 {
+            transform: rotate(-13deg) translateX(-12px) translateY(2px) scale(0.95);
+        }
+
+        .books-spotlight-card:hover .mini-cover-2 {
+            transform: rotate(0deg) translateY(-8px) scale(1.04);
+            box-shadow: 0 20px 38px -6px rgba(0, 0, 0, 0.95);
+        }
+
+        .books-spotlight-card:hover .mini-cover-3 {
+            transform: rotate(13deg) translateX(12px) translateY(4px) scale(0.97);
+        }
+
+        @media (max-width: 540px) {
+            .books-spotlight-covers {
+                height: 160px;
+                margin-top: 0.5rem;
+            }
+            .mini-cover {
+                width: 95px;
+                height: 125px;
+            }
+            .mini-cover-1 { left: calc(50% - 105px); }
+            .mini-cover-2 { left: calc(50% - 48px); }
+            .mini-cover-3 { left: calc(50% + 10px); }
+        }
+
         /* ===== SCROLL ANIMATIONS ===== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
@@ -1422,122 +1589,43 @@
     </section>
 
     <!-- ===== BOOKS SPOTLIGHT ===== -->
-    <section class="section">
+    <section class="section" id="books">
         <div class="container">
-            <div class="section-head" id="books">
+            <div class="section-head">
                 <span class="chip">Publications</span>
                 <h2>Books &amp; Publications</h2>
-                <p class="section-subtitle">Technical playbooks, architecture guides, and creative books by Rohail Ahmad.</p>
+                <p class="section-subtitle">Technical playbooks, architecture guides, and creative children's series by Rohail Ahmad.</p>
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem;">
-                
-                <!-- Book 1: Tech Book -->
-                <div class="bento animate-on-scroll" style="padding: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: center; gap: 2.5rem; background: radial-gradient(100% 120% at 10% 20%, rgba(16, 185, 129, 0.15), transparent 70%), var(--gradient-surface); border: 1px solid rgba(16, 185, 129, 0.3);">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(52, 211, 153, 0.3); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);">
-                        <a href="books.html#crack-android-interview" title="Cracking the Android FAANG Interview">
-                            <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview" style="width: 100%; height: auto; display: block;">
-                        </a>
+            <a href="books.html" class="bento books-spotlight-card animate-on-scroll" aria-label="Explore Books and Publications by Rohail Ahmad">
+                <div class="books-spotlight-content">
+                    <div class="books-spotlight-tags">
+                        <span class="chip" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #34d399;">Technical Guide</span>
+                        <span class="chip" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24;">"Little hands first coloring book" Series</span>
+                        <span class="chip" style="background: rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.35); color: #38bdf8;">3 Published Titles</span>
                     </div>
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-                            <span class="chip" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #34d399; font-size: 0.75rem;">Available on Gumroad</span>
-                            <span class="chip" style="font-size: 0.75rem;">FAANG Vault &amp; System Design</span>
-                        </div>
-                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem;">Cracking the Android FAANG Interview</h3>
-                        <p style="color: var(--muted-foreground); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem;">
-                            Modern Architecture • Jetpack Compose • FAANG Vault. The definitive masterclass on Android system design, coroutines traps, and live coding challenges for senior engineering interviews.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                            <a href="https://rrohaill.gumroad.com/l/crackandroidinterview" target="_blank" rel="noreferrer" class="btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 18px -3px rgba(16, 185, 129, 0.6); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-md); font-weight: 700; font-size: 0.95rem; color: #fff;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                Buy on Gumroad
-                            </a>
-                            <a href="books.html#crack-android-interview" class="cta-link" style="font-weight: 600; color: var(--foreground); display: inline-flex; align-items: center; gap: 0.35rem;">
-                                View Details &amp; Curriculum →
-                            </a>
-                        </div>
+                    <h3 class="books-spotlight-title">From Android System Design to Children's Book Series</h3>
+                    <p class="books-spotlight-desc">
+                        Explore in-depth technical engineering guides like <em>Cracking the Android FAANG Interview</em> alongside the <em>"Little hands first coloring book"</em> toddler series. Browse full curriculums, interactive 3D mockups, and sample spreads.
+                    </p>
+                    <div class="books-spotlight-cta">
+                        <span>Browse Catalog, 3D Previews &amp; Outlines</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </div>
                 </div>
 
-                <!-- Series Section Header Banner -->
-                <div class="bento animate-on-scroll" style="padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: radial-gradient(100% 120% at 5% 50%, rgba(245, 158, 11, 0.15), rgba(14, 165, 233, 0.1) 60%, transparent 80%), var(--gradient-surface); border: 1px solid rgba(245, 158, 11, 0.3);">
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
-                            <span class="chip" style="background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.35); color: #f472b6; font-size: 0.75rem;">🎨 Children's Series</span>
-                            <span class="chip" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24; font-size: 0.75rem;">Ages 1 · 2 · 3</span>
-                        </div>
-                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem;">"Little hands first coloring book" Series</h3>
-                        <p style="color: var(--muted-foreground); font-size: 0.9rem; margin: 0; line-height: 1.6;">
-                            Gentle, screen-free toddler coloring books designed for tiny hands. Extra-bold outlines, single-sided pages, and first words.
-                        </p>
+                <div class="books-spotlight-covers" aria-hidden="true">
+                    <div class="mini-cover mini-cover-1" title="Cracking the Android FAANG Interview">
+                        <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview cover" loading="lazy">
                     </div>
-                    <a href="books.html" class="btn-primary" style="background: var(--surface-raised); border: 1px solid var(--border); color: var(--foreground); padding: 0.65rem 1.25rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap;">
-                        View Full Series Catalog →
-                    </a>
-                </div>
-
-                <!-- Series Book 1: My Little Hands Coloring Book -->
-                <div class="bento animate-on-scroll" style="padding: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: center; gap: 2.5rem; background: radial-gradient(100% 120% at 10% 20%, rgba(245, 158, 11, 0.15), rgba(236, 72, 153, 0.08) 60%, transparent 80%), var(--gradient-surface); border: 1px solid rgba(245, 158, 11, 0.35);">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(251, 191, 36, 0.35); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);">
-                        <a href="books.html#my-little-hands" title="My Little Hands Coloring Book">
-                            <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book by Rohail Ahmad" style="width: 100%; height: auto; display: block;">
-                        </a>
+                    <div class="mini-cover mini-cover-2" title="My Little Hands Coloring Book">
+                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book cover" loading="lazy">
                     </div>
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-                            <span class="chip" style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.45); color: #fbbf24; font-size: 0.75rem; font-weight: 700;">Series · Book 1</span>
-                            <span class="chip" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24; font-size: 0.75rem;">Available on Amazon</span>
-                            <span class="chip" style="background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.35); color: #f472b6; font-size: 0.75rem;">Ages 1 · 2 · 3</span>
-                            <span class="chip" style="font-size: 0.75rem;">Paperback</span>
-                        </div>
-                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem;">My Little Hands Coloring Book</h3>
-                        <p style="color: var(--muted-foreground); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem;">
-                            Hours of happy coloring &amp; first words for toddlers. Features 42 big, simple pictures with extra-bold lines and single-sided pages designed specifically for little hands.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                            <a href="https://mybook.to/MyLittleHands" target="_blank" rel="noreferrer" class="btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #c2410c 100%); box-shadow: 0 4px 18px -3px rgba(245, 158, 11, 0.6); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-md); font-weight: 700; font-size: 0.95rem; color: #fff;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                Buy on Amazon
-                            </a>
-                            <a href="books.html#my-little-hands" class="cta-link" style="font-weight: 600; color: var(--foreground); display: inline-flex; align-items: center; gap: 0.35rem;">
-                                View Details &amp; Sample Spread →
-                            </a>
-                        </div>
+                    <div class="mini-cover mini-cover-3" title="Things That GO! — My Little Hands">
+                        <img src="assets/thingsthatgo-cover.png" alt="Things That GO! cover" loading="lazy">
                     </div>
                 </div>
-
-                <!-- Series Book 2: Things That GO! -->
-                <div class="bento animate-on-scroll" style="padding: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: center; gap: 2.5rem; background: radial-gradient(100% 120% at 10% 20%, rgba(14, 165, 233, 0.15), rgba(245, 158, 11, 0.08) 60%, transparent 80%), var(--gradient-surface); border: 1px solid rgba(14, 165, 233, 0.35);">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);">
-                        <a href="books.html#things-that-go" title="Things That GO! — My Little Hands">
-                            <img src="assets/thingsthatgo-cover.png" alt="Things That GO! — My Little Hands by Rohail Ahmad" style="width: 100%; height: auto; display: block;">
-                        </a>
-                    </div>
-                    <div>
-                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-                            <span class="chip" style="background: rgba(14, 165, 233, 0.2); border-color: rgba(14, 165, 233, 0.45); color: #38bdf8; font-size: 0.75rem; font-weight: 700;">Series · Book 2</span>
-                            <span class="chip" style="background: rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.35); color: #38bdf8; font-size: 0.75rem;">Available on Amazon</span>
-                            <span class="chip" style="background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.35); color: #f472b6; font-size: 0.75rem;">Ages 1 · 2 · 3</span>
-                            <span class="chip" style="font-size: 0.75rem;">40 Big Vehicles</span>
-                        </div>
-                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem;">Things That GO! — My Little Hands</h3>
-                        <p style="color: var(--muted-foreground); line-height: 1.7; font-size: 0.95rem; margin-bottom: 1.5rem;">
-                            40 big &amp; simple cars, trucks, diggers, trains &amp; planes to color and learn. Extra-bold lines, one vehicle per page, and first words underneath for toddler vocabulary building.
-                        </p>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                            <a href="https://www.amazon.com/dp/B0HJVW4Q3Y" target="_blank" rel="noreferrer" class="btn-primary" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #ea580c 100%); box-shadow: 0 4px 18px -3px rgba(14, 165, 233, 0.6); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-md); font-weight: 700; font-size: 0.95rem; color: #fff;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                                Buy on Amazon
-                            </a>
-                            <a href="books.html#things-that-go" class="cta-link" style="font-weight: 600; color: var(--foreground); display: inline-flex; align-items: center; gap: 0.35rem;">
-                                View Details &amp; Sample Spread →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            </a>
         </div>
     </section>
 
