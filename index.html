@@ -3,1233 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohail Ahmad — Senior Android Engineer</title>
-    <meta name="description" content="Senior Android engineer with 8+ years shipping Kotlin and Jetpack Compose products for millions of users across fintech, digital mail and energy.">
+    <title>Rohail Ahmad — Senior Android Engineer · Kotlin &amp; Jetpack Compose</title>
+    <meta name="description" content="Senior Android engineer in Sweden with 8+ years shipping Kotlin and Jetpack Compose apps used by 12M+ people — fintech, digital mail and energy, built with a UX-first mindset.">
+    <meta name="keywords" content="Rohail Ahmad, Android engineer, Senior Android developer, Kotlin, Jetpack Compose, Android UX, mobile developer Sweden, Gothenburg, Stockholm, fintech Android, open banking">
     <meta name="author" content="Rohail Ahmad">
-    <meta property="og:title" content="Rohail Ahmad — Senior Android Engineer">
-    <meta property="og:description" content="Senior Android engineer with 8+ years shipping Kotlin and Jetpack Compose products for millions of users across fintech, digital mail and energy.">
-    <meta property="og:type" content="profile">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#f4faf4" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111511" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://www.rrohaill.dev/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rohail Ahmad">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://www.rrohaill.dev/">
+    <meta property="og:title" content="Rohail Ahmad — Senior Android Engineer · Kotlin &amp; Jetpack Compose">
+    <meta property="og:description" content="Senior Android engineer in Sweden with 8+ years shipping Kotlin and Jetpack Compose apps used by 12M+ people — fintech, digital mail and energy, built with a UX-first mindset.">
+    <meta property="og:image" content="https://www.rrohaill.dev/og-image.jpg?v=4">
+    <meta property="og:image:secure_url" content="https://www.rrohaill.dev/og-image.jpg?v=4">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Rohail Ahmad — Senior Android Engineer. Material You card with Kivra and FitBrief app screens, 20+ apps and 12M+ users.">
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rohail Ahmad — Senior Android Engineer · Kotlin &amp; Jetpack Compose">
+    <meta name="twitter:description" content="Senior Android engineer in Sweden with 8+ years shipping Kotlin and Jetpack Compose apps used by 12M+ people — fintech, digital mail and energy, built with a UX-first mindset.">
+    <meta name="twitter:image" content="https://www.rrohaill.dev/og-image.jpg?v=4">
+    <meta name="twitter:image:alt" content="Rohail Ahmad — Senior Android Engineer. Material You card with Kivra and FitBrief app screens, 20+ apps and 12M+ users.">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght,ROND@6..144,400..800,0..100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/m3.css">
+
+    <!-- Apply the saved theme before first paint so it never flashes -->
+    <script>(function(){try{var d=document.documentElement;var m=localStorage.getItem("rr-theme-mode")||"system";var s=localStorage.getItem("rr-theme-seed");var h={"android":150,"ocean":245,"lavender":300,"coral":32}[s];if(h!=null)d.style.setProperty("--seed-h",h);var k=m==="dark"||(m==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);d.classList.toggle("dark",k);}catch(e){}})();</script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rohail Ahmad",
+      "jobTitle": "Senior Android Engineer",
+      "url": "https://www.rrohaill.dev",
+      "image": "https://www.rrohaill.dev/og-image.jpg?v=4",
+      "email": "mailto:rohailonline1@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Gothenburg", "addressCountry": "SE" },
+      "worksFor": { "@type": "Organization", "name": "Kivra" },
+      "knowsAbout": ["Android development", "Kotlin", "Jetpack Compose", "Mobile UX", "Design systems", "Clean Architecture"],
+      "sameAs": ["https://github.com/rrohaill", "https://www.linkedin.com/in/rrohaill/", "https://medium.com/@rrohaill"]
+    }
+    </script>
+
     <style>
-        /* ===== DESIGN SYSTEM: Midnight Indigo ===== */
-        :root {
-            --radius: 1rem;
-            --radius-sm: calc(var(--radius) - 4px);
-            --radius-md: calc(var(--radius) - 2px);
-            --radius-lg: var(--radius);
-            --radius-xl: calc(var(--radius) + 6px);
-            --radius-2xl: calc(var(--radius) + 12px);
-            --radius-3xl: calc(var(--radius) + 20px);
-
-            --background: oklch(0.14 0.045 280);
-            --foreground: oklch(0.96 0.01 270);
-
-            --surface: oklch(0.19 0.055 279);
-            --surface-raised: oklch(0.24 0.065 278);
-
-            --card: oklch(0.19 0.055 279);
-            --card-foreground: oklch(0.96 0.01 270);
-
-            --primary: oklch(0.58 0.22 285);
-            --primary-foreground: oklch(0.99 0 0);
-            --primary-soft: oklch(0.72 0.15 285);
-
-            --secondary: oklch(0.28 0.07 278);
-            --secondary-foreground: oklch(0.96 0.01 270);
-
-            --muted: oklch(0.24 0.055 278);
-            --muted-foreground: oklch(0.72 0.03 275);
-
-            --accent: oklch(0.3 0.09 280);
-            --accent-foreground: oklch(0.97 0.01 270);
-
-            --destructive: oklch(0.6 0.22 20);
-            --border: oklch(0.98 0.01 280 / 10%);
-            --input: oklch(0.98 0.01 280 / 14%);
-            --ring: oklch(0.58 0.22 285);
-
-            --gradient-hero: radial-gradient(
-                120% 80% at 15% 0%,
-                color-mix(in oklab, var(--primary) 38%, transparent) 0%,
-                transparent 60%
-            ),
-            radial-gradient(90% 70% at 90% 10%, oklch(0.4 0.13 260 / 0.5) 0%, transparent 55%);
-
-            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
-
-            --gradient-surface: linear-gradient(
-                160deg,
-                color-mix(in oklab, var(--surface-raised) 90%, transparent),
-                color-mix(in oklab, var(--surface) 92%, transparent)
-            );
-
-            --shadow-elevated: 0 24px 60px -24px oklch(0.05 0.05 280 / 0.9);
-            --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
-                0 18px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
-            --transition-smooth: 320ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* ===== BASE RESET ===== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            border-color: var(--border);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--foreground);
-            font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        ul, ol { list-style: none; }
-
-        ::selection {
-            background: color-mix(in oklab, var(--primary) 45%, transparent);
-        }
-
-        /* ===== UTILITY CLASSES ===== */
-        .bento {
-            position: relative;
-            border-radius: var(--radius-2xl);
-            border: 1px solid var(--border);
-            background: var(--gradient-surface);
-            box-shadow: var(--shadow-elevated);
-            overflow: hidden;
-            transition: transform var(--transition-smooth),
-                        border-color var(--transition-smooth),
-                        box-shadow var(--transition-smooth);
-        }
-
-        .bento:hover {
-            transform: translateY(-4px);
-            border-color: color-mix(in oklab, var(--primary) 45%, transparent);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .text-gradient {
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            border-radius: 9999px;
-            border: 1px solid var(--border);
-            background: color-mix(in oklab, var(--surface-raised) 70%, transparent);
-            padding: 0.3rem 0.7rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--muted-foreground);
-            letter-spacing: 0.01em;
-        }
-
-        .grid-lines {
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 56px 56px;
-            mask-image: radial-gradient(70% 60% at 50% 0%, black, transparent);
-        }
-
-        /* Accent dot for list items */
-        .accent-dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--gradient-accent);
-            flex-shrink: 0;
-            margin-top: 0.45rem;
-        }
-
-        /* ===== LAYOUT ===== */
-        .container {
-            max-width: 72rem;
-            margin: 0 auto;
-            padding: 0 1.25rem;
-        }
-
-        .section {
-            padding: 4rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .section { padding: 6rem 0; }
-        }
-
-        /* ===== NAVIGATION ===== */
-        .site-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            transition: all 300ms ease;
-        }
-
-        .site-nav.scrolled {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: color-mix(in oklab, var(--background) 80%, transparent);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 72rem;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.25rem;
-        }
-
-        .nav-brand {
-            font-family: 'Sora', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links { display: flex; }
-        }
-
-        .nav-links a {
-            border-radius: 9999px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted-foreground);
-            transition: color var(--transition-smooth), background var(--transition-smooth);
-        }
-
-        .nav-links a:hover {
-            background: var(--secondary);
-            color: var(--foreground);
-        }
-
-        .nav-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            border: 1px solid var(--border);
-            background: transparent;
-            padding: 0.5rem;
-            color: var(--foreground);
-            cursor: pointer;
-        }
-
-        @media (min-width: 768px) {
-            .nav-toggle { display: none; }
-        }
-
-        .nav-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .mobile-menu {
-            display: none;
-            border-top: 1px solid var(--border);
-            background: color-mix(in oklab, var(--background) 95%, transparent);
-            backdrop-filter: blur(20px);
-            padding: 0 1.25rem 1.25rem;
-        }
-
-        .mobile-menu.open { display: block; }
-
-        @media (min-width: 768px) {
-            .mobile-menu { display: none !important; }
-        }
-
-        .mobile-menu a {
-            display: block;
-            border-bottom: 1px solid var(--border);
-            padding: 0.75rem 0;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted-foreground);
-        }
-
         /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            overflow: hidden;
-            padding-top: 7rem;
-            padding-bottom: 2.5rem;
+        .hero { padding-top: 6rem; padding-bottom: 2rem; overflow: hidden; }
+        .hero-grid { display: grid; gap: 0.75rem; }
+        .hero-intro { padding: 1.75rem; }
+        .status-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border-radius: 9999px; padding: 0.375rem 0.75rem 0.375rem 0.5rem;
+            background: var(--primary-container); color: var(--on-primary-container);
+            font-size: 0.875rem; font-weight: 600;
         }
+        .status-pill .extra { display: none; opacity: 0.7; }
+        .ping { position: relative; display: flex; width: 0.625rem; height: 0.625rem; }
+        .ping::before {
+            content: ""; position: absolute; inset: 0; border-radius: 9999px;
+            background: var(--primary); opacity: 0.6;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .ping::after {
+            content: ""; position: relative; display: block; width: 0.625rem; height: 0.625rem;
+            border-radius: 9999px; background: var(--primary);
+        }
+        .hero h1 { margin-top: 1.75rem; font-size: 2.6rem; line-height: 1.02; }
+        .hero h1 .pill {
+            display: inline-block; border-radius: 9999px; padding: 0 1rem 0.25rem;
+            background: var(--tertiary-container); color: var(--on-tertiary-container);
+        }
+        .hero-sub { margin-top: 1.5rem; max-width: 36rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+        .widgets { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        .widget-now {
+            grid-column: span 2; display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; padding: 1.5rem;
+        }
+        .widget-now .now-title { margin-top: 0.25rem; font-size: 1.25rem; font-weight: 700; }
+        .widget-now .now-loc { margin-top: 0.25rem; display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.875rem; color: var(--muted-foreground); }
+        .widget-now .shape { width: 4rem; height: 4rem; color: var(--primary); }
+        .widget-now .shape-content { font-family: var(--font-display); font-variation-settings: "ROND" 100; font-size: 1.125rem; font-weight: 700; color: var(--primary-foreground); }
+        .stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; }
+        .stat .shape { width: 100%; max-width: 9rem; aspect-ratio: 1; }
+        .stat .value { font-family: var(--font-display); font-variation-settings: "ROND" 100; font-size: 1.875rem; font-weight: 700; }
+        .stat .label { text-align: center; font-size: 0.875rem; font-weight: 500; color: var(--muted-foreground); }
+        .hero-chips { margin-top: 1rem; }
 
+        @media (min-width: 640px) { .status-pill .extra { display: inline; } }
         @media (min-width: 768px) {
-            .hero { padding-top: 9rem; }
+            .hero { padding-top: 7rem; }
+            .hero-intro { padding: 3rem; }
+            .hero h1 { font-size: 4.5rem; }
+            .hero h1 .pill { padding-inline: 1.5rem; }
+            .stat .value { font-size: 2.25rem; }
         }
+        @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.45fr 1fr; } }
 
-        .hero-bg {
-            pointer-events: none;
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-hero);
+        /* ===== RECRUITER GUIDE ===== */
+        .matcher { margin-top: 2rem; padding: 1.25rem; }
+        .matcher label { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-variation-settings: "ROND" 100; font-size: 1.25rem; font-weight: 700; }
+        .matcher .hint { margin-top: 0.25rem; font-size: 0.875rem; color: var(--muted-foreground); }
+        .matcher textarea {
+            margin-top: 1rem; width: 100%; resize: vertical; border-radius: 20px;
+            border: 1px solid color-mix(in oklab, var(--outline) 50%, transparent);
+            background: var(--surface-container-lowest); padding: 0.75rem 1rem; font-size: 1rem;
+            outline: none; transition: border-color 200ms, box-shadow 200ms;
         }
-
-        .hero-grid-overlay {
-            pointer-events: none;
-            position: absolute;
-            inset: 0;
-            opacity: 0.4;
+        html.dark .matcher textarea { background: var(--surface-container-high); }
+        .matcher textarea::placeholder { color: color-mix(in oklab, var(--muted-foreground) 70%, transparent); }
+        .matcher textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 30%, transparent); }
+        .matcher .row { margin-top: 0.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .examples { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .example-btn {
+            border-radius: 9999px; border: 1px solid color-mix(in oklab, var(--outline) 50%, transparent);
+            padding: 0.375rem 0.75rem; font-size: 0.875rem; color: var(--muted-foreground); text-align: left;
         }
-
-        .hero-content {
-            position: relative;
-            max-width: 72rem;
-            margin: 0 auto;
-            padding: 0 1.25rem;
+        .example-btn:hover { color: var(--foreground); }
+        .match-result { margin-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--outline) 30%, transparent); padding-top: 1.5rem; }
+        .match-grid { display: grid; gap: 2rem; }
+        .match-grid .proof b { font-weight: 600; }
+        .match-grid .proof span { color: var(--muted-foreground); }
+        .match-actions { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .focus-chips {
+            margin-top: 0.75rem; display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.25rem;
+            margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
         }
-
-        .hero-bento-grid {
-            display: grid;
-            gap: 1rem;
+        .focus-chip {
+            display: inline-flex; flex-shrink: 0; align-items: center; gap: 0.5rem; height: 2.75rem;
+            padding-inline: 1rem; border-radius: var(--radius-md);
+            border: 1px solid color-mix(in oklab, var(--outline) 50%, transparent);
+            font-size: 0.875rem; font-weight: 600; color: var(--muted-foreground);
+            transition: border-radius 300ms var(--ease-spring), background-color 300ms, color 300ms;
         }
-
+        .focus-chip:hover { color: var(--foreground); }
+        .focus-chip:active { border-radius: var(--radius-xl); }
+        .focus-chip[aria-checked="true"] {
+            border-radius: var(--radius-xl); border-color: transparent;
+            background: var(--secondary-container); color: var(--on-secondary-container);
+        }
+        .pitch { margin-top: 1rem; display: grid; gap: 2rem; padding: 1.5rem; }
+        .pitch h3 { font-size: 1.5rem; }
+        .pitch .summary { margin-top: 0.75rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .pitch .check-list { margin-top: 1.5rem; font-weight: 500; }
+        .pitch .actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .picks { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .picks .shape { width: 3rem; height: 3rem; }
+        .picks .shape-content { font-family: var(--font-display); font-variation-settings: "ROND" 100; font-size: 1.125rem; font-weight: 700; }
+        .match-badge { margin-bottom: 0.75rem; }
+        .match-badge[hidden] { display: none; }
         @media (min-width: 768px) {
-            .hero-bento-grid {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(2, auto);
-            }
+            .matcher { padding: 1.75rem; }
+            .focus-chips { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+            .pitch { padding: 2.25rem; }
+            .pitch h3 { font-size: 1.875rem; }
         }
-
-        .hero-main-tile {
-            padding: 1.75rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-main-tile {
-                grid-column: span 2;
-                grid-row: span 2;
-                padding: 2.5rem;
-            }
-        }
-
-        .hero-main-tile h1 {
-            margin-top: 1.5rem;
-            font-size: 2.25rem;
-            font-weight: 800;
-            line-height: 1.05;
-        }
-
-        @media (min-width: 768px) {
-            .hero-main-tile h1 { font-size: 3.75rem; }
-        }
-
-        .hero-main-tile .hero-subtitle {
-            margin-top: 1.25rem;
-            max-width: 36rem;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--muted-foreground);
-        }
-
-        @media (min-width: 768px) {
-            .hero-main-tile .hero-subtitle { font-size: 1.125rem; }
-        }
-
-        .hero-actions {
-            margin-top: 1.75rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-radius: 9999px;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary-foreground);
-            background: var(--gradient-accent);
-            box-shadow: var(--shadow-glow);
-            transition: transform 300ms ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover { transform: translateY(-2px); }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-radius: 9999px;
-            border: 1px solid var(--border);
-            background: color-mix(in oklab, var(--secondary) 40%, transparent);
-            padding: 0.75rem 1.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--foreground);
-            transition: background var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover { background: var(--secondary); }
-
-        .hero-chips {
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        /* Visual tile */
-        .hero-visual-tile {
-            position: relative;
-            min-height: 14rem;
-        }
-
-        .hero-visual-tile img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9;
-        }
-
-        .hero-visual-overlay {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, var(--background), transparent);
-            padding: 1.25rem;
-        }
-
-        .hero-visual-overlay p:first-child {
-            font-family: 'Sora', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .hero-visual-overlay p:last-child {
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-        }
-
-        /* Stats tile */
-        .hero-stats-tile {
-            padding: 1.5rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-        }
-
-        .stat-value {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-soft);
-        }
-
-        @media (min-width: 768px) {
-            .stat-value { font-size: 1.875rem; }
-        }
-
-        .stat-label {
-            margin-top: 0.25rem;
-            font-size: 0.75rem;
-            line-height: 1.3;
-            color: var(--muted-foreground);
-        }
-
-        .stats-location {
-            margin-top: 1.25rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-        }
-
-        .stats-location svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* ===== SECTION HEADER ===== */
-        .section-head {
-            scroll-margin-top: 6rem;
-        }
-
-        .section-head h2 {
-            margin-top: 1rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        @media (min-width: 768px) {
-            .section-head h2 { font-size: 2.25rem; }
-        }
-
-        .section-head .section-subtitle {
-            margin-top: 0.75rem;
-            max-width: 42rem;
-            color: var(--muted-foreground);
+        @media (min-width: 1024px) {
+            .pitch { grid-template-columns: 1.1fr 1fr; }
+            .match-grid { grid-template-columns: 1fr 1.1fr; }
         }
 
         /* ===== ABOUT ===== */
-        .about-grid {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
+        .about-grid { margin-top: 2.5rem; display: grid; gap: 0.75rem; }
+        .about-grid h3 { font-size: 1.5rem; }
+        .about-grid p { margin-top: 1rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .off-clock { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .off-clock li { display: flex; align-items: center; gap: 1rem; font-weight: 500; }
+        .off-clock .ico {
+            display: grid; place-items: center; width: 2.75rem; height: 2.75rem; flex-shrink: 0;
+            border-radius: 9999px; background: color-mix(in oklab, var(--surface-container-lowest) 60%, transparent);
         }
-
         @media (min-width: 768px) {
-            .about-grid { grid-template-columns: 2fr 1fr; }
-        }
-
-        .about-grid .bento { padding: 1.75rem; }
-
-        .about-grid h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .about-grid p {
-            margin-top: 0.75rem;
-            line-height: 1.7;
-            color: var(--muted-foreground);
-        }
-
-        .hobbies-list {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-        }
-
-        .hobbies-list li {
-            display: flex;
-            gap: 0.75rem;
+            .about-grid { grid-template-columns: repeat(5, 1fr); }
+            .about-main { grid-column: span 3; }
+            .about-side { grid-column: span 2; }
         }
 
         /* ===== SKILLS ===== */
-        .skills-grid {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 640px) {
-            .skills-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (min-width: 1024px) {
-            .skills-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .skills-grid .bento { padding: 1.5rem; }
-
-        .skills-grid h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--primary-soft);
-        }
-
-        .skills-grid ul {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.625rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-        }
+        .skills-grid { margin-top: 2.5rem; display: grid; gap: 0.75rem; border-radius: 28px; scroll-margin-top: 7rem; }
+        .skill-card { padding: 1.5rem; }
+        .skill-card .shape { width: 3.5rem; height: 3.5rem; }
+        .skill-card .shape-content { color: var(--foreground); display: flex; }
+        .skill-card h3 { margin-top: 1.25rem; font-size: 1.25rem; }
+        .skill-card .chip-row { margin-top: 1rem; }
+        @media (min-width: 640px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
 
         /* ===== EXPERIENCE ===== */
-        .experience-list {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .exp-list { margin-top: 2.5rem; overflow: hidden; border-radius: 28px; background: var(--surface-container-low); }
+        .exp { display: grid; gap: 1rem; padding: 1.5rem; scroll-margin-top: 7rem; }
+        .exp + .exp { border-top: 1px solid var(--border); }
+        .exp .shape { width: 3.5rem; height: 3.5rem; }
+        .exp .shape-content { font-family: var(--font-display); font-variation-settings: "ROND" 100; font-size: 1.125rem; font-weight: 700; }
+        .exp h3 { font-size: 1.25rem; }
+        .exp h3 span { font-weight: 500; color: var(--muted-foreground); }
+        .exp .summary { margin-top: 0.25rem; color: var(--muted-foreground); }
+        .exp .points { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; line-height: 1.65; }
+        .exp .points li { display: flex; gap: 0.75rem; }
+        .exp .points li::before {
+            content: ""; margin-top: 0.7rem; width: 0.375rem; height: 0.375rem; flex-shrink: 0;
+            border-radius: 9999px; background: var(--primary);
         }
-
-        .experience-card { padding: 1.5rem; }
-
+        .exp .period {
+            display: inline-flex; height: 2rem; align-items: center; padding-inline: 0.75rem;
+            border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;
+            background: var(--surface-container-high); color: var(--muted-foreground);
+        }
+        .exp.current .period { background: var(--primary-container); color: var(--on-primary-container); }
+        .exp .place { margin-top: 0.5rem; font-size: 0.875rem; color: var(--muted-foreground); }
         @media (min-width: 768px) {
-            .experience-card { padding: 2rem; }
+            .exp { grid-template-columns: auto 1fr auto; gap: 1.5rem; padding: 2rem; }
+            .exp-side { text-align: right; }
         }
 
-        .experience-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 0.5rem;
+        /* ===== WORK ===== */
+        .work-stack { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .case { overflow: hidden; padding: 1.5rem; scroll-margin-top: 7rem; }
+        .case-grid { display: grid; gap: 2rem; align-items: center; }
+        .case-head { display: flex; align-items: center; gap: 1rem; }
+        .app-icon { width: 4rem; height: 4rem; border-radius: 22px; box-shadow: var(--elevation-1); }
+        .case h3 { font-size: 1.5rem; }
+        .case .blurb { margin-top: 1.25rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .case .chip-row { margin-top: 1.25rem; }
+        .case .m3-btn { margin-top: 1.75rem; }
+        .shots {
+            display: flex; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory;
+            margin-inline: -0.5rem; padding: 0.5rem;
         }
-
-        .experience-header h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
+        .shots img {
+            width: 46%; flex-shrink: 0; aspect-ratio: 9 / 16; object-fit: cover; scroll-snap-align: start;
+            border-radius: 24px; box-shadow: var(--elevation-1);
+            transition: border-radius 500ms var(--ease-spring), transform 500ms var(--ease-spring);
         }
-
+        .shots img:first-child { width: 58%; }
+        .shots img:hover { transform: translateY(-0.25rem); border-radius: 36px; }
+        .ds-card { display: grid; gap: 2rem; padding: 1.5rem; background: var(--primary-container); color: var(--on-primary-container); }
+        .ds-card .ds-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+        .ds-card h3 { margin-top: 1.25rem; }
+        .ds-card .blurb { color: inherit; opacity: 0.85; }
+        .ds-card .chip { border-color: color-mix(in oklab, var(--on-primary-container) 30%, transparent); color: var(--on-primary-container); }
+        .specimen { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; align-self: center; }
+        .specimen .tile { border-radius: 24px; padding: 1.25rem; background: var(--surface-container-lowest); color: var(--foreground); }
+        .specimen .span2 { grid-column: span 2; }
+        .specimen .btns { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .specimen .mini-btn { height: 2.5rem; padding-inline: 1.25rem; font-size: 0.875rem; }
+        .specimen .row { display: flex; align-items: center; justify-content: space-between; }
+        .specimen .center { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .specimen .center .shape { width: 2rem; height: 2rem; }
+        .specimen .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .specimen .chip { border-color: var(--border); color: var(--muted-foreground); }
+        .specimen .chip--secondary { border-color: transparent; color: var(--on-secondary-container); }
+        .switch { display: flex; width: 3.25rem; height: 2rem; align-items: center; justify-content: flex-end; border-radius: 9999px; background: var(--primary); padding: 0.25rem; }
+        .switch::after { content: ""; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background: var(--primary-foreground); }
+        .mini-case { padding: 1.5rem; }
+        .mini-case .case-grid { align-items: start; }
+        @media (min-width: 640px) {
+            .shots img { width: 11rem; }
+            .shots img:first-child { width: 13rem; }
+        }
         @media (min-width: 768px) {
-            .experience-header h3 { font-size: 1.25rem; }
+            .case { padding: 2.25rem; }
+            .case h3 { font-size: 1.875rem; }
+            .ds-card { padding: 2.25rem; }
+        }
+        @media (min-width: 1024px) {
+            .case-grid { grid-template-columns: repeat(2, 1fr); }
+            .case.reverse .case-grid > :first-child { order: 2; }
+            .ds-card { grid-template-columns: repeat(2, 1fr); }
         }
 
-        .experience-header .company {
-            color: var(--primary-soft);
-        }
-
-        .experience-header .meta {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--muted-foreground);
-        }
-
-        .experience-card .summary {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-        }
-
-        .experience-card .points {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.625rem;
-            font-size: 0.875rem;
-            line-height: 1.7;
-            color: var(--muted-foreground);
-        }
-
-        .experience-card .points li {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        /* ===== PROJECTS (Work + Labs) ===== */
-        .work-grid {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .work-grid { grid-template-columns: repeat(3, 1fr); }
-            .work-grid .span-2 { grid-column: span 2; }
-            .work-grid .span-3 { grid-column: span 3; }
-        }
-
-        .labs-grid {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
-        }
-
+        /* ===== LABS ===== */
+        .labs-grid { margin-top: 2.5rem; display: grid; gap: 0.75rem; }
+        .lab-featured { grid-column: 1 / -1; overflow: hidden; padding: 1.75rem; scroll-margin-top: 7rem; }
+        .lab-featured-grid { display: grid; gap: 2rem; align-items: center; }
+        .lab-featured h3 { margin-top: 1.5rem; font-size: 1.5rem; }
+        .lab-featured .blurb { margin-top: 1rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .lab-links { margin-top: 1.25rem; margin-left: -1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; }
+        .lab-visual { position: relative; display: flex; justify-content: center; gap: 1rem; padding-block: 1rem; }
+        .lab-visual .shape.abs { inset: 0; margin: auto; width: 85%; aspect-ratio: 1; height: auto; color: var(--primary-container); }
+        .lab-visual img { position: relative; width: 42%; max-width: 190px; }
+        .lab-visual img.a { transform: rotate(-3deg); }
+        .lab-visual img.b { margin-top: 2.5rem; transform: rotate(3deg); }
+        .lab-visual img:hover { transform: rotate(0); }
+        .lab { display: flex; flex-direction: column; padding: 1.75rem; scroll-margin-top: 7rem; }
+        .lab-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+        .lab .ico { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 1rem; background: var(--secondary-container); color: var(--on-secondary-container); }
+        .lab h3 { margin-top: 1.25rem; font-size: 1.25rem; }
+        .lab .blurb { margin-top: 0.75rem; flex-grow: 1; line-height: 1.65; color: var(--muted-foreground); }
+        .lab .chip-row { margin-top: 1.25rem; }
+        .lab-top .match-badge { margin-bottom: 0; }
         @media (min-width: 768px) {
             .labs-grid { grid-template-columns: repeat(2, 1fr); }
-            .labs-grid .span-2 { grid-column: span 2; }
+            .lab-featured { padding: 2.5rem; }
+            .lab-featured h3 { font-size: 2.25rem; }
         }
+        @media (min-width: 1024px) { .lab-featured-grid { grid-template-columns: 1.35fr 1fr; } }
 
-        .project-card.fitbrief-featured {
-            background: radial-gradient(120% 120% at 10% 20%, rgba(59, 130, 246, 0.14), rgba(168, 85, 247, 0.08) 60%, transparent 85%), var(--gradient-surface);
-            border-color: rgba(59, 130, 246, 0.35);
-        }
-
-        .project-card.fitbrief-featured:hover {
-            border-color: rgba(96, 165, 250, 0.6);
-            box-shadow: 0 20px 50px -15px rgba(59, 130, 246, 0.25);
-        }
-
-        .fitbrief-inner {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        @media (min-width: 860px) {
-            .fitbrief-inner {
-                grid-template-columns: 1.25fr 0.95fr;
-                gap: 2.5rem;
-            }
-        }
-
-        .fitbrief-screens {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
-            padding: 0.5rem;
-        }
-
-        .fitbrief-screen-mockup {
-            max-width: 170px;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1.5px solid rgba(255, 255, 255, 0.14);
-            box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.85);
-            background: #000;
-            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-        }
-
-        .fitbrief-screen-mockup.screen-1 {
-            transform: translateY(0) rotate(-1deg);
-        }
-
-        .fitbrief-screen-mockup.screen-2 {
-            transform: translateY(14px) rotate(1.5deg);
-        }
-
-        .project-card.fitbrief-featured:hover .fitbrief-screen-mockup.screen-1 {
-            transform: translateY(-6px) rotate(-2deg);
-            box-shadow: 0 20px 45px -8px rgba(59, 130, 246, 0.35);
-        }
-
-        .project-card.fitbrief-featured:hover .fitbrief-screen-mockup.screen-2 {
-            transform: translateY(8px) rotate(2deg);
-            box-shadow: 0 20px 45px -8px rgba(168, 85, 247, 0.35);
-        }
-
-        .fitbrief-screen-mockup img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            padding: 1.75rem;
-        }
-
-        .project-card h3 {
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-
-        .project-card h3.featured {
-            font-size: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .project-card h3.featured { font-size: 1.875rem; }
-        }
-
-        .project-card .blurb {
-            margin-top: 0.75rem;
-            flex-grow: 1;
-            line-height: 1.7;
-            color: var(--muted-foreground);
-        }
-
-        .project-tags {
-            margin-top: 1.25rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .project-card .cta-link {
-            margin-top: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary-soft);
-            transition: color var(--transition-smooth);
-        }
-
-        .project-card .cta-link:hover { color: var(--foreground); }
-
-        .project-card .cta-link svg {
-            width: 16px;
-            height: 16px;
-        }
+        /* ===== BOOKS SPOTLIGHT ===== */
+        .books-card { margin-top: 2.5rem; display: grid; gap: 2rem; padding: 1.75rem; overflow: hidden; }
+        .books-card h3 { margin-top: 1.25rem; font-size: 1.5rem; }
+        .books-card .blurb { margin-top: 1rem; font-size: 1.125rem; line-height: 1.65; color: var(--muted-foreground); }
+        .books-card .cta { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--primary); }
+        .books-card .cta .i { transition: transform 300ms var(--ease-spring); }
+        .books-card:hover .cta .i { transform: translateX(0.25rem); }
+        .covers { position: relative; display: flex; align-items: center; justify-content: center; min-height: 15rem; padding-block: 1rem; }
+        .covers .shape.abs { inset: 0; margin: auto; width: 80%; aspect-ratio: 1; height: auto; color: var(--tertiary-container); }
+        .cover { position: relative; width: 34%; border-radius: 12px; box-shadow: var(--elevation-3); transition: transform 500ms var(--ease-spring); }
+        .cover.c1 { transform: rotate(-8deg) translate(12%, 6%); }
+        .cover.c2 { z-index: 1; transform: translateY(-4%); }
+        .cover.c3 { transform: rotate(8deg) translate(-12%, 6%); }
+        .books-card:hover .cover.c1 { transform: rotate(-10deg) translate(6%, 2%); }
+        .books-card:hover .cover.c3 { transform: rotate(10deg) translate(-6%, 2%); }
+        @media (min-width: 768px) { .books-card { padding: 2.25rem; } .books-card h3 { font-size: 1.875rem; } }
+        @media (min-width: 1024px) { .books-card { grid-template-columns: 1.2fr 1fr; align-items: center; } }
 
         /* ===== CONTACT ===== */
-        .contact-card {
-            scroll-margin-top: 6rem;
-            padding: 2rem;
-            text-align: center;
+        .contact {
+            position: relative; overflow: hidden; padding: 2rem; text-align: center; scroll-margin-top: 6rem;
+            background: var(--primary-container); color: var(--on-primary-container);
         }
-
-        @media (min-width: 768px) {
-            .contact-card { padding: 3.5rem; }
+        .contact .deco { pointer-events: none; }
+        .contact .deco1 { left: -4rem; top: -4rem; width: 14rem; height: 14rem; color: color-mix(in oklab, var(--primary) 15%, transparent); }
+        .contact .deco2 { right: -3rem; bottom: -5rem; width: 18rem; height: 18rem; color: color-mix(in oklab, var(--tertiary) 20%, transparent); }
+        .contact .inner { position: relative; }
+        .contact h2 { margin-inline: auto; max-width: 42rem; font-size: 1.875rem; }
+        .contact .desc { margin: 1.25rem auto 0; max-width: 36rem; font-size: 1.125rem; opacity: 0.85; }
+        .contact .m3-btn { margin-top: 2rem; box-shadow: var(--elevation-3); }
+        .socials { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+        .socials a {
+            display: inline-flex; height: 2.5rem; align-items: center; padding-inline: 1.25rem; border-radius: 9999px;
+            border: 1px solid color-mix(in oklab, var(--on-primary-container) 30%, transparent);
+            font-size: 0.875rem; font-weight: 600; transition: border-radius 300ms var(--ease-spring);
         }
-
-        .contact-card h2 {
-            margin-top: 1.25rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.875rem;
-            font-weight: 800;
-        }
-
-        @media (min-width: 768px) {
-            .contact-card h2 { font-size: 3rem; }
-        }
-
-        .contact-card .contact-desc {
-            margin-top: 1rem;
-            max-width: 32rem;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--muted-foreground);
-        }
-
-        .contact-card .btn-primary {
-            margin-top: 2rem;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            transition: color var(--transition-smooth);
-        }
-
-        .social-links a:hover { color: var(--foreground); }
-
-        /* ===== FOOTER ===== */
-        .site-footer {
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-inner {
-            max-width: 72rem;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 2rem 1.25rem;
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-        }
-
-        @media (min-width: 768px) {
-            .footer-inner {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .footer-inner .quote { font-style: italic; }
-
-        /* ===== BOOKS SPOTLIGHT CARD ===== */
-        .books-spotlight-card {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            padding: 2.25rem 2rem;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(100% 120% at 10% 20%, rgba(16, 185, 129, 0.12), rgba(245, 158, 11, 0.08) 50%, rgba(14, 165, 233, 0.08) 80%, transparent),
-                var(--gradient-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-2xl);
-            transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
-            cursor: pointer;
-            margin-top: 2rem;
-        }
-
-        .books-spotlight-card:hover {
-            transform: translateY(-4px);
-            border-color: color-mix(in oklab, var(--primary) 50%, transparent);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-        }
-
-        @media (min-width: 920px) {
-            .books-spotlight-card {
-                grid-template-columns: 1.25fr 1fr;
-                padding: 2.5rem 3rem;
-                gap: 2.5rem;
-            }
-        }
-
-        .books-spotlight-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-            z-index: 2;
-        }
-
-        .books-spotlight-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .books-spotlight-title {
-            font-size: clamp(1.35rem, 2.2vw, 1.7rem);
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--foreground);
-            margin: 0;
-            letter-spacing: -0.01em;
-        }
-
-        .books-spotlight-desc {
-            color: var(--muted-foreground);
-            font-size: 0.95rem;
-            line-height: 1.65;
-            margin: 0;
-        }
-
-        .books-spotlight-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary-soft);
-            margin-top: 0.5rem;
-            transition: gap var(--transition-smooth), color var(--transition-smooth);
-        }
-
-        .books-spotlight-card:hover .books-spotlight-cta {
-            gap: 0.75rem;
-            color: var(--foreground);
-        }
-
-        .books-spotlight-cta svg {
-            transition: transform var(--transition-smooth);
-        }
-
-        .books-spotlight-card:hover .books-spotlight-cta svg {
-            transform: translateX(4px);
-        }
-
-        /* Overlapping Mini Book Covers Fan */
-        .books-spotlight-covers {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 190px;
-            perspective: 1000px;
-        }
-
-        .mini-cover {
-            position: absolute;
-            width: 120px;
-            height: 155px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: -8px 12px 24px -6px rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 400ms ease;
-            background-color: #0b1120;
-        }
-
-        .mini-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            display: block;
-        }
-
-        /* Cover 1: Left */
-        .mini-cover-1 {
-            left: calc(50% - 135px);
-            transform: rotate(-9deg) translateY(4px) scale(0.92);
-            z-index: 1;
-        }
-
-        /* Cover 2: Center */
-        .mini-cover-2 {
-            left: calc(50% - 60px);
-            transform: rotate(0deg) translateY(-4px) scale(1);
-            z-index: 3;
-            box-shadow: -4px 16px 32px -6px rgba(0, 0, 0, 0.9);
-        }
-
-        /* Cover 3: Right */
-        .mini-cover-3 {
-            left: calc(50% + 15px);
-            transform: rotate(9deg) translateY(6px) scale(0.94);
-            z-index: 2;
-        }
-
-        .books-spotlight-card:hover .mini-cover-1 {
-            transform: rotate(-13deg) translateX(-12px) translateY(2px) scale(0.95);
-        }
-
-        .books-spotlight-card:hover .mini-cover-2 {
-            transform: rotate(0deg) translateY(-8px) scale(1.04);
-            box-shadow: 0 20px 38px -6px rgba(0, 0, 0, 0.95);
-        }
-
-        .books-spotlight-card:hover .mini-cover-3 {
-            transform: rotate(13deg) translateX(12px) translateY(4px) scale(0.97);
-        }
-
-        @media (max-width: 540px) {
-            .books-spotlight-covers {
-                height: 160px;
-                margin-top: 0.5rem;
-            }
-            .mini-cover {
-                width: 95px;
-                height: 125px;
-            }
-            .mini-cover-1 { left: calc(50% - 105px); }
-            .mini-cover-2 { left: calc(50% - 48px); }
-            .mini-cover-3 { left: calc(50% + 10px); }
-        }
-
-        /* ===== SCROLL ANIMATIONS ===== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
-
-        /* Hero entrance (immediate, not scroll-dependent) */
-        .hero-enter {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.7s ease-out forwards;
-        }
-        .hero-d1 { animation-delay: 0.1s; }
-        .hero-d2 { animation-delay: 0.25s; }
-        .hero-d3 { animation-delay: 0.4s; }
-        .hero-d4 { animation-delay: 0.55s; }
-        .hero-d5 { animation-delay: 0.7s; }
-
-        /* ===== SVG ICON HELPER ===== */
-        .icon {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-            flex-shrink: 0;
-        }
-
-        .icon-sm { width: 14px; height: 14px; }
-
-        /* ===== ACCESSIBILITY ===== */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            .animate-on-scroll, .hero-enter {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--background); }
-        ::-webkit-scrollbar-thumb { background: var(--surface-raised); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+        .socials a:active { border-radius: var(--radius-sm); }
+        @media (min-width: 768px) { .contact { padding: 4rem; } .contact h2 { font-size: 3.75rem; } }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ===== NAVIGATION ===== -->
-    <header class="site-nav" id="site-nav">
-        <nav class="nav-inner">
-            <a href="#top" class="nav-brand">
-                rohail<span class="text-gradient">.dev</span>
+    <header class="site-nav" id="site-nav" data-home>
+        <nav class="container nav-inner" aria-label="Primary">
+            <a href="#top" class="nav-brand state-layer">
+                <span class="mark">R</span>
+                <span>rohail<span class="text-primary">.dev</span></span>
             </a>
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#work">Work</a>
-                <a href="#labs">Labs</a>
-                <a href="books.html">Books</a>
-                <a href="blog.html">Blog</a>
-                <a href="#contact">Contact</a>
+            <div class="nav-pill">
+                <a class="nav-link state-layer" href="#hiring">Hiring?</a>
+                <a class="nav-link state-layer" href="#about">About</a>
+                <a class="nav-link state-layer" href="#skills">Skills</a>
+                <a class="nav-link state-layer" href="#experience">Experience</a>
+                <a class="nav-link state-layer" href="#work">Work</a>
+                <a class="nav-link state-layer" href="#labs">Labs</a>
+                <a class="nav-link state-layer" href="books.html">Books</a>
+                <a class="nav-link state-layer" href="blog.html">Blog</a>
+                <a class="nav-link state-layer" href="#contact">Contact</a>
             </div>
 
-            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon">
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-            </button>
+            <div class="nav-actions">
+                <div data-theme-controls></div>
+                <button type="button" class="icon-btn menu-btn state-layer" aria-label="Open menu" aria-expanded="false"><i data-icon="menu" class="i i-5"></i></button>
+            </div>
         </nav>
 
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="#about" class="mobile-nav-link">About</a>
-            <a href="#skills" class="mobile-nav-link">Skills</a>
-            <a href="#experience" class="mobile-nav-link">Experience</a>
-            <a href="#work" class="mobile-nav-link">Work</a>
-            <a href="#labs" class="mobile-nav-link">Labs</a>
-            <a href="books.html" class="mobile-nav-link">Books</a>
-            <a href="blog.html" class="mobile-nav-link">Blog</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
+        <div class="mobile-menu">
+            <div class="mobile-menu-inner">
+                <a class="nav-link state-layer" href="#hiring">Hiring?</a>
+                <a class="nav-link state-layer" href="#about">About</a>
+                <a class="nav-link state-layer" href="#skills">Skills</a>
+                <a class="nav-link state-layer" href="#experience">Experience</a>
+                <a class="nav-link state-layer" href="#work">Work</a>
+                <a class="nav-link state-layer" href="#labs">Labs</a>
+                <a class="nav-link state-layer" href="books.html">Books</a>
+                <a class="nav-link state-layer" href="blog.html">Blog</a>
+                <a class="nav-link state-layer" href="#contact">Contact</a>
+            </div>
         </div>
     </header>
 
+    <main id="main">
+
     <!-- ===== HERO ===== -->
     <section id="top" class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-grid-overlay grid-lines" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Intro -->
+                <div class="m3-card bg-surface hero-intro">
+                    <a href="#hiring" class="status-pill state-layer">
+                        <span class="ping" aria-hidden="true"></span>
+                        Open to senior Android roles
+                        <span class="extra">· find relevant work</span>
+                        <i data-icon="arrow-down" class="i i-4"></i>
+                    </a>
 
-        <div class="hero-content">
-            <div class="hero-bento-grid">
+                    <h1>I build Android products <span class="pill">millions</span> of people actually use.</h1>
 
-                <!-- Main intro tile -->
-                <div class="bento hero-main-tile hero-enter hero-d1">
-                    <span class="chip">
-                        <svg class="icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-                        Available for senior Android roles
-                    </span>
-
-                    <h1>
-                        I build Android products<br>
-                        <span class="text-gradient">millions of people</span><br>
-                        actually use.
-                    </h1>
-
-                    <p class="hero-subtitle">
-                        Senior Android Engineer with 8+ years across fintech, digital mail and energy — obsessed with user experience, Kotlin craft and shipping things that hold up in production.
+                    <p class="hero-sub">
+                        Senior Android Engineer with 8+ years across fintech, digital mail and energy. I obsess over
+                        how an app feels in someone's hand — and write the Kotlin to make it hold up in production.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#work" class="btn-primary">
-                            View my work
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
-                        <a href="https://drive.google.com/file/d/1iiadAauX50YslK-ahlYKm_r3vJvHtXZ3/view?usp=sharing" target="_blank" rel="noreferrer" class="btn-secondary">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                            Download CV
-                        </a>
-                    </div>
-
-                    <div class="hero-chips">
-                        <span class="chip">Kotlin</span>
-                        <span class="chip">Jetpack Compose</span>
-                        <span class="chip">Design systems</span>
-                        <span class="chip">AI tooling</span>
-                        <span class="chip">Ownership</span>
+                        <a href="#work" class="m3-btn m3-btn--filled elevated state-layer">See my work <i data-icon="arrow-down" class="i i-5"></i></a>
+                        <a href="https://drive.google.com/file/d/1iiadAauX50YslK-ahlYKm_r3vJvHtXZ3/view?usp=sharing" target="_blank" rel="noreferrer" class="m3-btn m3-btn--tonal state-layer"><i data-icon="download" class="i i-5"></i> Download CV</a>
                     </div>
                 </div>
 
-                <!-- Visual tile -->
-                <div class="bento hero-visual-tile hero-enter hero-d2">
-                    <img src="assets/hero-glow.jpg" alt="Abstract illustration of layered Android app interface cards" width="1200" height="912">
-                    <div class="hero-visual-overlay">
-                        <p>Compose-first UI craft</p>
-                        <p>Motion, a11y and design tokens by default</p>
+                <!-- "Home screen" of widgets -->
+                <div class="widgets">
+                    <div class="m3-card bg-surface widget-now">
+                        <div>
+                            <p class="kicker">Now</p>
+                            <p class="now-title font-display">Senior Android @ Kivra</p>
+                            <p class="now-loc"><i data-icon="map-pin" class="i i-4"></i> Gothenburg, Sweden</p>
+                        </div>
+                        <span class="shape shape--spin" data-shape="cookie"><span class="shape-content">RA</span></span>
+                    </div>
+
+                    <div class="group m3-card bg-surface stat">
+                        <span class="shape text-primary-container spin-45" data-shape="cookie"><span class="shape-content value text-on-primary-container">8+</span></span>
+                        <p class="label">Years of craft</p>
+                    </div>
+                    <div class="group m3-card bg-surface stat">
+                        <span class="shape text-tertiary-container spin-90" data-shape="clover"><span class="shape-content value text-on-tertiary-container">20+</span></span>
+                        <p class="label">Apps shipped</p>
+                    </div>
+                    <div class="group m3-card bg-surface stat">
+                        <span class="shape text-secondary-container spin--60" data-shape="flower"><span class="shape-content value text-on-secondary-container">12M+</span></span>
+                        <p class="label">Users reached</p>
+                    </div>
+                    <div class="group m3-card bg-surface stat">
+                        <span class="shape text-primary spin-45" data-shape="sunny"><span class="shape-content value text-primary-fg">+25%</span></span>
+                        <p class="label">Payment completions</p>
                     </div>
                 </div>
-
-                <!-- Stats tile -->
-                <div class="bento hero-stats-tile hero-enter hero-d3">
-                    <div class="stats-grid">
-                        <div>
-                            <p class="stat-value">8+</p>
-                            <p class="stat-label">Years of craft</p>
-                        </div>
-                        <div>
-                            <p class="stat-value">20+</p>
-                            <p class="stat-label">Apps shipped</p>
-                        </div>
-                        <div>
-                            <p class="stat-value">5M+</p>
-                            <p class="stat-label">Users reached</p>
-                        </div>
-                        <div>
-                            <p class="stat-value">+25%</p>
-                            <p class="stat-label">Payment completions</p>
-                        </div>
-                    </div>
-                    <p class="stats-location">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        Gothenburg, Sweden
-                    </p>
-                </div>
-
             </div>
+
+            <div class="chip-row hero-chips">
+                <span class="chip chip--low">Kotlin</span>
+                <span class="chip chip--low">Jetpack Compose</span>
+                <span class="chip chip--low">Design systems</span>
+                <span class="chip chip--low">Accessibility</span>
+                <span class="chip chip--low">AI tooling</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RECRUITER GUIDE ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head" id="hiring">
+                <p class="eyebrow">For recruiters</p>
+                <h2>Hiring for something specific?</h2>
+                <p class="subtitle">Describe the role, or pick what it needs, and jump straight to the proof — no need to read the whole page.</p>
+            </div>
+
+            <div id="role-matcher" class="m3-card no-morph matcher"></div>
+
+            <p class="kicker" style="margin-top: 2.5rem;">Or pick a focus</p>
+            <div id="focus-chips" class="focus-chips" role="radiogroup" aria-label="What the role needs"></div>
+            <div id="guide-pitch" class="m3-card bg-surface pitch" aria-live="polite"></div>
         </div>
     </section>
 
@@ -1237,25 +488,25 @@
     <section class="section">
         <div class="container">
             <div class="section-head" id="about">
-                <span class="chip">About</span>
+                <p class="eyebrow">About</p>
                 <h2>Engineering with the user in the room</h2>
-                <p class="section-subtitle">Fintech and digital mail at Kivra, energy platforms at Eliq, mobile banking at Meezan — 20+ production apps across Sweden, Germany and Pakistan.</p>
+                <p class="subtitle">Fintech and digital mail at Kivra, energy platforms at Eliq, mobile banking at Meezan — 20+ production apps across Sweden, Germany and Pakistan.</p>
             </div>
 
             <div class="about-grid">
-                <div class="bento animate-on-scroll">
+                <div class="m3-card card-pad about-main">
                     <h3>Ownership, not just code</h3>
-                    <p>My core expertise is Kotlin and Jetpack Compose, but I think beyond the platform. I care about the business outcome behind every feature, collaborate openly across product, design and backend, and take responsibility from idea to production. At Kivra that meant spearheading invoice payments and lifting successful transactions by 25% in a quarter.</p>
-                    <p>Lately I've been exploring AI-powered tooling and building side projects like Pulse AI, a privacy-first desktop news dashboard. Curiosity drives me more than tech stacks.</p>
+                    <p>My core expertise is Kotlin and Jetpack Compose, but I think beyond the platform. I care about the business outcome behind every feature, collaborate openly across product, design and backend, and take responsibility from idea to production. At Kivra that meant spearheading invoice payments with Visa, SEB and other major Swedish banks on open banking APIs, and lifting successful payments 25% in my first 3 months.</p>
+                    <p>Lately I've been exploring AI-powered tooling and building side projects like FitBrief and Pulse AI. Curiosity drives me more than tech stacks.</p>
                 </div>
 
-                <div class="bento animate-on-scroll delay-1">
+                <div class="m3-card card-pad bg-tertiary-container about-side">
                     <h3>Off the clock</h3>
-                    <ul class="hobbies-list">
-                        <li><span class="accent-dot"></span> Mentoring developers</li>
-                        <li><span class="accent-dot"></span> Helping small businesses go digital</li>
-                        <li><span class="accent-dot"></span> Golf, badminton, gym</li>
-                        <li><span class="accent-dot"></span> Home fixes and tinkering</li>
+                    <ul class="off-clock">
+                        <li><span class="ico"><i data-icon="users" class="i i-5"></i></span> Mentoring developers</li>
+                        <li><span class="ico"><i data-icon="store" class="i i-5"></i></span> Helping small businesses go digital</li>
+                        <li><span class="ico"><i data-icon="dumbbell" class="i i-5"></i></span> Golf, badminton, gym</li>
+                        <li><span class="ico"><i data-icon="wrench" class="i i-5"></i></span> Home fixes and tinkering</li>
                     </ul>
                 </div>
             </div>
@@ -1266,46 +517,50 @@
     <section class="section">
         <div class="container">
             <div class="section-head" id="skills">
-                <span class="chip">Expertise</span>
+                <p class="eyebrow">Expertise</p>
                 <h2>The toolkit behind 20+ shipped apps</h2>
             </div>
 
-            <div class="skills-grid">
-                <div class="bento animate-on-scroll delay-1">
+            <div id="skills-grid" class="skills-grid">
+                <div class="group m3-card skill-card">
+                    <span class="shape text-primary-container spin-90" data-shape="cookie"><span class="shape-content"><i data-icon="code" class="i i-6"></i></span></span>
                     <h3>Languages</h3>
-                    <ul>
-                        <li>Kotlin — expert</li>
-                        <li>Java — advanced</li>
-                        <li>TypeScript</li>
-                    </ul>
+                    <div class="chip-row">
+                        <span class="chip chip--lowest">Kotlin — expert</span>
+                        <span class="chip chip--lowest">Java — advanced</span>
+                        <span class="chip chip--lowest">TypeScript</span>
+                    </div>
                 </div>
-                <div class="bento animate-on-scroll delay-2">
+                <div class="group m3-card skill-card">
+                    <span class="shape text-tertiary-container spin-90" data-shape="clover"><span class="shape-content"><i data-icon="layers" class="i i-6"></i></span></span>
                     <h3>Architecture</h3>
-                    <ul>
-                        <li>Jetpack Compose</li>
-                        <li>MVVM · MVI · Clean</li>
-                        <li>Android SDK</li>
-                        <li>Retrofit · OkHttp</li>
-                        <li>Room · SQLite</li>
-                    </ul>
+                    <div class="chip-row">
+                        <span class="chip chip--lowest">Jetpack Compose</span>
+                        <span class="chip chip--lowest">MVVM · MVI · Clean</span>
+                        <span class="chip chip--lowest">Android SDK</span>
+                        <span class="chip chip--lowest">Retrofit · OkHttp</span>
+                        <span class="chip chip--lowest">Room · SQLite</span>
+                    </div>
                 </div>
-                <div class="bento animate-on-scroll delay-3">
+                <div class="group m3-card skill-card">
+                    <span class="shape text-secondary-container spin-90" data-shape="flower"><span class="shape-content"><i data-icon="wrench" class="i i-6"></i></span></span>
                     <h3>Tooling</h3>
-                    <ul>
-                        <li>Firebase</li>
-                        <li>Git · GitHub · GitLab</li>
-                        <li>Amplitude · Braze</li>
-                        <li>Jira · Confluence</li>
-                    </ul>
+                    <div class="chip-row">
+                        <span class="chip chip--lowest">Firebase</span>
+                        <span class="chip chip--lowest">Git · GitHub · GitLab</span>
+                        <span class="chip chip--lowest">Amplitude · Braze</span>
+                        <span class="chip chip--lowest">Jira · Confluence</span>
+                    </div>
                 </div>
-                <div class="bento animate-on-scroll delay-4">
+                <div class="group m3-card skill-card">
+                    <span class="shape text-primary-container spin-90" data-shape="sunny"><span class="shape-content"><i data-icon="test-tube" class="i i-6"></i></span></span>
                     <h3>Quality</h3>
-                    <ul>
-                        <li>JUnit · Mockito</li>
-                        <li>Espresso UI tests</li>
-                        <li>Integration & functional</li>
-                        <li>KMP · iOS · Flutter (familiar)</li>
-                    </ul>
+                    <div class="chip-row">
+                        <span class="chip chip--lowest">JUnit · Mockito</span>
+                        <span class="chip chip--lowest">Espresso UI tests</span>
+                        <span class="chip chip--lowest">Integration &amp; functional</span>
+                        <span class="chip chip--lowest">KMP · iOS · Flutter (familiar)</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1315,63 +570,80 @@
     <section class="section">
         <div class="container">
             <div class="section-head" id="experience">
-                <span class="chip">Career</span>
-                <h2>Ten years of shipping, four teams</h2>
+                <p class="eyebrow">Career</p>
+                <h2>Four teams, one obsession: the user</h2>
             </div>
 
-            <div class="experience-list">
-                <!-- Kivra -->
-                <article class="bento experience-card animate-on-scroll delay-1">
-                    <div class="experience-header">
-                        <h3>Senior Android Engineer <span class="company">· Kivra</span></h3>
-                        <p class="meta">Jun 2023 — Present — Stockholm, Sweden</p>
+            <ol class="exp-list">
+                <li class="exp current" id="exp-kivra">
+                    <span class="shape text-primary" data-shape="cookie"><span class="shape-content text-primary-fg">K</span></span>
+                    <div>
+                        <span class="chip chip--tertiary match-badge" data-match-for="exp-kivra" hidden></span>
+                        <h3>Kivra <span>· Senior Android Engineer</span></h3>
+                        <p class="summary">Enhancing Sweden's leading digital mailbox service.</p>
+                        <ul class="points">
+                            <li>Spearheaded invoice payments in Kotlin &amp; Jetpack Compose — lifted successful payments 25% in my first 3 months.</li>
+                            <li>Work with Visa, SEB and other major Swedish banks, building payments on open banking APIs.</li>
+                            <li>Integrated 2 new payment gateways with product, backend and design.</li>
+                            <li>Drove architecture decisions for performance, security and maintainability.</li>
+                        </ul>
                     </div>
-                    <p class="summary">Enhancing Sweden's leading digital mailbox service.</p>
-                    <ul class="points">
-                        <li><span class="accent-dot"></span> Spearheaded invoice payments in Kotlin & Jetpack Compose — 25% more successful payment completions in the first quarter.</li>
-                        <li><span class="accent-dot"></span> Integrated 2 new payment gateways with product, backend and design.</li>
-                        <li><span class="accent-dot"></span> Drove architecture decisions for performance, security and maintainability.</li>
-                    </ul>
-                </article>
+                    <div class="exp-side">
+                        <span class="period">Jun 2023 — Present</span>
+                        <p class="place">Stockholm, Sweden</p>
+                    </div>
+                </li>
 
-                <!-- Eliq -->
-                <article class="bento experience-card animate-on-scroll delay-2">
-                    <div class="experience-header">
-                        <h3>Senior Android Engineer <span class="company">· Eliq</span></h3>
-                        <p class="meta">Sep 2018 — May 2023 — Gothenburg, Sweden</p>
+                <li class="exp" id="exp-eliq">
+                    <span class="shape text-secondary-container" data-shape="circle"><span class="shape-content text-on-secondary-container">E</span></span>
+                    <div>
+                        <span class="chip chip--tertiary match-badge" data-match-for="exp-eliq" hidden></span>
+                        <h3>Eliq <span>· Senior Android Engineer</span></h3>
+                        <p class="summary">Energy management solutions for international clients.</p>
+                        <ul class="points">
+                            <li>Led development of 20+ white-label Android apps in Kotlin.</li>
+                        </ul>
                     </div>
-                    <p class="summary">Energy management solutions for international clients.</p>
-                    <ul class="points">
-                        <li><span class="accent-dot"></span> Led development of 20+ white-label Android apps in Kotlin.</li>
-                    </ul>
-                </article>
+                    <div class="exp-side">
+                        <span class="period">Sep 2018 — May 2023</span>
+                        <p class="place">Gothenburg, Sweden</p>
+                    </div>
+                </li>
 
-                <!-- UIZ -->
-                <article class="bento experience-card animate-on-scroll delay-3">
-                    <div class="experience-header">
-                        <h3>Android Engineer (Erasmus+) <span class="company">· UIZ GmbH</span></h3>
-                        <p class="meta">Jul 2017 — Aug 2018 — Berlin, Germany</p>
+                <li class="exp" id="exp-uiz">
+                    <span class="shape text-secondary-container" data-shape="circle"><span class="shape-content text-on-secondary-container">U</span></span>
+                    <div>
+                        <span class="chip chip--tertiary match-badge" data-match-for="exp-uiz" hidden></span>
+                        <h3>UIZ GmbH <span>· Android Engineer (Erasmus+)</span></h3>
+                        <p class="summary">Mobile application development for white-label clients.</p>
+                        <ul class="points">
+                            <li>Re-architected offline capabilities for a restaurant app, making it usable in low-connectivity environments.</li>
+                        </ul>
                     </div>
-                    <p class="summary">Mobile application development for white-label clients.</p>
-                    <ul class="points">
-                        <li><span class="accent-dot"></span> Re-architected offline capabilities for a restaurant app, making it usable in low-connectivity environments.</li>
-                    </ul>
-                </article>
+                    <div class="exp-side">
+                        <span class="period">Jul 2017 — Aug 2018</span>
+                        <p class="place">Berlin, Germany</p>
+                    </div>
+                </li>
 
-                <!-- Inov8 -->
-                <article class="bento experience-card animate-on-scroll delay-4">
-                    <div class="experience-header">
-                        <h3>Android Engineer <span class="company">· Inov8 Limited</span></h3>
-                        <p class="meta">May 2015 — Apr 2017 — Lahore, Pakistan</p>
+                <li class="exp" id="exp-inov8">
+                    <span class="shape text-secondary-container" data-shape="circle"><span class="shape-content text-on-secondary-container">I</span></span>
+                    <div>
+                        <span class="chip chip--tertiary match-badge" data-match-for="exp-inov8" hidden></span>
+                        <h3>Inov8 Limited <span>· Android Engineer</span></h3>
+                        <p class="summary">Mobile and branchless banking at scale.</p>
+                        <ul class="points">
+                            <li>Shipped 6+ banking apps, including Meezan Bank (10M+ Play Store downloads).</li>
+                            <li>Integrated MasterPass QR payments with the MasterCard team.</li>
+                            <li>Ensured PCI DSS compliance across releases.</li>
+                        </ul>
                     </div>
-                    <p class="summary">Mobile and branchless banking at scale.</p>
-                    <ul class="points">
-                        <li><span class="accent-dot"></span> Shipped 6+ banking apps serving 5M+ users.</li>
-                        <li><span class="accent-dot"></span> Integrated MasterPass QR payments with the MasterCard team.</li>
-                        <li><span class="accent-dot"></span> Ensured PCI DSS compliance across releases.</li>
-                    </ul>
-                </article>
-            </div>
+                    <div class="exp-side">
+                        <span class="period">May 2015 — Apr 2017</span>
+                        <p class="place">Lahore, Pakistan</p>
+                    </div>
+                </li>
+            </ol>
         </div>
     </section>
 
@@ -1379,54 +651,122 @@
     <section class="section">
         <div class="container">
             <div class="section-head" id="work">
-                <span class="chip">Selected work</span>
+                <p class="eyebrow">Selected work</p>
                 <h2>Products in real users' hands</h2>
+                <p class="subtitle">Swipe through the screens — these are the apps people open every day.</p>
             </div>
 
-            <div class="work-grid">
+            <div class="work-stack">
                 <!-- Kivra -->
-                <article class="bento project-card span-2 animate-on-scroll delay-1">
-                    <h3 class="featured">Kivra — Digital Mail & Payments</h3>
-                    <p class="blurb">Sweden's leading digital mail service. Spearheaded invoice payment features in Kotlin & Jetpack Compose, boosting successful payments by 25%.</p>
-                    <div class="project-tags">
-                        <span class="chip">Kotlin</span>
-                        <span class="chip">Jetpack Compose</span>
-                        <span class="chip">Fintech</span>
+                <article class="m3-card case" id="case-kivra">
+                    <div class="case-grid">
+                        <div>
+                            <span class="chip chip--tertiary match-badge" data-match-for="case-kivra" hidden></span>
+                            <div class="case-head">
+                                <img class="app-icon" src="assets/apps/kivra-icon.webp" alt="" width="64" height="64">
+                                <h3>Kivra — Digital Mail &amp; Payments</h3>
+                            </div>
+                            <p class="blurb">Sweden's leading digital mail service, used by 2.5M+ people. Spearheaded invoice payment features in Kotlin &amp; Jetpack Compose, boosting successful payments by 25% — working with Visa, SEB and other major Swedish banks on open banking APIs.</p>
+                            <div class="chip-row">
+                                <span class="chip">Kotlin</span>
+                                <span class="chip">Jetpack Compose</span>
+                                <span class="chip">Fintech</span>
+                                <span class="chip">Open Banking</span>
+                            </div>
+                            <a href="https://play.google.com/store/apps/details?id=com.kivra.Kivra" target="_blank" rel="noreferrer" class="m3-btn m3-btn--filled state-layer">View on Play Store <i data-icon="arrow-up-right" class="i i-5"></i></a>
+                        </div>
+                        <div class="shots no-scrollbar" role="region" aria-label="Kivra screenshots" tabindex="0">
+                            <img src="assets/apps/kivra-shot-1.webp" alt="Kivra inbox with letters from authorities and companies" loading="lazy" width="720" height="1280">
+                            <img src="assets/apps/kivra-shot-2.webp" alt="Kivra invoice screen where bills are paid in the app" loading="lazy" width="720" height="1280">
+                            <img src="assets/apps/kivra-shot-3.webp" alt="Kivra digital receipt from ICA with itemised products" loading="lazy" width="720" height="1280">
+                        </div>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.kivra.Kivra" target="_blank" rel="noreferrer" class="cta-link">
-                        View on Play Store
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </a>
-                </article>
-
-                <!-- Mölndal Energi -->
-                <article class="bento project-card animate-on-scroll delay-2">
-                    <h3>Mölndal Energi — Energy Insights</h3>
-                    <p class="blurb">Smart energy management Android app developed at Eliq for Mölndal Energi, giving users real-time consumption data and energy usage analytics.</p>
-                    <div class="project-tags">
-                        <span class="chip">Kotlin</span>
-                        <span class="chip">Energy</span>
-                        <span class="chip">White-Label</span>
-                    </div>
-                    <a href="https://play.google.com/store/apps/details?id=io.eliq.molndalenergi" target="_blank" rel="noreferrer" class="cta-link">
-                        View on Play Store
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </a>
                 </article>
 
                 <!-- Meezan -->
-                <article class="bento project-card span-3 animate-on-scroll delay-3">
-                    <h3>Meezan Bank — Mobile Banking</h3>
-                    <p class="blurb">Mobile banking for 5M+ users at Inov8. MasterPass QR payment integration and PCI DSS compliance.</p>
-                    <div class="project-tags">
-                        <span class="chip">Java</span>
-                        <span class="chip">Security</span>
-                        <span class="chip">Fintech</span>
+                <article class="m3-card case reverse" id="case-meezan">
+                    <div class="case-grid">
+                        <div>
+                            <span class="chip chip--tertiary match-badge" data-match-for="case-meezan" hidden></span>
+                            <div class="case-head">
+                                <img class="app-icon" src="assets/apps/meezan-icon.webp" alt="" width="64" height="64">
+                                <h3>Meezan Bank — Mobile Banking</h3>
+                            </div>
+                            <p class="blurb">Mobile banking with 10M+ Play Store downloads, built at Inov8. MasterPass QR payment integration and PCI DSS compliance.</p>
+                            <div class="chip-row">
+                                <span class="chip">Java</span>
+                                <span class="chip">Security</span>
+                                <span class="chip">Fintech</span>
+                            </div>
+                            <a href="https://play.google.com/store/apps/details?id=invo8.meezan.mb" target="_blank" rel="noreferrer" class="m3-btn m3-btn--filled state-layer">View on Play Store <i data-icon="arrow-up-right" class="i i-5"></i></a>
+                        </div>
+                        <div class="shots no-scrollbar" role="region" aria-label="Meezan Bank screenshots" tabindex="0">
+                            <img src="assets/apps/meezan-shot-1.webp" alt="Meezan Bank fund transfer screen listing banks" loading="lazy" width="720" height="1280">
+                            <img src="assets/apps/meezan-shot-2.webp" alt="Meezan Bank investment portfolio overview" loading="lazy" width="720" height="1280">
+                            <img src="assets/apps/meezan-shot-3.webp" alt="Meezan Bank debit card management controls" loading="lazy" width="720" height="1280">
+                        </div>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=invo8.meezan.mb" target="_blank" rel="noreferrer" class="cta-link">
-                        View on Play Store
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </a>
+                </article>
+
+                <!-- Design System -->
+                <article class="m3-card case ds-card" id="case-design-system">
+                    <div>
+                        <div class="ds-top">
+                            <i data-icon="boxes" class="i i-8"></i>
+                            <span class="chip chip--tertiary match-badge" data-match-for="case-design-system" hidden style="margin-bottom:0"></span>
+                        </div>
+                        <h3>Android Design System</h3>
+                        <p class="blurb">A flexible Compose design system library: reusable components, consistent theming, design tokens and accessibility support.</p>
+                        <div class="chip-row">
+                            <span class="chip">Compose</span>
+                            <span class="chip">Design System</span>
+                            <span class="chip">A11y</span>
+                        </div>
+                        <a href="https://github.com/rrohaill/Design-System" target="_blank" rel="noreferrer" class="m3-btn m3-btn--filled state-layer">View code <i data-icon="arrow-up-right" class="i i-5"></i></a>
+                    </div>
+
+                    <!-- Component specimen sheet -->
+                    <div class="specimen" aria-hidden="true">
+                        <div class="tile span2 btns">
+                            <span class="m3-btn m3-btn--filled mini-btn">Filled</span>
+                            <span class="m3-btn m3-btn--tonal mini-btn">Tonal</span>
+                            <span class="m3-btn mini-btn" style="border:1px solid var(--outline)">Outlined</span>
+                        </div>
+                        <div class="tile row">
+                            <span style="font-size:.875rem;font-weight:600">Switch</span>
+                            <span class="switch"></span>
+                        </div>
+                        <div class="tile center">
+                            <span class="shape text-primary" data-shape="cookie"></span>
+                            <span class="shape text-tertiary" data-shape="clover"></span>
+                            <span class="shape text-secondary" data-shape="flower"></span>
+                        </div>
+                        <div class="tile span2 chips">
+                            <span class="chip chip--secondary">✓ Selected</span>
+                            <span class="chip">Filter</span>
+                            <span class="chip">Assist</span>
+                            <span class="chip">A11y 4.5:1</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Mölndal Energi (white-label energy app built at Eliq) -->
+                <article class="m3-card case mini-case" id="case-molndal">
+                    <div class="case-grid">
+                        <div>
+                            <span class="chip chip--tertiary match-badge" data-match-for="case-molndal" hidden></span>
+                            <h3>Mölndal Energi — Energy Insights</h3>
+                            <p class="blurb">Smart energy management Android app developed at Eliq for Mölndal Energi — one of 20+ white-label apps from a shared Kotlin codebase, giving customers real-time consumption data and usage analytics.</p>
+                            <div class="chip-row">
+                                <span class="chip">Kotlin</span>
+                                <span class="chip">Energy</span>
+                                <span class="chip">White-label</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://play.google.com/store/apps/details?id=io.eliq.molndalenergi" target="_blank" rel="noreferrer" class="m3-btn m3-btn--tonal state-layer" style="margin-top:0">View on Play Store <i data-icon="arrow-up-right" class="i i-5"></i></a>
+                        </div>
+                    </div>
                 </article>
             </div>
         </div>
@@ -1436,36 +776,26 @@
     <section class="section">
         <div class="container">
             <div class="section-head" id="labs">
-                <span class="chip">Labs</span>
+                <p class="eyebrow">Labs</p>
                 <h2>Side projects and experiments</h2>
-                <p class="section-subtitle">Where I test ideas that don't fit a sprint.</p>
+                <p class="subtitle">Where I test ideas that don't fit a sprint.</p>
             </div>
 
             <div class="labs-grid">
-                <!-- FitBrief (Featured Span-2) -->
-                <article class="bento project-card fitbrief-featured span-2 animate-on-scroll delay-1">
-                    <div class="fitbrief-inner">
+                <!-- FitBrief (featured) -->
+                <article class="m3-card bg-surface lab-featured" id="lab-fitbrief">
+                    <div class="lab-featured-grid">
                         <div>
-                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-                                <span class="chip" style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); color: #60a5fa; font-size: 0.75rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                    On-Device AI
-                                </span>
-                                <span class="chip" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.35); color: #c084fc; font-size: 0.75rem;">Gemini Nano</span>
-                                <span class="chip" style="font-size: 0.75rem;">Health Connect</span>
-                                <span class="chip" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24; font-size: 0.75rem;">
-                                    Play Store Coming Soon
-                                </span>
+                            <div class="chip-row">
+                                <span class="chip chip--tertiary match-badge" data-match-for="lab-fitbrief" hidden style="margin-bottom:0"></span>
+                                <span class="chip chip--primary"><i data-icon="sparkles" class="i i-3"></i> On-Device AI</span>
+                                <span class="chip">Gemini Nano</span>
+                                <span class="chip">Health Connect</span>
+                                <span class="chip chip--tertiary"><i data-icon="clock" class="i i-3"></i> Play Store coming soon</span>
                             </div>
-
-                            <h3 class="featured" style="font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 700; margin-bottom: 0.5rem;">
-                                FitBrief — On-Device AI Fitness Summaries
-                            </h3>
-                            <p class="blurb" style="margin-top: 0.5rem; line-height: 1.7;">
-                                A modern Kotlin &amp; Jetpack Compose Android app that turns Health Connect data into private, plain-language fitness summaries using on-device Generative AI (Gemini Nano &amp; LiteRT-LM). Aggregates steps, distance, active calories, heart-rate zone bands, and sleep sessions—with 100% of biometric data staying strictly on the device.
-                            </p>
-
-                            <div class="project-tags" style="margin-top: 1rem;">
+                            <h3>FitBrief — On-Device AI Fitness Summaries</h3>
+                            <p class="blurb">A modern Kotlin &amp; Jetpack Compose Android app that turns Health Connect data into private, plain-language fitness summaries using on-device Generative AI (Gemini Nano &amp; LiteRT-LM). Aggregates steps, distance, active calories, heart-rate zone bands, and sleep sessions — with 100% of biometric data staying strictly on the device.</p>
+                            <div class="chip-row" style="margin-top:1.25rem">
                                 <span class="chip">Kotlin</span>
                                 <span class="chip">Jetpack Compose</span>
                                 <span class="chip">Health Connect</span>
@@ -1474,114 +804,95 @@
                                 <span class="chip">WorkManager</span>
                                 <span class="chip">Privacy</span>
                             </div>
-
-                            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center;">
-                                <a href="https://github.com/rrohaill/FitBrief" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0; font-weight: 700; color: #60a5fa; display: inline-flex; align-items: center; gap: 0.4rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                                    View on GitHub
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                                </a>
-                                <a href="blog.html#building-fitbrief" class="cta-link" style="margin-top:0; display: inline-flex; align-items: center; gap: 0.4rem;">
-                                    Build story
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                                </a>
-                                <span class="chip" style="background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); font-size: 0.75rem;">
-                                    Play Store release pending
-                                </span>
+                            <div class="lab-links">
+                                <a href="https://github.com/rrohaill/FitBrief" target="_blank" rel="noreferrer" class="text-link state-layer">View on GitHub <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                                <a href="blog.html#building-fitbrief" class="text-link state-layer">Build story <i data-icon="arrow-right" class="i i-4"></i></a>
                             </div>
                         </div>
 
-                        <div class="fitbrief-screens">
-                            <div class="fitbrief-screen-mockup screen-1" title="FitBrief Today Dashboard">
-                                <img src="assets/fitbrief/01-dashboard-today.png" alt="FitBrief Today Dashboard with Health Metrics" loading="lazy">
-                            </div>
-                            <div class="fitbrief-screen-mockup screen-2" title="FitBrief AI Activity Timeline">
-                                <img src="assets/fitbrief/02-dashboard-timeline.png" alt="FitBrief AI Activity Timeline and On-Device Summaries" loading="lazy">
-                            </div>
+                        <div class="lab-visual">
+                            <span class="shape abs shape--spin-slow" data-shape="cookie"></span>
+                            <img class="phone a" src="assets/fitbrief/01-dashboard-today.png" alt="FitBrief Today dashboard with health metrics" loading="lazy" width="540" height="1202">
+                            <img class="phone b" src="assets/fitbrief/02-dashboard-timeline.png" alt="FitBrief AI activity timeline with on-device summaries" loading="lazy" width="540" height="1202">
                         </div>
                     </div>
                 </article>
 
                 <!-- PixelSanitizer -->
-                <article class="bento project-card animate-on-scroll delay-1">
+                <article class="m3-card lab" id="lab-pixelsanitizer">
+                    <div class="lab-top">
+                        <span class="ico"><i data-icon="shield-check" class="i i-6"></i></span>
+                        <span class="chip chip--tertiary match-badge" data-match-for="lab-pixelsanitizer" hidden></span>
+                    </div>
                     <h3>PixelSanitizer — Photo Privacy</h3>
-                    <p class="blurb">Modern privacy app (Kotlin/Compose & React Native/Expo 57) to inspect EXIF metadata, highlight privacy risks (GPS, camera serials), and sanitize photos 100% on-device.</p>
-                    <div class="project-tags">
+                    <p class="blurb">Modern privacy app (Kotlin/Compose &amp; React Native/Expo 57) to inspect EXIF metadata, highlight privacy risks (GPS, camera serials), and sanitize photos 100% on-device.</p>
+                    <div class="chip-row">
                         <span class="chip">Kotlin</span>
                         <span class="chip">React Native</span>
                         <span class="chip">Expo 57</span>
                         <span class="chip">Compose</span>
                         <span class="chip">Privacy</span>
                     </div>
-                    <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;">
-                        <a href="https://play.google.com/store/apps/details?id=dev.rrohaill.photometadata&pcampaignid=web_share" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0;">
-                            Play Store
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
-                        <a href="https://github.com/rrohaill/PixelSanitizer" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0;">
-                            Android GitHub
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
-                        <a href="https://github.com/rrohaill/PixelSanitizerRN" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0;">
-                            React Native GitHub
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
-                        <a href="blog.html#building-pixelsanitizer" class="cta-link" style="margin-top:0;">
-                            Build story
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
+                    <div class="lab-links">
+                        <a href="https://play.google.com/store/apps/details?id=dev.rrohaill.photometadata&pcampaignid=web_share" target="_blank" rel="noreferrer" class="text-link state-layer">Play Store <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                        <a href="https://github.com/rrohaill/PixelSanitizer" target="_blank" rel="noreferrer" class="text-link state-layer">Android GitHub <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                        <a href="https://github.com/rrohaill/PixelSanitizerRN" target="_blank" rel="noreferrer" class="text-link state-layer">React Native GitHub <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                        <a href="blog.html#building-pixelsanitizer" class="text-link state-layer">Build story <i data-icon="arrow-right" class="i i-4"></i></a>
                     </div>
                 </article>
 
                 <!-- Pulse AI -->
-                <article class="bento project-card animate-on-scroll delay-2">
+                <article class="m3-card lab" id="lab-pulse-ai">
+                    <div class="lab-top">
+                        <span class="ico"><i data-icon="newspaper" class="i i-6"></i></span>
+                        <span class="chip chip--tertiary match-badge" data-match-for="lab-pulse-ai" hidden></span>
+                    </div>
                     <h3>Pulse AI — Local AI News Dashboard</h3>
                     <p class="blurb">Privacy-first macOS app aggregating RSS, Reddit, X and GitHub, then scoring articles with a local Llama 3.1 model. 200+ in, 15 curated out — no API keys, no subscriptions.</p>
-                    <div class="project-tags">
+                    <div class="chip-row">
                         <span class="chip">Ollama</span>
                         <span class="chip">Llama 3.1</span>
                         <span class="chip">Electron</span>
                         <span class="chip">Next.js</span>
                     </div>
-                    <a href="blog.html#building-pulse-ai" class="cta-link">
-                        Read the build story
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </a>
+                    <div class="lab-links">
+                        <a href="blog.html#building-pulse-ai" class="text-link state-layer">Read the build story <i data-icon="arrow-right" class="i i-4"></i></a>
+                    </div>
                 </article>
 
                 <!-- Budgeting App -->
-                <article class="bento project-card animate-on-scroll delay-3">
+                <article class="m3-card lab" id="lab-budgeting">
+                    <div class="lab-top">
+                        <span class="ico"><i data-icon="wallet" class="i i-6"></i></span>
+                        <span class="chip chip--tertiary match-badge" data-match-for="lab-budgeting" hidden></span>
+                    </div>
                     <h3>Budgeting App</h3>
                     <p class="blurb">A 50/30/20 budgeting app in React + TypeScript with expense tracking, visual breakdowns and multi-language support.</p>
-                    <div class="project-tags">
+                    <div class="chip-row">
                         <span class="chip">React</span>
                         <span class="chip">TypeScript</span>
                         <span class="chip">Tailwind</span>
                     </div>
-                    <a href="budgeting-app/dist/index.html?v=3" target="_blank" rel="noreferrer" class="cta-link">
-                        Open app
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                    </a>
+                    <div class="lab-links">
+                        <a href="budgeting-app/dist/index.html?v=3" target="_blank" rel="noreferrer" class="text-link state-layer">Open app <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                    </div>
                 </article>
 
                 <!-- Design System -->
-                <article class="bento project-card animate-on-scroll delay-4">
+                <article class="m3-card lab">
+                    <div class="lab-top">
+                        <span class="ico"><i data-icon="layers" class="i i-6"></i></span>
+                    </div>
                     <h3>Android Design System</h3>
                     <p class="blurb">A flexible Compose design system library: reusable components, consistent theming, design tokens and accessibility support.</p>
-                    <div class="project-tags">
+                    <div class="chip-row">
                         <span class="chip">Compose</span>
                         <span class="chip">Design System</span>
                         <span class="chip">A11y</span>
                     </div>
-                    <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;">
-                        <a href="https://github.com/rrohaill/Design-System" target="_blank" rel="noreferrer" class="cta-link" style="margin-top:0;">
-                            GitHub
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
-                        <a href="blog.html#building-android-design-system" class="cta-link" style="margin-top:0;">
-                            Build story
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                        </a>
+                    <div class="lab-links">
+                        <a href="https://github.com/rrohaill/Design-System" target="_blank" rel="noreferrer" class="text-link state-layer">GitHub <i data-icon="arrow-up-right" class="i i-4"></i></a>
+                        <a href="blog.html#building-android-design-system" class="text-link state-layer">Build story <i data-icon="arrow-right" class="i i-4"></i></a>
                     </div>
                 </article>
             </div>
@@ -1589,41 +900,30 @@
     </section>
 
     <!-- ===== BOOKS SPOTLIGHT ===== -->
-    <section class="section" id="books">
+    <section class="section">
         <div class="container">
-            <div class="section-head">
-                <span class="chip">Publications</span>
+            <div class="section-head" id="books">
+                <p class="eyebrow">Publications</p>
                 <h2>Books &amp; Publications</h2>
-                <p class="section-subtitle">Technical playbooks, architecture guides, and creative children's series by Rohail Ahmad.</p>
+                <p class="subtitle">Technical playbooks, architecture guides, and a children's coloring book series.</p>
             </div>
 
-            <a href="books.html" class="bento books-spotlight-card animate-on-scroll" aria-label="Explore Books and Publications by Rohail Ahmad">
-                <div class="books-spotlight-content">
-                    <div class="books-spotlight-tags">
-                        <span class="chip" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #34d399;">Technical Guide</span>
-                        <span class="chip" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fbbf24;">"Little hands first coloring book" Series</span>
-                        <span class="chip" style="background: rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.35); color: #38bdf8;">3 Published Titles</span>
+            <a href="books.html" class="m3-card bg-surface books-card" aria-label="Explore Books and Publications by Rohail Ahmad">
+                <div>
+                    <div class="chip-row">
+                        <span class="chip chip--primary"><i data-icon="book" class="i i-3"></i> Technical guide</span>
+                        <span class="chip chip--tertiary">"Little hands first coloring book" series</span>
+                        <span class="chip">3 published titles</span>
                     </div>
-                    <h3 class="books-spotlight-title">From Android System Design to Children's Book Series</h3>
-                    <p class="books-spotlight-desc">
-                        Explore in-depth technical engineering guides like <em>Cracking the Android FAANG Interview</em> alongside the <em>"Little hands first coloring book"</em> toddler series. Browse full curriculums, interactive 3D mockups, and sample spreads.
-                    </p>
-                    <div class="books-spotlight-cta">
-                        <span>Browse Catalog, 3D Previews &amp; Outlines</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </div>
+                    <h3>From Android system design to a children's book series</h3>
+                    <p class="blurb">In-depth engineering guides like <em>Cracking the Android FAANG Interview</em> alongside the <em>"Little hands first coloring book"</em> toddler series. Browse full curriculums, 3D mockups and sample spreads.</p>
+                    <span class="cta">Browse the catalog <i data-icon="arrow-right" class="i i-5"></i></span>
                 </div>
-
-                <div class="books-spotlight-covers" aria-hidden="true">
-                    <div class="mini-cover mini-cover-1" title="Cracking the Android FAANG Interview">
-                        <img src="assets/crackandroidinterview-cover.png" alt="Cracking the Android FAANG Interview cover" loading="lazy">
-                    </div>
-                    <div class="mini-cover mini-cover-2" title="My Little Hands Coloring Book">
-                        <img src="assets/mylittlehands-cover.png" alt="My Little Hands Coloring Book cover" loading="lazy">
-                    </div>
-                    <div class="mini-cover mini-cover-3" title="Things That GO! — My Little Hands">
-                        <img src="assets/thingsthatgo-cover.png" alt="Things That GO! cover" loading="lazy">
-                    </div>
+                <div class="covers" aria-hidden="true">
+                    <span class="shape abs shape--spin-slower" data-shape="flower"></span>
+                    <img class="cover c1" src="assets/crackandroidinterview-cover.png" alt="" loading="lazy">
+                    <img class="cover c2" src="assets/mylittlehands-cover.png" alt="" loading="lazy">
+                    <img class="cover c3" src="assets/thingsthatgo-cover.png" alt="" loading="lazy">
                 </div>
             </a>
         </div>
@@ -1632,97 +932,486 @@
     <!-- ===== CONTACT ===== -->
     <section class="section">
         <div class="container">
-            <div class="bento contact-card animate-on-scroll" id="contact">
-                <span class="chip">Contact</span>
-                <h2>Building something ambitious? <span class="text-gradient">Let's talk.</span></h2>
-                <p class="contact-desc">Open to senior Android roles, collaborations and product-minded engineering work. Based in Gothenburg, Sweden.</p>
-                <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" rel="noreferrer" class="btn-primary">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    Send me an email
-                </a>
-                <div class="social-links">
-                    <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer">GitHub</a>
-                    <a href="https://www.linkedin.com/in/rrohaill/" target="_blank" rel="noreferrer">LinkedIn</a>
-                    <a href="https://medium.com/@rrohaill" target="_blank" rel="noreferrer">Medium</a>
-                    <a href="https://stackoverflow.com/users/10998096/rrohaill" target="_blank" rel="noreferrer">Stack Overflow</a>
+            <div class="m3-card contact" id="contact">
+                <span class="shape abs deco deco1 shape--spin-slower" data-shape="clover"></span>
+                <span class="shape abs deco deco2 shape--spin-reverse" data-shape="cookie"></span>
+                <div class="inner">
+                    <h2>Building something people will love? Let's talk.</h2>
+                    <p class="desc">Open to senior Android roles, collaborations and product-minded engineering work. Based in Gothenburg, Sweden.</p>
+                    <a href="https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com" target="_blank" rel="noreferrer" class="m3-btn m3-btn--filled m3-btn--lg state-layer"><i data-icon="mail" class="i i-5"></i> Send me an email</a>
+                    <div class="socials">
+                        <a href="https://github.com/rrohaill" target="_blank" rel="noreferrer" class="state-layer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/rrohaill/" target="_blank" rel="noreferrer" class="state-layer">LinkedIn</a>
+                        <a href="https://medium.com/@rrohaill" target="_blank" rel="noreferrer" class="state-layer">Medium</a>
+                        <a href="https://stackoverflow.com/users/10998096/rrohaill" target="_blank" rel="noreferrer" class="state-layer">Stack Overflow</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    </main>
+
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
-        <div class="footer-inner">
-            <p>&copy; <span id="currentYear"></span> Rohail Ahmad. Based in Gothenburg, Sweden.</p>
+        <div class="container footer-inner">
+            <p>&copy; <span data-year></span> Rohail Ahmad. Based in Gothenburg, Sweden.</p>
             <p class="quote">"Sometimes it is the people no one can imagine anything of who do the things no one can imagine."</p>
         </div>
     </footer>
 
+    <script src="assets/m3.js"></script>
     <script>
-        // ===== Navigation scroll effect =====
-        const siteNav = document.getElementById('site-nav');
-        function onNavScroll() {
-            if (window.scrollY > 12) {
-                siteNav.classList.add('scrolled');
-            } else {
-                siteNav.classList.remove('scrolled');
+    /* =====================================================================
+       Recruiter guide + "Describe the role" matcher.
+       Pure data and keyword matching in the browser — no AI, no API keys,
+       nothing is sent anywhere. Every pick points at an element id on this page.
+       ===================================================================== */
+    (function () {
+        "use strict";
+        var M = window.M3;
+        var profile = {
+            mailto: "https://mail.google.com/mail/?view=cm&to=rohailonline1@gmail.com",
+            cv: "https://drive.google.com/file/d/1iiadAauX50YslK-ahlYKm_r3vJvHtXZ3/view?usp=sharing"
+        };
+
+        var targets = {
+            "case-kivra": { title: "Kivra — Digital Mail & Payments", where: "Selected work" },
+            "case-meezan": { title: "Meezan Bank — Mobile Banking", where: "Selected work" },
+            "case-design-system": { title: "Android Design System", where: "Selected work" },
+            "case-molndal": { title: "Mölndal Energi — Energy Insights", where: "Selected work" },
+            "lab-fitbrief": { title: "FitBrief — On-device AI", where: "Labs" },
+            "lab-pixelsanitizer": { title: "PixelSanitizer — Photo privacy", where: "Labs" },
+            "lab-pulse-ai": { title: "Pulse AI — Local AI news", where: "Labs" },
+            "lab-budgeting": { title: "Budgeting App", where: "Labs" },
+            "exp-kivra": { title: "Kivra · Senior Android", where: "Career" },
+            "exp-eliq": { title: "Eliq · Senior Android", where: "Career" },
+            "exp-uiz": { title: "UIZ GmbH · Android", where: "Career" },
+            "exp-inov8": { title: "Inov8 · Android", where: "Career" },
+            "skills-grid": { title: "Toolkit", where: "Expertise" }
+        };
+
+        var tracks = [
+            {
+                id: "fintech", label: "Payments & fintech", icon: "credit-card",
+                headline: "Payments people trust with their money",
+                summary: "Two fintech products in production: invoice payments at Kivra, built with Visa, SEB and other major Swedish banks on open banking APIs, and mobile banking at Meezan Bank (10M+ downloads).",
+                proof: [
+                    "Lifted successful payments 25% in my first 3 months at Kivra",
+                    "Working with Visa, SEB and other major Swedish banks on open banking APIs",
+                    "2 payment gateways integrated with product, backend and design",
+                    "MasterPass QR payments and PCI DSS compliance at Inov8"
+                ],
+                picks: [
+                    { target: "case-kivra", why: "Invoice payments with Visa, SEB & open banking" },
+                    { target: "case-meezan", why: "Banking app with 10M+ downloads" },
+                    { target: "exp-inov8", why: "6+ banking apps, PCI DSS releases" }
+                ]
+            },
+            {
+                id: "compose", label: "Jetpack Compose & UI", icon: "layers",
+                headline: "Compose UI that feels right in the hand",
+                summary: "Compose in production at Kivra, a reusable Compose component library, and newer apps built Compose-only.",
+                proof: [
+                    "Invoice payment flows built in Compose at Kivra",
+                    "Compose design system with tokens, theming and a11y",
+                    "FitBrief and PixelSanitizer are 100% Compose"
+                ],
+                picks: [
+                    { target: "case-kivra", why: "Production Compose at national scale" },
+                    { target: "case-design-system", why: "Reusable components and theming" },
+                    { target: "lab-fitbrief", why: "Modern Compose app, end to end" }
+                ]
+            },
+            {
+                id: "design-systems", label: "Design systems & a11y", icon: "palette",
+                headline: "Consistency and accessibility, built in",
+                summary: "I build the components other engineers reach for — themed, documented and accessible by default.",
+                proof: [
+                    "Compose library with design tokens and consistent theming",
+                    "Accessibility support built into every component",
+                    "20+ white-label apps themed from shared code at Eliq"
+                ],
+                picks: [
+                    { target: "case-design-system", why: "The library itself, with code" },
+                    { target: "exp-eliq", why: "20+ branded apps from one system" },
+                    { target: "skills-grid", why: "Architecture and quality toolkit" }
+                ]
+            },
+            {
+                id: "scale", label: "White-label & scale", icon: "globe",
+                headline: "One codebase, many brands, millions of users",
+                summary: "I've led multi-brand Android platforms and kept them fast, offline-tolerant and maintainable.",
+                proof: [
+                    "Led development of 20+ white-label energy apps at Eliq",
+                    "6+ banking apps at Inov8, incl. Meezan Bank with 10M+ downloads",
+                    "Offline-first re-architecture for low-connectivity users at UIZ"
+                ],
+                picks: [
+                    { target: "exp-eliq", why: "20+ white-label apps" },
+                    { target: "case-molndal", why: "One of those apps, live on the Play Store" },
+                    { target: "exp-inov8", why: "Banking apps incl. 10M+ Meezan" },
+                    { target: "exp-uiz", why: "Offline capabilities re-architected" }
+                ]
+            },
+            {
+                id: "ai", label: "On-device AI", icon: "brain",
+                headline: "AI features that keep data on the device",
+                summary: "I prototype and ship AI where it helps the user — private, local and cheap to run.",
+                proof: [
+                    "Gemini Nano & LiteRT-LM fitness summaries in FitBrief",
+                    "Health Connect data never leaves the phone",
+                    "Local Llama 3.1 ranks 200+ articles in Pulse AI"
+                ],
+                picks: [
+                    { target: "lab-fitbrief", why: "Gemini Nano on Android" },
+                    { target: "lab-pulse-ai", why: "Local LLM, no API keys" }
+                ]
+            },
+            {
+                id: "privacy", label: "Privacy & security", icon: "shield-check",
+                headline: "Privacy by default, security under audit",
+                summary: "From PCI DSS banking releases to apps that never upload a byte of personal data.",
+                proof: [
+                    "PCI DSS compliance across banking releases",
+                    "PixelSanitizer strips GPS and camera metadata 100% on-device",
+                    "FitBrief keeps biometric data strictly on the phone"
+                ],
+                picks: [
+                    { target: "case-meezan", why: "Regulated banking security" },
+                    { target: "lab-pixelsanitizer", why: "On-device photo privacy" },
+                    { target: "lab-fitbrief", why: "Private health data handling" }
+                ]
+            },
+            {
+                id: "cross-platform", label: "Cross-platform", icon: "sparkles",
+                headline: "Native first, comfortable beyond Android",
+                summary: "Android is home, but I ship where users are — React Native, React and Kotlin Multiplatform.",
+                proof: [
+                    "PixelSanitizer shipped in both Compose and React Native / Expo",
+                    "React + TypeScript budgeting app with i18n",
+                    "Familiar with KMP, iOS and Flutter"
+                ],
+                picks: [
+                    { target: "lab-pixelsanitizer", why: "Same app in Compose and RN" },
+                    { target: "lab-budgeting", why: "React + TypeScript web app" },
+                    { target: "skills-grid", why: "Full toolkit, incl. KMP" }
+                ]
             }
+        ];
+
+        function findTrack(id) { return tracks.find(function (t) { return t.id === id; }); }
+
+        /* Concepts a job ad can mention, each with the work that proves it (strongest first). */
+        var concepts = [
+            { id: "kotlin", label: "Kotlin", patterns: [/\bkotlin\b/, /\bcoroutines?\b/, /\bkotlin flow\b/, /\bstateflow\b/],
+              proof: "My main language: expert level, 8+ years on Android",
+              targets: [{ target: "case-kivra", why: "Payments built in Kotlin & Compose" }, { target: "exp-eliq", why: "20+ apps written in Kotlin" }] },
+            { id: "java", label: "Java", patterns: [/\bjava\b(?!\s*script)/],
+              proof: "Advanced Java — shipped 6+ banking apps in it at Inov8",
+              targets: [{ target: "case-meezan", why: "Java banking app, 10M+ downloads" }, { target: "exp-inov8", why: "6+ Java banking apps" }], track: "fintech" },
+            { id: "compose", label: "Jetpack Compose", patterns: [/\bcompose\b/, /\bdeclarative ui\b/, /\bjetpack\b/],
+              proof: "Compose in production at Kivra, plus a Compose design system and Compose-only apps",
+              targets: [{ target: "case-kivra", why: "Production Compose at national scale" }, { target: "case-design-system", why: "Reusable Compose components" }, { target: "lab-fitbrief", why: "Modern Compose app, end to end" }],
+              track: "compose", weight: 1.5 },
+            { id: "android", label: "Android", patterns: [/\bandroid\b/, /\bmobile\b/, /\bplay store\b/, /\bnative apps?\b/],
+              proof: "8+ years of Android, 20+ apps shipped",
+              targets: [{ target: "exp-kivra", why: "Senior Android at Kivra today" }, { target: "exp-eliq", why: "Led 20+ Android apps" }], weight: 0.5 },
+            { id: "payments", label: "Payments & fintech",
+              patterns: [/\bpayments?\b/, /\bfintech\b/, /\bbank(s|ing)?\b/, /\bcheckout\b/, /\binvoic(e|es|ing)\b/, /\bbilling\b/, /\bwallets?\b/, /\bfinanc(e|ial)\b/, /\bmoney\b/, /\bpsd2\b/, /\bopen[- ]?banking\b/, /\bvisa\b/, /\bseb\b/, /\bmastercard\b/, /\baccount[- ]to[- ]account\b/, /\ba2a\b/],
+              proof: "+25% successful payment completions at Kivra, working with Visa, SEB and major Swedish banks on open banking APIs; banking at Meezan (10M+ downloads)",
+              targets: [{ target: "case-kivra", why: "Invoice payments with Visa, SEB & open banking" }, { target: "case-meezan", why: "Mobile banking, 10M+ downloads" }, { target: "exp-inov8", why: "MasterPass QR payments" }],
+              track: "fintech", weight: 2 },
+            { id: "security", label: "Security & compliance",
+              patterns: [/\bsecur(e|ity)\b/, /\bpci\b/, /\bcomplian(ce|t)\b/, /\bregulat(ed|ion|ory)\b/, /\bencrypt(ion|ed)?\b/, /\bauthenticat(ion|e)\b/],
+              proof: "PCI DSS compliance across banking releases",
+              targets: [{ target: "case-meezan", why: "Regulated banking security" }, { target: "exp-inov8", why: "PCI DSS releases" }], track: "privacy", weight: 1.5 },
+            { id: "privacy", label: "Privacy", patterns: [/\bprivacy\b/, /\bgdpr\b/, /\bpersonal data\b/, /\bprivate\b/, /\bdata protection\b/],
+              proof: "Apps that keep personal data 100% on the device",
+              targets: [{ target: "lab-pixelsanitizer", why: "On-device photo privacy" }, { target: "lab-fitbrief", why: "Health data never leaves the phone" }], track: "privacy", weight: 1.5 },
+            { id: "design-system", label: "Design systems",
+              patterns: [/\bdesign systems?\b/, /\bcomponent librar(y|ies)\b/, /\bui kit\b/, /\btheming\b/, /\bdesign tokens?\b/, /\bmaterial (3|you|design)\b/],
+              proof: "Built a Compose design system with tokens, theming and a11y",
+              targets: [{ target: "case-design-system", why: "The library itself, with code" }, { target: "exp-eliq", why: "20+ branded apps from shared code" }], track: "design-systems", weight: 2 },
+            { id: "a11y", label: "Accessibility", patterns: [/\baccessib(le|ility)\b/, /\ba11y\b/, /\btalkback\b/, /\bwcag\b/, /\binclusive\b/],
+              proof: "Accessibility support built into every design-system component",
+              targets: [{ target: "case-design-system", why: "Accessible by default" }], track: "design-systems", weight: 1.5 },
+            { id: "ux", label: "User experience",
+              patterns: [/\bux\b/, /\buser experience\b/, /\busability\b/, /\bproduct[- ]minded\b/, /\buser[- ]centr(ic|ed)\b/, /\bdesigners?\b/, /\bfigma\b/, /\bpolish(ed)?\b/, /\banimations?\b/],
+              proof: "Works hand in hand with design and product; ships measurable UX wins",
+              targets: [{ target: "case-kivra", why: "Payment UX that lifted completions 25%" }, { target: "case-design-system", why: "Consistent, accessible UI" }], track: "compose" },
+            { id: "architecture", label: "Architecture",
+              patterns: [/\barchitect(ure|ing)?\b/, /\bmvvm\b/, /\bmvi\b/, /\bclean architecture\b/, /\bmodular(i[sz]ation)?\b/, /\bmaintainab(le|ility)\b/, /\bscalable\b/],
+              proof: "Drives architecture decisions at Kivra — MVVM, MVI, Clean",
+              targets: [{ target: "exp-kivra", why: "Owns architecture decisions" }, { target: "skills-grid", why: "MVVM · MVI · Clean toolkit" }], track: "scale" },
+            { id: "leadership", label: "Technical leadership",
+              patterns: [/\blead(s|ing|er|ership)?\b/, /\bmentor(s|ing)?\b/, /\bstaff\b/, /\bprincipal\b/, /\bownership\b/, /\bsenior\b/],
+              proof: "Led development of 20+ apps at Eliq; senior at Kivra since 2023",
+              targets: [{ target: "exp-eliq", why: "Led 20+ white-label apps" }, { target: "exp-kivra", why: "Spearheads payment features" }], track: "scale", weight: 0.75 },
+            { id: "white-label", label: "White-label & B2B",
+              patterns: [/\bwhite[- ]label(led)?\b/, /\bmulti[- ]?(brand|tenant)\b/, /\bb2b\b/, /\bsaas\b/, /\benergy\b/, /\butilit(y|ies)\b/],
+              proof: "Led 20+ white-label energy apps for international clients",
+              targets: [{ target: "exp-eliq", why: "20+ white-label apps" }, { target: "case-molndal", why: "A white-label energy app in production" }], track: "scale", weight: 2 },
+            { id: "scale", label: "Scale & performance", patterns: [/\bmillions?\b/, /\bscale\b/, /\bperforman(ce|t)\b/, /\blarge user base\b/, /\bhigh[- ]traffic\b/],
+              proof: "Apps used by 12M+ people; performance-first architecture",
+              targets: [{ target: "exp-inov8", why: "Banking apps incl. 10M+ Meezan" }, { target: "case-meezan", why: "10M+ download banking app" }], track: "scale" },
+            { id: "offline", label: "Offline-first", patterns: [/\boffline\b/, /\blow[- ]connectivity\b/, /\bsync(ing|hroni[sz]ation)?\b/, /\bcach(e|ing)\b/, /\broom\b/, /\bsqlite\b/],
+              proof: "Re-architected offline support for a low-connectivity restaurant app",
+              targets: [{ target: "exp-uiz", why: "Offline capabilities re-architected" }], track: "scale", weight: 1.5 },
+            { id: "ai", label: "AI & ML",
+              patterns: [/\bai\b/, /\bml\b/, /\bllms?\b/, /\bgen ?ai\b/, /\bgenerative\b/, /\bgemini\b/, /\bmachine learning\b/, /\bon[- ]device\b/, /\btflite\b/, /\blitert\b/, /\bllama\b/],
+              proof: "Gemini Nano & LiteRT-LM in FitBrief; local Llama 3.1 in Pulse AI",
+              targets: [{ target: "lab-fitbrief", why: "Gemini Nano on Android" }, { target: "lab-pulse-ai", why: "Local LLM, no API keys" }], track: "ai", weight: 2 },
+            { id: "health", label: "Health & fitness", patterns: [/\bhealth\b/, /\bfitness\b/, /\bwearables?\b/, /\bmedtech\b/, /\bwell-?being\b/, /\bwear ?os\b/],
+              proof: "FitBrief turns Health Connect data into private summaries",
+              targets: [{ target: "lab-fitbrief", why: "Health Connect app" }], track: "ai", weight: 1.5 },
+            { id: "testing", label: "Testing & quality", patterns: [/\btest(s|ing)?\b/, /\btdd\b/, /\bjunit\b/, /\bespresso\b/, /\bmockito\b/, /\bqa\b/, /\bquality\b/, /\bci\/?cd\b/],
+              proof: "JUnit, Mockito and Espresso — unit, UI and integration tests",
+              targets: [{ target: "skills-grid", why: "Testing toolkit" }] },
+            { id: "cross-platform", label: "Cross-platform",
+              patterns: [/\breact native\b/, /\bexpo\b/, /\bkmp\b/, /\bmultiplatform\b/, /\bflutter\b/, /\bios\b/, /\bcross[- ]platform\b/],
+              proof: "PixelSanitizer shipped in Compose and React Native; familiar with KMP, iOS, Flutter",
+              targets: [{ target: "lab-pixelsanitizer", why: "Same app in Compose and RN" }, { target: "skills-grid", why: "KMP · iOS · Flutter" }], track: "cross-platform", weight: 1.5 },
+            { id: "web", label: "Web & TypeScript", patterns: [/\breact\b(?!\s*native)/, /\btypescript\b/, /\bjavascript\b/, /\bweb\b/, /\bfrontend\b/],
+              proof: "React + TypeScript budgeting app with i18n",
+              targets: [{ target: "lab-budgeting", why: "React + TypeScript web app" }], track: "cross-platform" },
+            { id: "growth", label: "Analytics & growth",
+              patterns: [/\banalytics\b/, /\ba\/b\b/, /\bexperiment(s|ation)?\b/, /\bconversion\b/, /\bgrowth\b/, /\bengagement\b/, /\bmetrics\b/, /\bamplitude\b/, /\bbraze\b/],
+              proof: "Measured impact: lifted successful payments 25% in my first 3 months at Kivra; Amplitude & Braze",
+              targets: [{ target: "case-kivra", why: "A measurable product win" }], track: "fintech" },
+            { id: "integrations", label: "APIs & integrations",
+              patterns: [/\bapis?\b/, /\brest\b/, /\bretrofit\b/, /\bokhttp\b/, /\bbackend\b/, /\bintegrat(e|ion|ions)\b/, /\bsdks?\b/, /\bthird[- ]party\b/],
+              proof: "Integrated 2 payment gateways and MasterCard's MasterPass QR",
+              targets: [{ target: "case-kivra", why: "2 new payment gateways" }, { target: "exp-inov8", why: "MasterPass integration" }], track: "fintech" },
+            { id: "firebase", label: "Firebase", patterns: [/\bfirebase\b/, /\bcrashlytics\b/, /\bpush notifications?\b/, /\bfcm\b/],
+              proof: "Firebase, Crashlytics and push in day-to-day toolkit",
+              targets: [{ target: "skills-grid", why: "Firebase toolkit" }] },
+            { id: "location", label: "Sweden / EU",
+              patterns: [/\bswed(en|ish)\b/, /\bstockholm\b/, /\bgothenburg\b/, /\bg[öo]teborg\b/, /\bnordic\b/, /\bscandinavia\b/, /\beu\b/, /\beurope\b/],
+              proof: "Based in Gothenburg, Sweden; worked in Stockholm, Berlin and Lahore",
+              targets: [{ target: "exp-kivra", why: "Kivra, Stockholm" }], weight: 0.5 }
+        ];
+
+        var MAX_PICKS = 4;
+
+        function matchRole(text) {
+            var input = text.toLowerCase().replace(/\s+/g, " ");
+            var hits = concepts.filter(function (c) { return c.patterns.some(function (p) { return p.test(input); }); });
+            var scores = new Map();
+            var trackScores = new Map();
+
+            hits.forEach(function (c) {
+                var w = c.weight == null ? 1 : c.weight;
+                c.targets.forEach(function (t, i) {
+                    var s = w * (i === 0 ? 1 : 0.8);
+                    var cur = scores.get(t.target) || { score: 0, why: t.why, best: 0, because: [] };
+                    cur.score += s;
+                    cur.because.push(c.label);
+                    if (s > cur.best) { cur.best = s; cur.why = t.why; }
+                    scores.set(t.target, cur);
+                });
+                if (c.track) trackScores.set(c.track, (trackScores.get(c.track) || 0) + w);
+            });
+
+            var picks = Array.from(scores.entries())
+                .sort(function (a, b) { return b[1].score - a[1].score; })
+                .slice(0, MAX_PICKS)
+                .map(function (e) { var t = targets[e[0]]; return { target: e[0], title: t.title, where: t.where, why: e[1].why, because: e[1].because }; });
+
+            var top = Array.from(trackScores.entries()).sort(function (a, b) { return b[1] - a[1]; })[0];
+            var trackId = top && findTrack(top[0]) ? top[0] : undefined;
+
+            return {
+                matched: hits.slice().sort(function (a, b) { return (b.weight == null ? 1 : b.weight) - (a.weight == null ? 1 : a.weight); })
+                    .map(function (c) { return { id: c.id, label: c.label, proof: c.proof }; }),
+                picks: picks,
+                trackId: trackId
+            };
         }
-        onNavScroll();
-        window.addEventListener('scroll', onNavScroll, { passive: true });
 
-        // ===== Mobile menu toggle =====
-        const navToggle = document.getElementById('nav-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        /* ---------------- Rendering ---------------- */
+        function esc(s) {
+            return String(s).replace(/[&<>"']/g, function (ch) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+            });
+        }
 
-        navToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.toggle('open');
-            navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-            if (isOpen) {
-                menuIcon.innerHTML = '<line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>';
-            } else {
-                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
+        var pickShapes = ["cookie", "clover", "flower"];
+
+        function pickRow(p, i, tone) {
+            var t = targets[p.target];
+            var shapeTone = tone === "tertiary" ? "text-tertiary-container" : "text-primary-container";
+            var textTone = tone === "tertiary" ? "text-on-tertiary-container" : "text-on-primary-container";
+            return '<li><button type="button" class="pick state-layer group" data-spot="' + p.target + '">' +
+                M.shape(pickShapes[i % pickShapes.length], shapeTone + " spin-45", '<span class="' + textTone + '">' + (i + 1) + "</span>") +
+                '<span class="body"><span class="where">' + esc(t.where) + '</span><span class="title">' + esc(t.title) + '</span>' +
+                '<span class="why">' + esc(p.why) + (p.because ? ' · <span style="color:var(--foreground);opacity:.8">' + esc(p.because.join(", ")) + "</span>" : "") + "</span></span>" +
+                M.icon("arrow-right", "i-5 arrow") + "</button></li>";
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var chosenId = findTrack(params.get("for")) ? params.get("for") : null;
+        var copiedTimer = null;
+
+        var chipsEl = document.getElementById("focus-chips");
+        var pitchEl = document.getElementById("guide-pitch");
+
+        function renderGuide() {
+            var track = findTrack(chosenId) || tracks[0];
+
+            chipsEl.innerHTML = tracks.map(function (t) {
+                var on = t.id === track.id;
+                return '<button type="button" role="radio" class="focus-chip state-layer" data-track="' + t.id + '" aria-checked="' + on + '">' +
+                    M.icon(on ? "check" : t.icon, "i-4") + esc(t.label) + "</button>";
+            }).join("");
+
+            var mail = profile.mailto + "&su=" + encodeURIComponent(track.label + " role — for Rohail Ahmad");
+            pitchEl.classList.remove("animate-in");
+            void pitchEl.offsetWidth;
+            pitchEl.classList.add("animate-in");
+            pitchEl.innerHTML =
+                "<div>" +
+                "<h3>" + esc(track.headline) + "</h3>" +
+                '<p class="summary">' + esc(track.summary) + "</p>" +
+                '<ul class="check-list">' + track.proof.map(function (p) {
+                    return '<li><span class="dot">' + M.icon("check", "i-3") + "</span><span>" + esc(p) + "</span></li>";
+                }).join("") + "</ul>" +
+                '<div class="actions">' +
+                '<a href="' + mail + '" target="_blank" rel="noreferrer" class="m3-btn m3-btn--filled m3-btn--sm state-layer">' + M.icon("mail", "i-4") + " Email about this role</a>" +
+                '<a href="' + profile.cv + '" target="_blank" rel="noreferrer" class="m3-btn m3-btn--tonal m3-btn--sm state-layer">' + M.icon("download", "i-4") + " CV</a>" +
+                '<button type="button" class="m3-btn m3-btn--outlined m3-btn--sm state-layer" data-copy>' + M.icon("link", "i-4") + " <span>Share this view</span></button>" +
+                "</div></div>" +
+                '<div><p class="kicker">Start here</p><ol class="picks">' +
+                track.picks.map(function (p, i) { return pickRow(p, i, "primary"); }).join("") +
+                "</ol></div>";
+
+            updateBadges(track);
+        }
+
+        function updateBadges(track) {
+            document.querySelectorAll("[data-match-for]").forEach(function (el) {
+                var id = el.getAttribute("data-match-for");
+                var on = !!chosenId && track.picks.some(function (p) { return p.target === id; });
+                el.hidden = !on;
+                if (on) el.innerHTML = M.icon("sparkles", "i-3") + " Matches: " + esc(track.label);
+            });
+        }
+
+        function choose(id) {
+            chosenId = id;
+            var url = window.location.pathname + "?for=" + encodeURIComponent(id) + window.location.hash;
+            history.replaceState(null, "", url);
+            renderGuide();
+        }
+
+        chipsEl.addEventListener("click", function (e) {
+            var b = e.target.closest("[data-track]");
+            if (b) choose(b.getAttribute("data-track"));
+        });
+
+        pitchEl.addEventListener("click", function (e) {
+            var spot = e.target.closest("[data-spot]");
+            if (spot) { M.spotlight(spot.getAttribute("data-spot")); return; }
+            var copy = e.target.closest("[data-copy]");
+            if (copy) {
+                var track = findTrack(chosenId) || tracks[0];
+                var link = window.location.origin + window.location.pathname + "?for=" + track.id;
+                var done = function () {
+                    copy.innerHTML = M.icon("check", "i-4") + " <span>Link copied</span>";
+                    window.clearTimeout(copiedTimer);
+                    copiedTimer = window.setTimeout(function () { copy.innerHTML = M.icon("link", "i-4") + " <span>Share this view</span>"; }, 2000);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, function () {});
             }
         });
 
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
-                navToggle.setAttribute('aria-label', 'Open menu');
-            });
-        });
+        /* ---------------- Role matcher ---------------- */
+        var examples = [
+            "Senior Android engineer for a fintech app — Kotlin, Compose, payments",
+            "Lead mobile dev for a white-label B2B SaaS, offline-first",
+            "Android dev to ship on-device ML features with strict privacy"
+        ];
+        var matcherEl = document.getElementById("role-matcher");
+        var lastQuery = "";
 
-        // ===== Smooth scrolling =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+        function renderMatcher(result) {
+            var html =
+                '<form id="role-form">' +
+                '<label for="role-text">' + M.icon("search", "i-5 text-primary") + " Describe the role in your own words</label>" +
+                '<p class="hint">Paste a job ad or a few lines. It’s matched right here in your browser — nothing is sent anywhere.</p>' +
+                '<textarea id="role-text" rows="3" maxlength="4000" placeholder="e.g. Senior Android engineer to lead our payments app, Kotlin + Compose, accessibility matters">' + esc(lastQuery) + "</textarea>" +
+                '<div class="row">' +
+                '<button type="submit" class="m3-btn m3-btn--filled m3-btn--sm state-layer" id="role-submit"' + (lastQuery.trim() ? "" : " disabled") + ">" + M.icon("sparkles", "i-4") + " Find matching work</button>" +
+                (result ? '<button type="button" class="m3-btn m3-btn--text m3-btn--xs state-layer" data-reset>' + M.icon("rotate-ccw", "i-4") + " Clear</button>" : "") +
+                "</div>" +
+                (!result ? '<div class="examples"><span class="kicker">Try</span>' + examples.map(function (ex) {
+                    return '<button type="button" class="example-btn state-layer" data-example="' + esc(ex) + '">' + esc(ex) + "</button>";
+                }).join("") + "</div>" : "") +
+                "</form>";
+
+            if (result) {
+                var m = result.match;
+                html += '<div class="match-result animate-in" aria-live="polite">';
+                if (m.matched.length === 0) {
+                    html += '<p class="muted">I couldn’t spot specific skills in that. Try naming the tech, the industry or the team — for example "Kotlin, Compose, payments" — or pick a focus below.</p>';
+                } else {
+                    var track = findTrack(m.trackId);
+                    var mail = profile.mailto + "&su=" + encodeURIComponent("A role that might fit you — Rohail Ahmad") +
+                        "&body=" + encodeURIComponent("Hi Rohail,\n\nWe're hiring for:\n\"" + result.query + "\"\n\n");
+                    html += '<div class="match-grid"><div>' +
+                        '<p class="kicker">The role asks for ' + m.matched.length + " thing" + (m.matched.length === 1 ? "" : "s") + " I’ve done</p>" +
+                        '<ul class="check-list" style="margin-top:.75rem">' + m.matched.map(function (x) {
+                            return '<li><span class="dot">' + M.icon("check", "i-3") + '</span><span class="proof"><b>' + esc(x.label) + "</b><span> — " + esc(x.proof) + "</span></span></li>";
+                        }).join("") + "</ul>" +
+                        '<div class="match-actions">' +
+                        '<a href="' + mail + '" target="_blank" rel="noreferrer" class="m3-btn m3-btn--tonal m3-btn--xs state-layer">' + M.icon("mail", "i-4") + " Email Rohail about it</a>" +
+                        (track ? '<button type="button" class="m3-btn m3-btn--outlined m3-btn--xs state-layer" data-full="' + track.id + '">Full pitch: ' + esc(track.label) + " " + M.icon("arrow-right", "i-4") + "</button>" : "") +
+                        "</div></div>" +
+                        '<div><p class="kicker">Best matching work</p><ol class="picks">' +
+                        m.picks.map(function (p, i) { return pickRow(p, i, "tertiary"); }).join("") +
+                        "</ol></div></div>";
                 }
-            });
+                html += "</div>";
+            }
+            matcherEl.innerHTML = html;
+        }
+
+        function run(query) {
+            var q = query.trim();
+            if (!q) return;
+            lastQuery = q;
+            renderMatcher({ query: q, match: matchRole(q) });
+        }
+
+        matcherEl.addEventListener("submit", function (e) {
+            e.preventDefault();
+            run(matcherEl.querySelector("#role-text").value);
+        });
+        matcherEl.addEventListener("input", function (e) {
+            if (e.target.id === "role-text") {
+                lastQuery = e.target.value;
+                matcherEl.querySelector("#role-submit").disabled = !e.target.value.trim();
+            }
+        });
+        matcherEl.addEventListener("keydown", function (e) {
+            if (e.target.id === "role-text" && e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); run(e.target.value); }
+        });
+        matcherEl.addEventListener("click", function (e) {
+            var ex = e.target.closest("[data-example]");
+            if (ex) { run(ex.getAttribute("data-example")); return; }
+            if (e.target.closest("[data-reset]")) { lastQuery = ""; renderMatcher(null); return; }
+            var spot = e.target.closest("[data-spot]");
+            if (spot) { M.spotlight(spot.getAttribute("data-spot")); return; }
+            var full = e.target.closest("[data-full]");
+            if (full) {
+                choose(full.getAttribute("data-full"));
+                window.setTimeout(function () { M.spotlight("guide-pitch"); }, 50);
+            }
         });
 
-        // ===== Scroll-triggered entrance animations =====
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: '-60px 0px', threshold: 0.1 });
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            scrollObserver.observe(el);
-        });
-
-        // ===== Footer year =====
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        renderMatcher(null);
+        renderGuide();
+    })();
     </script>
-
 </body>
 </html>

@@ -1,19 +1,21 @@
 # Rohail Ahmad — Personal Portfolio & Engineering Hub
 
-Personal portfolio website and blog of **Rohail Ahmad**, Senior Android Engineer (8+ years of experience, shipping Kotlin & Jetpack Compose products serving millions of users across fintech, digital mail, and energy).
+Personal portfolio website and blog of **Rohail Ahmad**, Senior Android Engineer (8+ years shipping Kotlin & Jetpack Compose products used by 12M+ people across fintech, digital mail and energy).
 
-**Live Site:** [**rrohaill.dev**](https://rrohaill.github.io/)
+**Live Site:** [**www.rrohaill.dev**](https://www.rrohaill.dev)
 
 ---
 
-## 🎨 Theme & Design System: "Midnight Indigo"
+## 🎨 Theme & Design System: "Material You"
 
-The site features a **Midnight Indigo** dark-mode design system built from scratch with modern web standards:
+The site is styled after **Material 3 Expressive** (the design language of modern Android), built with plain CSS and no build step:
 
-- **Color Palette**: Deep navy canvas (`oklch(0.14 0.045 280)`), electric indigo primary (`oklch(0.58 0.22 285)`), and `oklch` color spaces.
-- **Typography**: [Sora](https://fonts.google.com/specimen/Sora) for bold display headings and [Manrope](https://fonts.google.com/specimen/Manrope) for clean body prose.
-- **Layout Architecture**: Bento-grid layout with elevated cards, gradient surfaces, radial hero glow, and hover-triggered indigo glowing borders.
-- **Micro-Interactions**: Frosted-glass fixed navbar with blur on scroll, scroll-triggered entrance animations via `IntersectionObserver`, and interactive chip badges.
+- **Dynamic color**: every color is a tone derived from a single seed hue (`--seed-h`), like Android wallpaper-based theming. Visitors can switch the seed (Android green, Ocean blue, Lavender, Coral) and light / dark / system mode from the palette button in the nav. The choice is saved in `localStorage` and applied before first paint so it never flashes.
+- **Role tokens**: components only use Material roles (`--primary-container`, `--surface-container-*`, `--tertiary`, …) defined in [`assets/m3.css`](assets/m3.css), so re-tinting is automatic.
+- **Typography**: [Google Sans Flex](https://fonts.google.com/specimen/Google+Sans+Flex) with the `ROND` axis for rounded, expressive headlines.
+- **Expressive shapes & motion**: cookie / clover / flower / sunny shapes drawn as SVG polar curves, cards whose corners morph on hover, pill buttons that squish while pressed, ripple-like state layers, and a View Transitions cross-fade when the theme changes.
+
+The redesign was prototyped in Lovable and ported back into this static site so it keeps working on GitHub Pages without a framework.
 
 ---
 
@@ -21,17 +23,21 @@ The site features a **Midnight Indigo** dark-mode design system built from scrat
 
 ```
 .
-├── index.html              # Main portfolio landing page (Hero, About, Skills, Career, Work, Labs, Contact)
-├── blog.html               # Custom single-page blog engine (List view & Article view)
+├── index.html              # Landing page (Hero, Recruiter guide, About, Skills, Career, Work, Labs, Books, Contact)
+├── blog.html               # Single-page blog engine (list view & article view, hash routing)
+├── books.html              # Books & Publications catalog with per-book detail views
 ├── blog/
-│   ├── posts.json          # Blog metadata repository
-│   ├── building-pixelsanitizer.md         # Article: PixelSanitizer Android App build story
-│   ├── building-pulse-ai.md               # Article: Pulse AI macOS App build story
-│   └── building-scalable-android-apps.md  # Article: Clean Architecture in Android
+│   ├── posts.json          # Blog metadata
+│   └── *.md                # Articles (FitBrief, PixelSanitizer, Design System, Pulse AI, Clean Architecture)
 ├── assets/
-│   ├── pixelsanitizer/     # PixelSanitizer app screenshots & graphics
-│   ├── hero-glow.jpg       # Hero visual bento tile background image
-│   └── screenshot.png      # Site preview screenshot
+│   ├── m3.css              # Shared design system: tokens, base styles, nav, buttons, chips, shapes
+│   ├── m3.js               # Theme controls, icon set, shape renderer, navigation behaviour
+│   ├── apps/               # Kivra & Meezan Bank app icons and screenshots (Selected work)
+│   ├── fitbrief/           # FitBrief screenshots
+│   ├── pixelsanitizer/     # PixelSanitizer screenshots & graphics
+│   └── *.png               # Book covers and spreads
+├── favicon.svg / favicon.png / apple-touch-icon.png
+├── og-image.jpg            # Social share card (bump ?v= in the meta tags when it changes)
 ├── budgeting-app/          # Embedded React + TypeScript 50/30/20 Budgeting App
 │   └── dist/               # Production build served at /budgeting-app/dist/index.html
 └── PixelSanitizer/         # PixelSanitizer app landing page & privacy policy
@@ -41,44 +47,42 @@ The site features a **Midnight Indigo** dark-mode design system built from scrat
 
 ## ✨ Features & Sections
 
-- **Hero Bento Grid**: Interactive intro card, stats counter (8+ years, 20+ apps, 5M+ users, +25% payment conversions), Compose UI craft tile, and quick CV download.
-- **About Me**: Engineering philosophy ("Ownership, not just code"), impact metrics, and personal interests.
-- **Skills Matrix**: 4-column breakdown covering Languages (Kotlin, Java, TypeScript), Architecture (Compose, MVVM/MVI, Room, Retrofit), Tooling, and Testing/Quality.
-- **Career Journey**: Timeline highlighting senior roles at Kivra, Eliq, UIZ GmbH, and Inov8.
-- **Selected Work**: High-impact production applications (Kivra, Mölndal Energi, Meezan Bank).
-- **Labs & Side Projects**: PixelSanitizer (Android photo EXIF privacy stripper), Pulse AI (Local LLM macOS news dashboard), Android Design System (Jetpack Compose tokens & UI library), and Budgeting App (React + TS 50/30/20 rule calculator).
-- **Built-in Blog Engine**: Lightweight JS markdown parser supporting code blocks, quotes, tags, deep-linking via hashes (`#slug`), and fallback rendering for `file://` local previewing.
+- **Hero**: intro card plus an Android-style "home screen" of widgets — current role, and stats (8+ years, 20+ apps, 12M+ users, +25% payment completions) inside expressive shapes.
+- **Hiring for something specific?**: a recruiter guide. Pick a focus (Payments & fintech, Jetpack Compose & UI, Design systems & a11y, White-label & scale, On-device AI, Privacy & security, Cross-platform) to get a tailored pitch and "Start here" picks that scroll to and spotlight the matching cards. `?for=<focus>` in the URL opens the guide on that focus so links can be shared.
+- **Describe the role**: paste a job ad and a client-side keyword/synonym matcher (no AI, no API keys, nothing leaves the browser) lists what the role asks for that Rohail has done, and the best matching work.
+- **About**: engineering philosophy ("Ownership, not just code") and off-the-clock interests.
+- **Skills**: Languages, Architecture, Tooling, Quality.
+- **Career**: Kivra, Eliq, UIZ GmbH, Inov8.
+- **Selected Work**: Kivra and Meezan Bank with swipeable app screenshots, the Android Design System with a live component specimen, and Mölndal Energi.
+- **Labs**: FitBrief (featured, on-device AI), PixelSanitizer, Pulse AI, Budgeting App, Android Design System.
+- **Books & Publications**: spotlight card linking to the full catalog (Cracking the Android FAANG Interview, and the "Little hands first coloring book" series).
+- **Blog**: lightweight markdown renderer (headings, code blocks, quotes, lists, tables, images), featured latest post, "On the portfolio" and "Read next" links, embedded fallback content for `file://` previews.
+- **SEO**: canonical URLs, Open Graph / Twitter cards with a share image, and Person JSON-LD.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **HTML5**: Semantic markup, accessible structure.
-- **Vanilla CSS3**: Design system tokens (`:root` variables), `oklch()` color function, CSS Grid (Bento layout), Flexbox, radial/linear gradients, `backdrop-filter`.
-- **Vanilla JavaScript (ES6+)**: `IntersectionObserver` scroll animations, hash-based client routing for blog articles, responsive navigation toggle.
-- **Typography**: Google Fonts (Sora & Manrope).
-- **SVG & Icons**: Inline SVG vectors for zero external library dependencies.
+- **HTML5**: semantic markup, skip link, ARIA on interactive widgets.
+- **Vanilla CSS**: `oklch()` role tokens, `color-mix()`, CSS Grid, container-free responsive layout, `prefers-reduced-motion` support.
+- **Vanilla JavaScript (ES2015+)**: theme persistence, `IntersectionObserver` nav highlighting, hash routing for blog and books, recruiter guide and role matcher.
+- **Typography**: Google Fonts (Google Sans Flex).
+- **Icons**: inline Lucide SVG paths, no icon library dependency.
 
 ---
 
 ## 🛠️ Local Development & Viewing
 
-You can view the site locally without any build step or server setup:
+No build step. Open `index.html` directly, or serve the folder so the blog can fetch markdown and the budgeting app loads:
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/rrohaill/rrohaill.github.io.git
-   cd rrohaill.github.io
-   ```
+```sh
+git clone https://github.com/rrohaill/rrohaill.github.io.git
+cd rrohaill.github.io
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
 
-2. **Open in browser:**
-   - Simply double-click `index.html` or open it in your browser.
-   - For testing the React `budgeting-app`, run a quick local HTTP server:
-     ```sh
-     npx serve .
-     # or
-     python3 -m http.server 8000
-     ```
+Adding a blog post: drop a `.md` file in `blog/`, add its metadata to `blog/posts.json` and to the `postsData` array in `blog.html` (the embedded copy is what makes `file://` previews work), and add a `postExtras` entry if the post has a cover image or a linked homepage card.
 
 ---
 
